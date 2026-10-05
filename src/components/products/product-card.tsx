@@ -1,0 +1,52 @@
+import Image from "next/image";
+import Link from "next/link";
+import type { Product } from "@/types/product";
+import { pick } from "@/types/localization";
+import type { Locale } from "@/config/locales";
+import { formatPrice } from "@/lib/utils";
+import { AddToCartButton } from "./add-to-cart-button";
+
+interface ProductCardProps {
+  product: Product;
+  locale: Locale;
+  addToCartLabel: string;
+  addedLabel: string;
+  priceTaxNote: string;
+}
+
+export function ProductCard({ product, locale, addToCartLabel, addedLabel, priceTaxNote }: ProductCardProps) {
+  const name = pick(product.name, locale);
+  const category = pick(product.categoryName, locale);
+  return (
+    <article className="group flex flex-col overflow-hidden rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-surface)] shadow-[var(--shadow-card)] transition-shadow hover:shadow-[var(--shadow-card-hover)]">
+      <Link href={`/${locale}/products/${product.slug}`} className="relative block aspect-square bg-[var(--color-background)]">
+        {product.images[0] ? (
+          <Image
+            src={product.images[0].src}
+            alt={pick(product.images[0].alt, locale)}
+            fill
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            className="object-contain p-4 transition-transform duration-300 group-hover:scale-105"
+          />
+        ) : (
+          <div className="flex h-full items-center justify-center text-[var(--color-muted-foreground)]">—</div>
+        )}
+      </Link>
+      <div className="flex flex-1 flex-col gap-2 p-4">
+        <span className="text-xs font-bold text-[var(--color-primary)]">{category}</span>
+        <Link href={`/${locale}/products/${product.slug}`}>
+          <h3 className="line-clamp-2 text-sm font-bold text-[var(--color-foreground)]">{name}</h3>
+        </Link>
+        <div className="mt-auto flex items-baseline gap-1">
+          {product.price ? (
+            <span className="text-base font-extrabold text-[var(--color-foreground)]">{formatPrice(product.price.amount, "SAR", locale)}</span>
+          ) : (
+            <span className="text-sm text-[var(--color-muted)]">—</span>
+          )}
+        </div>
+        <p className="text-[11px] text-[var(--color-muted-foreground)]">{priceTaxNote}</p>
+        <AddToCartButton product={product} label={addToCartLabel} addedLabel={addedLabel} />
+      </div>
+    </article>
+  );
+}

@@ -1,0 +1,55 @@
+[
+  {
+    "id": "29",
+    "slug": "crossonite",
+    "name": {
+      "ar": "الكروسان",
+      "en": "CROSSONITE"
+    },
+    "image": "/images/categories/category-1701343830-656872562a4cf.jpg"
+  },
+  {
+    "id": "31",
+    "slug": "sandwiches",
+    "name": {
+      "ar": "الساندويش",
+      "en": "sandwiches"
+    },
+    "image": "/images/categories/category-1679389688-641973f8b6eb4.jpg"
+  },
+  {
+    "id": "46",
+    "slug": "pretzel",
+    "name": {
+      "ar": "بريتزل",
+      "en": "PRETZEL"
+    }
+  },
+  {
+    "id": "33",
+    "slug": "salad",
+    "name": {
+      "ar": "السلطات",
+      "en": "SALAD"
+    },
+    "image": "/images/categories/category-1680004740-6422d684a0b7d.jpeg"
+  },
+  {
+    "id": "37",
+    "slug": "desserts",
+    "name": {
+      "ar": "الحلويات",
+      "en": "DESSERTS"
+    },
+    "image": "/images/categories/category-1680177081-642577b99a39c.jpeg"
+  },
+  {
+    "id": "43",
+    "slug": "beverage",
+    "name": {
+      "ar": "مشروبات",
+      "en": "BEVERAGE"
+    },
+    "image": "/images/categories/category-1701344272-656874100eb48.jpg"
+  }
+]

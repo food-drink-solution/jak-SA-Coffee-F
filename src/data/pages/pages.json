@@ -1,0 +1,218 @@
+[
+  {
+    "id": "about",
+    "slug": "about",
+    "title": {
+      "ar": "جاك -عن جاك",
+      "en": "جاك -About TOCARS"
+    },
+    "content": {
+      "ar": [
+        "• الرئيسية",
+        "عن جاك"
+      ],
+      "en": [
+        "• Home",
+        "About TOCARS",
+        "JaK is an  application that serves cafes and similar food and beverage service facilities. It provides an easy way for owners and managers of cafes to obtain their daily operational requirements. We aim to become the one-stop-shop and authorized supplier for thousands of coffee shops  in the Saudi Arabia."
+      ]
+    },
+    "images": {
+      "ar": "/images/pages/about-ar.jpg"
+    }
+  },
+  {
+    "id": "contact",
+    "slug": "contact",
+    "title": {
+      "ar": "جاك -تواصل معنا",
+      "en": "جاك -Contact Us"
+    },
+    "content": {
+      "ar": [
+        "• الرئيسية",
+        "تواصل معنا",
+        "support@jak.sa.com",
+        "966550803012",
+        "المملكة العربية السعودية، الرياض",
+        "لديك استشاره معينة",
+        "قم بارسال رسالتك وسيتم الرد عليكم فى أسرع وقت ممكن",
+        "إرسال"
+      ],
+      "en": [
+        "• Home",
+        "Contact Us",
+        "support@jak.sa.com",
+        "966550803012",
+        "المملكة العربية السعودية، الرياض",
+        "You Have Specific Advice",
+        "Send your message and we will reply to you as soon as possible",
+        "Send"
+      ]
+    },
+    "images": {}
+  },
+  {
+    "id": "terms",
+    "slug": "terms",
+    "title": {
+      "ar": "جاك -الشروط والاحكام",
+      "en": "جاك -Terms and Conditions"
+    },
+    "content": {
+      "ar": [
+        "• الرئيسية",
+        "الشروط والاحكام",
+        "شروط وأحكام التطبيق والمنصة",
+        "قبول الشروط",
+        "باستخدامك ھذا الموقع، فإنك تقبل ھذه الشروط وأنك توافق على الالتزام بھا. و إذا كنت تستخدم الموقع كموظف أو ممثل كیان قانوني آخر، فإنه باستخدامك لھذا الموقع تقبل ھذه الشروط بصفتك الشخصية أو نیابة عن ھذا الكیان القانوني .",
+        "معلومات عنا",
+        "یتم تشغیل موقع \"منصة جاك من قبل شركة الأطعمة المتحدة\" و المشار إلیھا بـ \"منصة جاك\"، \"نحن\"، \"لنا\"، شركة سعودية مسجلة تحت سجل تجاري رقم:  ١٠١٠٤٣١٦٥٢",
+        "الخدمة المقدمة من الموقع",
+        "یقوم موقع “منصة جاك” بإدارة نشاط تجاري، كأعمال توزيع وبيع المنتجات، و تقدیم الخدمات المساندة والتوصيل . و یمكن من خلالھ تقدیم طلبات لمنتجات مختلفة. لذلك عند تقدیم الطلب تتم الموافقة من قبل المشتري على تفاصیل ھذه الاتفاقیة والتفاصیل المذكورة في تسعيرة المنتج. لا یعتبر أي طلب تم تقدیمة جاهزاً للتوصيل أو مؤكد حتى تأكيد دفع العميل للفاتورة، عندما یقرر العمیل شراء منتج من الموقع فإن العقد القانوني الناتج یكون بین منصة جاك وبین العميل وھذا العقد یجب ان یحتوي على شروط وأحكام تحكم ھذا الاتفاق، في حالة توصيل المنتج بعد تأكيده من العميل، يقوم العميل باستلام فاتورة بيع تحوي تفاصيل المنتج الذي قد تم بيعه ..",
+        "الدخول إلى الموقع",
+        "أنت مسئول عن اتخاذ جمیع الترتیبات اللازمة لتتمكن من الوصول إلى الموقع كما مسئول عن :",
+        "·        المحافظة على أي من كلمات السر التي لدیك لاستخدام ھذا الموقع، ویجب أن لا تكشفھا إلى أي طرف ثالث .",
+        "·        أي استخدام یتم عن طریق اسم المستخدم الخاص بك أو كلمة السر أو بریدك الالكتروني لھذا الموقع ( عدا الاستخدامات التي تتم من قبل مسؤولین موقعنا ).",
+        "كما یحق لنا :",
+        "·        تعلیق الوصول إلى ھذا الموقع، أو إلغاء الحسابات في أي وقت ولأي سبب حسب تقدیرنا، بما في ذلك أي أعمال للصیانة أو تطویر الموقع .",
+        "·        من وقت لآخر، تقیید الوصول إلى بعض أجزاء من الموقع أو الموقع كامل، للمستخدمین الذین سجلوا معنا ( المستخدمین المسجلین ).",
+        "·        في حالة تم مخالفة أو شك المسئولين في \"منصة جاك\" أن أي مستخدم خالف أي من ھذه الشروط، فلنا الحق فوراً ودون إشعار إنھاء استخدامه لھذا الموقع، أو استخدام جزء من الموقع .",
+        "الاستخدام غير المشروع للموقع",
+        "لا یحق لك أن تستخدم الموقع استخدام غیر قانوني أو غیر مصرح بھ ، أو إدخال أي فیروس أو غیرھا من البرامج الضارة أو التسبب في تعطیل الموقع ، أو محاولة الوصول غیر المصرح بھ إلى الموقع أوالخادم الذي یتم تخزین الموقع علیھ أو أي خادم أو جھاز كمبیوتر أو قاعدة بیانات متصلة بالموقع .",
+        "الحمایة من الفیروسات",
+        "موقع \"منصة جاك\" یقدم أعلى درجات الفحص و الاختبار و الحمایة و لكن لا یتحمل الموقع أي مسؤولیة نتیجة لھجوم فیروسي أو غیرھا من المواد الضارة من الناحیة التكنولوجیة أو أي خسارة أو انقطاع أو تلف لبیاناتك أو نظام الكمبیوتر الخاص بك و التي قد تحدث أثناء استخدامك لموقع .",
+        "إخلاء المسؤولیة",
+        "نحن في \"منصة جاك \" نبذل اقصى الجھود لضمان أن الأسعار المعروضة للعملاء هي أسعار منافسة ودقيقة في حالة التسعير. و لكن لا یمكن ضمان أن الأسعار هي الأرخص، كما لايمكن ضمان عدم تغير الأسعار بعد مرور فترة زمنية معينة حيث يحق لمنصة جاك عرض السلعة بسعر آخر بعد مرور فترة زمنية. وأي مستخدم یستخدم ھذه المعلومات الواردة تكون تحت مسئولیته الخاصة ، لذلك ننصح بقراءة المعلومات بشكل دقیق. كما لا یمكن أن نضمن أن الموقع سوف یعمل بشكل مستمر أو بدون انقطاع أو أنھ خالي من الأخطاء .",
+        "معلومات عنك وعن زیاراتك للموقع",
+        "قد نقوم بجمع ومعالجة معلومات عنك عند استخدام ھذا الموقع وفقا لسیاسة الخصوصیة الخاصة بنا و باستخدامك لھذا الموقع، فإنك توافق على ذلك .",
+        "الشروط والاحكام للعروض والخصومات",
+        "- تسري هذا العروض والخصومات على قيمة المشتريات فقط غير شامل ضريبة القيمة المضافة .",
+        "- لايمكن للعميل الاستفادة من أكثر من عرض أو خصم في حال وجود عرض اخرأي بمعنى لايستطيع العميل الجمع بين عرضين بالفاتورة الواحده .",
+        "المطالبات والنزاعات",
+        "في حال نشوء أية مطالبات أو نزاعات بسبب استخدام موقع \"منصة جاك\" فإن الانظمة و المحاكم و اللجان داخل المملكة العربية السعودية مدينة الرياض ھي المعمول بھا لفض هذه المطالبات أو النزاعات",
+        "سياسة الطلب المسبق أو المجدول",
+        "يتم دفع 50% من قيمة الطلب عند أنشاء الطلب واختيار تاريخ التوصيل المفضل وقبل يوم التوصيل ب 5 أيام يتم دفع المتبقي من الفاتورة وهو 50% وعند عدم أتمام الدفع لا يحق للعميل المطالبة بأرجاع الدفعة الاولى وهي 50% بعد مرور 72 ساعة من أنشاء الطلب والدفع .",
+        "الشحن والمخاطر وتاريخ الصلاحية :",
+        "·        یجب على العميل موافاة مسئول التوصيل الخاص منصة جاك بـ العنوان بشكل صحیح وكامل و لایتحمل \"منصة جاك \" أي أخطاء في العنوان المسجل في سجلاتنا الصوتية أو الرقمية .",
+        "·        سيتم بذل كل جھد ممكن لشحن الطلب وتوصيله حسب المواعيد التي تم الاتفاق عليها صوتياً أو كتابياً في مراسلاتنا مع العميل أو خلال الفترة الزمنية المحددة على الموقع، ولكن لا یتحمل الموقع مسئولية تأخير تسليم اي طلب في الظروف الخارجة عن إرادتنا .",
+        "·        تنتقل ملكية المنتج للمشتري بمجرد شحن الطلب إلى العنوان المسجل في الطلب، وحتى ھذا الوقت تظل ملكية المنتج لجاك و یحق للمشتري المطالبة بمبلغ الطلب حسب سياسة الالغاء والاسترجاع و الاستبدال .",
+        "·        ستنتقل المسؤولية عن مخاطر الخسارة أو الأضرار التي لحقت بالطلب بمجرد أن یتم تسلیمھا الى المشتري ولا یحق لھ استرجاع قیمة الطلب .",
+        "·        المنتجات لا ترد ولا يتم استبدالها نهائيًا الا في الحالات التالية :",
+        "·        - اذا كان تاريخ صلاحية المنتج أقل من نصف المدة .",
+        "·        - اذا وجد المستلم تلف مصنعي في المنتج أثناء الاستلام .",
+        "·        وفي غير هذه الحالات لا يحق للعميل المطالبة بالاسترجاع أو الاستبدال"
+      ],
+      "en": [
+        "• Home",
+        "Terms and Conditions",
+        "Terms and conditions of the application and the platform",
+        "Acceptance of the terms",
+        "By using this site, you accept these terms and agree to be bound by them. If you are using the Site as an employee or representative of another legal entity, by using this Site you accept these Terms in your personal capacity or on behalf of such legal entity.",
+        "about us",
+        "The “Jack Platform” website is operated by the United Foods Company, referred to as “Jack Platform”, “we”, “us”, a Saudi company registered under Commercial Registration No.: 1010431652",
+        "The service provided by the site",
+        "The “Jack Platform” website manages a commercial activity, such as distributing and selling products, and providing support and delivery services. Through it, requests for different products can be submitted. Therefore, upon submitting the application, the buyer will agree to the details of this agreement and the details mentioned in the product pricing. Any submitted request is not considered ready for delivery or confirmed until the customer pays the invoice. When the customer decides to purchase a product from the site, the resulting legal contract is between the JAC platform and the customer, and this contract must contain terms and conditions governing this agreement, in the event that the product is delivered after Confirmed by the customer, the customer receives a sales invoice containing details of the product that has been sold..",
+        "Login to the site",
+        "You are responsible for making all necessary arrangements for you to access the Site and are responsible for:",
+        "Keep any passwords that you have for using this site safe, and you must not disclose them to any third party.",
+        "Any use made through your username, password, or e-mail for this site (except for uses made by our site administrators).",
+        "We also have the right:",
+        "Suspend access to this site, or terminate accounts at any time for any reason at our discretion, including for any site maintenance or development work.",
+        "From time to time, restrict access to some parts of the Website, or the entire Website, to users who have registered with us (“Registered Users”).",
+        "In the event that the officials of the “Jack Platform” have violated or suspected that any user has violated any of these conditions, we have the right immediately and without notice to terminate his use of this site, or the use of part of the site.",
+        "Illegal use of the site",
+        "You may not make illegal or unauthorized use of the Site, introduce any virus or other malware or cause the Site to malfunction, or attempt to gain unauthorized access to the Site, the server on which the Site is stored, any server, computer or A database connected to the site.",
+        "Virus protection",
+        "The \"Jack Platform\" site offers the highest levels of examination, testing and protection, but the site does not assume any responsibility as a result of a virus attack or other harmful material in terms of technology or any loss, interruption or damage to your data or your computer system that may occur during your use to site.",
+        "Disclaimer",
+        "We at \"Jack Platform\" make every effort to ensure that the prices offered to customers are competitive and accurate in the case of pricing. However, it cannot be guaranteed that the prices are the cheapest, nor can it be guaranteed that prices will not change after a certain period of time has passed, as the JAC platform has the right to offer the commodity at another price after a period of time has passed. And any user who uses this information received is under his own responsibility, so we recommend that you read the information carefully. Nor can we guarantee that the Website will operate continuously or without interruption or that it is error-free.",
+        "Information about you and your visits to the site",
+        "We may collect and process information about you when you use this website in accordance with our privacy policy and by using this website, you agree to this.",
+        "Terms and conditions for offers and discounts",
+        "- These offers and discounts apply to the value of purchases only, excluding VAT.",
+        "- The customer cannot benefit from more than one offer or discount in the event that there is another offer, meaning that the customer cannot combine two offers in one bill.",
+        "Claims and disputes",
+        "In the event that any claims or disputes arise due to the use of the \"Jack platform\", the systems, courts and committees within the Kingdom of Saudi Arabia, the city of Riyadh, are in force to resolve these claims or disputes.",
+        "Pre-order or scheduled policy",
+        "50% of the order value is paid upon creating the order and choosing the preferred delivery date, 5 days before the delivery day. The remainder of the invoice, which is 50%, is paid. If the payment is not completed, the customer is not entitled to claim the return of the first payment, which is 50%, after 72 hours have passed from the creation of the order and payment. .",
+        "Shipping, risks and expiry date:",
+        "The customer must provide the delivery person with the address correctly and completely, and the “Jack Platform” is not responsible for any errors in the address recorded in our audio or digital records.",
+        "Every effort will be made to ship and deliver the order according to the dates that were agreed upon verbally or in writing in our correspondence with the customer or within the time period specified on the site, but the site is not responsible for delaying the delivery of any order in circumstances beyond our control.",
+        "The ownership of the product is transferred to the buyer as soon as the order is shipped to the address registered in the order, and until this time the ownership of the product remains with Jack, and the buyer has the right to claim the amount of the order according to the cancellation, return and replacement policy.",
+        "Responsibility for the risks of loss or damage to the order will pass once it is delivered to the buyer and he is not entitled to recover the value of the order.",
+        "Products are not returned or completely exchanged except in the following cases:",
+        "· - If the expiration date of the product is less than half of the period.",
+        "· - If the recipient finds factory damage to the product during receipt.",
+        "In other than these cases, the customer is not entitled to claim a return or replacement"
+      ]
+    },
+    "images": {}
+  },
+  {
+    "id": "privacy",
+    "slug": "privacy",
+    "title": {
+      "ar": "جاك -سياسة الخصوصية",
+      "en": "جاك -Privacy Policy"
+    },
+    "content": {
+      "ar": [
+        "• الرئيسية",
+        "سياسة الخصوصية",
+        "سياسة الخصوصية هذه تحدد كيف يستخدم ويحمي موقع \"  منصة جاك \" أي من المعلومات الشخصية التي تقوم بتوفيرها لنا عند استخدامك لهذا الموقع .",
+        "نحن ملتزمون بضمان حماية خصوصيتك. لابد لنا أن نطلب منك تقديم بعض المعلومات التي يمكن تحديد هويتك من خلالها عند استخدامك لهذا الموقع ، مع التأكيد من أنها لن تستخدم إلا وفقا لسياسة الخصوصية هذه .",
+        "قد نقوم بتغيير هذه السياسة من وقت لآخر عن طريق تحديث هذه الصفحة. و يجب عليك مراجعة هذه الصفحة من وقت لآخر للتأكد من أي تغييرات .",
+        "ما هي المعلومات التي نجمعها",
+        "قد نقوم بجمع المعلومات الشخصية مثل: الاسم؛ معلومات الاتصال بما في ذلك عنوان البريد الإلكتروني ، وعنوان التسليم , معلومات ديموغرافية مثل الرمز البريدي و العنوان. ضرورية لخدمتك .",
+        "ما نقوم به مع المعلومات التي نجمعها",
+        "سوف نستخدم هذه المعلومات لـ :",
+        "• نرسل لك النشرة الإخبارية .",
+        "• حفظ سجلات الحسابات الداخلية .",
+        "• مساعدتنا للوصول إلى منتجك المطلوب",
+        "• تمكيننا من معالجة و تسليم أي طلب شراء تم تقديمه من قبلك .",
+        "• تحسين منتجاتنا وخدماتنا .",
+        "• نرسال لك معلومات أخرى حول \"  منصة جاك \" التي نعتقد أنها قد تجد اهتمام منك باستخدام العنوان البريد الإلكتروني الخاص بك الذي قمت بتوفيره .",
+        "الامان",
+        "نحن ملتزمون بضمان أن المعلومات الخاصة بك آمنة. و من أجل منع الوصول غير المصرح به أو الكشف عنها، وقد وضعنا إجراءات مادية وإلكترونية مناسبة لحماية وتأمين المعلومات التي نجمعها على موقعنا الالكتروني .",
+        "السيطرة على معلوماتك الشخصية",
+        "في أي وقت يمكنك أن تطلب منا التوقف عن استخدام معلوماتك الشخصية لأغراض التسويق المباشر ، عن طريق البريد الإلكتروني علي",
+        "info@jak.sa.com",
+        "الكشف عن المعلومات الشخصية الخاصة بك",
+        "لن نكشف أو نمرر المعلومات الخاصة بك لأي طرف ثالث ما لم نحصل على إذن منك أو إذا تم المطالبة بها من قبل الجهات صاحبة الصلاحية مثل الجهات القضائية والامنية و الجهات الاخرى الاشرافية في المملكة العربية السعودية أو الجهات التي قد تساعدنا في الحصول على قطعتك المطلوبة. إذا كنت تعتقد أن أي معلومات تتوفر لدينا خاصة بك غير صحيحة أو غير كاملة ، يرجى مراسلتنا عبر البريد الإلكتروني في أقرب وقت ممكن على   info@jak.sa.com   وسنقوم على الفور بتصحيح أي معلومات تبين أنها غير صحيحة  ",
+        "سياسة الشحن والتوصيل",
+        "للطلبات قبل ١:٣٠ ظهرا يتم شحنها في اليوم التالي ( يتم الشحن من خلال شركة الشحن من الساعة ٦ صباحا حتى ٥ عصرا داخل الرياض) خارج الرياض من الساعة ١١صباحاً – ٩ مساءً",
+        "المنتجات المجمدة يمت شحنها مره واحدة في الأسبوع"
+      ],
+      "en": [
+        "• Home",
+        "Privacy Policy",
+        "privacy policy",
+        "This privacy policy sets out how the \"Jack platform\" site uses and protects any of the personal information that you provide to us when you use this site.",
+        "We are committed to ensuring that your privacy is protected. We must ask you to provide certain information by which you can be identified when you use this website, and confirm that it will only be used in accordance with this privacy policy.",
+        "We may change this policy from time to time by updating this page. You should check this page from time to time to check for any changes.",
+        "What information do we collect?",
+        "We may collect personal information such as: name; Contact information including email address, delivery address, demographic information such as zip code and address. necessary to serve you.",
+        "What we do with the information we collect",
+        "We will use this information to:",
+        "We send you our newsletter.",
+        "Maintaining internal account records.",
+        "Help us to find your desired product",
+        "Enable us to process and deliver any purchase order placed by you.",
+        "improve our products and services.",
+        "We may send you other information about Jack Platform that we think may find interest from you using the e-mail address you have provided.",
+        "Safety",
+        "We are committed to ensuring that your information is secure. In order to prevent unauthorized access or disclosure, we have put in place appropriate physical and electronic procedures to protect and secure the information we collect on our website.",
+        "Control of your personal information",
+        "At any time you can ask us to stop using your personal information for direct marketing purposes, by emailing me",
+        "info@jak.sa.com",
+        "Disclosure of your personal information",
+        "We will not disclose or pass your information to any third party unless we obtain your permission or if it is requested by the competent authorities such as the judicial, security and other supervisory authorities in the Kingdom of Saudi Arabia or the authorities that may help us obtain your required piece. If you believe that any information we have about you is incorrect or incomplete, please email us as soon as possible at info@jak.sa.com and we will promptly correct any information found to be incorrect",
+        "Shipping and delivery policy",
+        "For orders before 1:30 in the afternoon, they will be shipped the next day (shipping is done through the shipping company from 6 am to 5 pm inside Riyadh) outside Riyadh from 11 am to 9 pm",
+        "Frozen products are shipped once a week"
+      ]
+    },
+    "images": {}
+  }
+]

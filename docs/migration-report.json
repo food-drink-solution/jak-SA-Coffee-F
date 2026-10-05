@@ -1,0 +1,56 @@
+{
+  "startedAt": "2026-10-05T21:09:37.331Z",
+  "steps": [
+    {
+      "step": "products",
+      "ar": 107,
+      "en": 107
+    },
+    {
+      "step": "images",
+      "ok": 219,
+      "total": 219
+    },
+    {
+      "step": "pages",
+      "count": 4
+    },
+    {
+      "step": "documents",
+      "count": 0
+    }
+  ],
+  "errors": [
+    {
+      "type": "document",
+      "url": "https://jak.sa.com/jak_profile_arabic.pdf",
+      "error": "HTTP 404 for https://jak.sa.com/jak_profile_arabic.pdf"
+    },
+    {
+      "type": "document",
+      "url": "https://jak.sa.com/jak_profile_english.pdf",
+      "error": "HTTP 404 for https://jak.sa.com/jak_profile_english.pdf"
+    },
+    {
+      "type": "document",
+      "url": "https://jak.sa.com/jak_products_arabic.pdf",
+      "error": "HTTP 404 for https://jak.sa.com/jak_products_arabic.pdf"
+    },
+    {
+      "type": "document",
+      "url": "https://jak.sa.com/jak_products_english.pdf",
+      "error": "HTTP 404 for https://jak.sa.com/jak_products_english.pdf"
+    },
+    {
+      "type": "document",
+      "url": "https://jak.sa.com/united_food_profile_english.pdf",
+      "error": "HTTP 404 for https://jak.sa.com/united_food_profile_english.pdf"
+    },
+    {
+      "type": "document",
+      "url": "https://jak.sa.com/united_food_services_english.pdf",
+      "error": "HTTP 404 for https://jak.sa.com/united_food_services_english.pdf"
+    }
+  ],
+  "finishedAt": "2026-10-05T21:11:35.664Z"
+}
