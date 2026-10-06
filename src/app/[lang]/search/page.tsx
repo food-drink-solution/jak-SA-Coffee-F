@@ -3,8 +3,10 @@ import type { Metadata } from "next";
 import { isLocale } from "@/config/locales";
 import { getDictionary, t } from "@/lib/i18n/dictionaries";
 import { productRepository, categoryRepository } from "@/lib/data/catalog";
-import { ProductGrid } from "@/components/products/product-grid";
+import { ProductListing } from "@/components/products/product-listing";
 import { alternatesFor } from "@/lib/seo/metadata";
+import { paginate, parsePageParam, parseSortParam, sortProducts } from "@/lib/listing";
+import { getListingLabels } from "@/lib/i18n/labels";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
@@ -17,67 +19,53 @@ export default async function SearchPage({
   searchParams,
 }: {
   params: Promise<{ lang: string }>;
-  searchParams: Promise<{ q?: string; category?: string }>;
+  searchParams: Promise<{ q?: string; category?: string; sort?: string; page?: string }>;
 }) {
   const { lang } = await params;
   if (!isLocale(lang)) notFound();
-  const { q, category } = await searchParams;
+  const { q, category, sort, page } = await searchParams;
   const dict = getDictionary(lang);
   const categories = await categoryRepository.getCategories();
 
   let products = q ? await productRepository.searchProducts(q, lang) : [];
   if (category) products = products.filter((p) => p.categoryIds.includes(category));
 
+  const sortKey = parseSortParam(sort);
+  const sorted = sortProducts(products, sortKey, lang);
+  const slice = paginate(sorted, parsePageParam(page));
+
   return (
     <section className="mx-auto w-full max-w-[1200px] px-4 py-10">
       <h1 className="mb-2 text-3xl font-extrabold">{t(dict, "search.title")}</h1>
       {q && (
         <p className="mb-8 text-[var(--color-muted)]">
-          {t(dict, "search.resultsFor")} <q className="font-bold text-[var(--color-foreground)]">{q}</q> — {products.length} {t(dict, "products.count")}
+          {t(dict, "search.resultsFor")} <q className="font-bold text-[var(--color-foreground)]">{q}</q> — {slice.totalItems} {t(dict, "products.count")}
         </p>
       )}
 
-      <form action={`/${lang}/search`} method="get" className="mb-8 flex flex-col gap-3 sm:flex-row">
-        <label className="flex-1">
-          <span className="sr-only">{t(dict, "search.placeholder")}</span>
-          <input
-            name="q"
-            defaultValue={q ?? ""}
-            placeholder={t(dict, "search.placeholder")}
-            className="h-11 w-full rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] px-4 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)]/40"
-          />
-        </label>
-        <label>
-          <span className="sr-only">{t(dict, "search.categoryFilter")}</span>
-          <select
-            name="category"
-            defaultValue={category ?? ""}
-            className="h-11 rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] px-4 text-sm"
-          >
-            <option value="">{t(dict, "products.allCategories")}</option>
-            {categories.map((c) => (
-              <option key={c.id} value={c.id}>{c.name[lang]}</option>
-            ))}
-          </select>
-        </label>
-        <button type="submit" className="h-11 rounded-[var(--radius-md)] bg-[var(--color-primary)] px-6 text-sm font-extrabold text-white">
-          {t(dict, "nav.search")}
-        </button>
-      </form>
-
-      {q === undefined || q === "" ? (
-        <p className="text-[var(--color-muted)]">{t(dict, "search.placeholder")}</p>
-      ) : products.length === 0 ? (
-        <div className="rounded-[var(--radius-lg)] border border-dashed border-[var(--color-border)] p-16 text-center">
-          <p className="text-lg font-extrabold">{t(dict, "search.noResults")}</p>
-        </div>
-      ) : (
-        <ProductGrid
-          products={products}
-          locale={lang}
-          labels={{ addToCart: t(dict, "products.addToCart"), added: t(dict, "cart.added"), priceTax: t(dict, "products.priceTax") }}
-        />
-      )}
+      <ProductListing
+        products={q ? slice.items : []}
+        locale={lang}
+        basePath={`/${lang}/search`}
+        q={q}
+        category={category}
+        sort={sortKey}
+        page={slice.page}
+        totalPages={slice.totalPages}
+        categories={categories.map((c) => ({ id: c.id, name: c.name[lang] }))}
+        showSearch
+        showCategoryFilter
+        empty={
+          !q ? (
+            <p className="mb-8 text-[var(--color-muted)]">{t(dict, "search.placeholder")}</p>
+          ) : (
+            <div className="rounded-[var(--radius-lg)] border border-dashed border-[var(--color-border)] p-16 text-center">
+              <p className="text-lg font-extrabold">{t(dict, "search.noResults")}</p>
+            </div>
+          )
+        }
+        labels={getListingLabels(dict)}
+      />
     </section>
   );
 }

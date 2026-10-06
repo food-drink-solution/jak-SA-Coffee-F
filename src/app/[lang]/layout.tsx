@@ -9,6 +9,8 @@ import { categoryRepository } from "@/lib/data/catalog";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { CartDrawer } from "@/components/cart/cart-drawer";
+import { ScrollTopButton } from "@/components/common/scroll-top-button";
+import { ChatWidget } from "@/components/common/chat-widget";
 import "../globals.css";
 
 const almarai = Almarai({
@@ -75,6 +77,18 @@ export default async function RootLayout({
           />
           <main id="main-content">{children}</main>
           <SiteFooter locale={locale} categories={categories} />
+          <ScrollTopButton label={t(dict, "common.scrollTop")} />
+          <ChatWidget
+            locale={locale}
+            labels={{
+              open: t(dict, "chat.open"),
+              close: t(dict, "chat.close"),
+              title: t(dict, "chat.title"),
+              call: t(dict, "chat.call"),
+              email: t(dict, "chat.email"),
+              contactPage: t(dict, "chat.contactPage"),
+            }}
+          />
           <CartDrawer
             locale={locale}
             labels={{

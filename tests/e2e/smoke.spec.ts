@@ -63,4 +63,37 @@ test.describe("JAK storefront", () => {
     await page.getByRole("button", { name: /فتح القائمة|القائمة/ }).click();
     await expect(page.locator("#mobile-nav")).toBeVisible();
   });
+
+  test("products listing has sort dropdown, view toggle and pagination", async ({ page }) => {
+    await page.goto("/ar/products");
+    // Sort dropdown opens and offers localized options.
+    await page.getByRole("button", { name: /ترتيب حسب/ }).click();
+    await page.getByRole("option", { name: /السعر: من الأقل إلى الأعلى/ }).click();
+    await expect(page).toHaveURL(/sort=price-asc/);
+    // View toggle switches to list layout.
+    await page.getByRole("button", { name: "عرض قائمة" }).click();
+    await expect(page.getByRole("button", { name: "عرض قائمة" })).toHaveAttribute("aria-pressed", "true");
+    // Pagination navigates to page 2.
+    await page.getByRole("navigation", { name: "التنقل بين الصفحات" }).getByRole("link", { name: "صفحة 2" }).click();
+    await expect(page).toHaveURL(/page=2/);
+  });
+
+  test("scroll-to-top button appears after scrolling", async ({ page }) => {
+    await page.goto("/ar");
+    const button = page.getByRole("button", { name: "العودة إلى الأعلى" });
+    await expect(button).not.toBeVisible();
+    await page.evaluate(() => window.scrollTo(0, 1500));
+    await expect(button).toBeVisible();
+    await button.click();
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBeLessThan(100);
+  });
+
+  test("chat widget opens the contact panel", async ({ page }) => {
+    await page.goto("/en");
+    await page.getByRole("button", { name: "Open contact options" }).click();
+    await expect(page.getByRole("dialog", { name: "Need help?" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Contact page" })).toBeVisible();
+    await page.keyboard.press("Escape");
+    await expect(page.getByRole("dialog", { name: "Need help?" })).toBeHidden();
+  });
 });

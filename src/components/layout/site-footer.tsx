@@ -83,13 +83,13 @@ export function SiteFooter({ locale, categories }: SiteFooterProps) {
         </div>
       </div>
       <div className="border-t border-[var(--color-border)] py-4">
-        <div className="mx-auto max-w-[1200px] px-4">
-          <p className="text-center text-xs text-[var(--color-muted-foreground)]">
+        <div className={`mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-x-4 gap-y-1 px-4 text-xs text-[var(--color-muted-foreground)] ${locale === "ar" ? "flex-row-reverse" : ""}`}>
+          <p>
             © {new Date().getFullYear()} {siteConfig.legalName[locale]}. {t(dict, "footer.rights")}.
           </p>
-          <p className="mt-2 text-center text-xs text-[var(--color-muted-foreground)]">
+          <p>
             <Link
-              href="https://we3ds.com"
+              href="http://we3ds.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[var(--color-jak-primary)] hover:underline font-medium"
