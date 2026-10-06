@@ -1,103 +1,188 @@
-# JAK Storefront — Next.js Reconstruction
+# 🎉 JAK Storefront
 
-Production-grade Next.js (App Router, TypeScript strict) reconstruction of
-[jak.sa.com](https://jak.sa.com) — a Saudi B2B supplier of ready-to-eat foods.
+Production-grade **Next.js + TypeScript** reconstruction of [jak.sa.com](https://jak.sa.com) — Saudi B2B ready-to-eat foods supplier.
 
-Arabic-first (RTL) with full English (LTR) support, static catalog, SEO,
-accessibility, cart (localStorage), contact form, and a repeatable migration
-crawler that produces the normalized local dataset.
+**Arabic-first (RTL) + English (LTR) • SSG • SEO • Accessibility • Cart • Contact Form**
 
-## Quick start
+---
 
-This project uses **pnpm** (package manager going forward; `package-lock.json` removed in favor of `pnpm-lock.yaml`).
-If pnpm is not on your PATH, run it via `npx pnpm` (pnpm 12.x).
+## ⚡ Quick Start
 
 ```bash
-pnpm install           # or: npx pnpm install
-pnpm crawl             # refresh src/data + public/images from jak.sa.com (throttled, public endpoints)
-pnpm dev               # http://localhost:3000 -> redirects to /ar
+# Install dependencies
+pnpm install
+
+# Generate product data
+pnpm crawl
+
+# Start development
+pnpm dev
 ```
 
-Production:
+Open [http://localhost:3000](http://localhost:3000) → Auto-redirects to `/ar`
 
-```bash
-pnpm build
-pnpm start
-```
+---
 
-Quality gates:
+## 🏗️ Tech Stack
 
-```bash
-pnpm lint
-pnpm typecheck
-pnpm test            # Vitest unit tests
-pnpm test:e2e        # Playwright E2E (chromium)
-pnpm validate:data   # dataset sanity checks
-```
+| Layer | Technology | Purpose |
+|-------|-----------|---------|
+| **Frontend** | Next.js 16 + React 19 | App Router, SSG, fast |
+| **Language** | TypeScript (strict) | Type safety |
+| **Styling** | Tailwind CSS v4 | Design tokens, utilities |
+| **State** | React Context | Cart management |
+| **Forms** | React Hook Form + Zod | Validation |
+| **i18n** | Negotiator + intl-localematcher | Locale routing |
+| **Testing** | Vitest + Playwright | Unit + E2E |
+| **Package Mgr** | pnpm | Fast, reliable |
 
-## Architecture
+---
+
+## 📂 Project Structure
 
 ```
 src/
-  app/[lang]/            # localized App Router pages (ar, en)
-    layout.tsx           # root layout: fonts, providers, header/footer, cart drawer
-    page.tsx             # homepage sections
-    products/            # listing + [slug] detail (SSG, JSON-LD)
-    categories/          # listing + [slug]
-    search/              # query + category filter, URL-synced
-    about/ contact/ terms/ privacy/ profile/
-    not-found.tsx error.tsx loading.tsx
-  app/{sitemap,robots,manifest}.ts
-  src/app/... => see above; static assets in public/
-  components/
-    ui/                  # button, badge, input (cva-driven design system)
-    layout/              # site header, mobile nav, footer, language switcher
-    products/ categories/ cart/ forms/ docs/ sections/ common/
-  features/cart/         # cart.types, provider (React Context), storage abstraction, utils
-  lib/
-    data/catalog.ts      # ProductRepository/CategoryRepository/PageRepository (Local* impls)
-    i18n/dictionaries.ts # ar/en dictionaries + t()
-    seo/metadata.ts      # canonical, hreflang, locale path helpers
-    validation/schemas.ts# Zod schemas for every dataset
-    utils.ts
-  config/                # locales, site metadata
-  types/                 # domain models (Product, Category, PageContent, ...)
-  proxy.ts               # locale negotiation + redirect (Next 16 "proxy")
-data/: src/data/ (generated JSON)
-scripts/crawl/crawl.mjs  # public-endpoint, throttled migration crawler
-scripts/validate-data.mjs
-docs/                    # source-audit.md, data-migration-report.md, migration-report.json
-tests/{unit,e2e}
+├── app/[lang]/              # Localized routes (ar, en)
+│   ├── layout.tsx           # Root layout, providers
+│   ├── page.tsx             # Homepage
+│   ├── products/            # Product pages (SSG)
+│   ├── categories/          # Category pages (SSG)
+│   ├── search/              # Search results
+│   └── about/ contact/ ...
+├── components/              # React components
+│   ├── ui/                  # Primitives (button, badge, input)
+│   ├── layout/              # Header, footer, nav
+│   ├── products/            # Product components
+│   └── cart/ forms/ ...
+├── lib/                     # Business logic
+│   ├── data/catalog.ts      # Repository pattern
+│   ├── i18n/                # Translations (ar, en)
+│   ├── seo/                 # Metadata helpers
+│   └── validation/          # Zod schemas
+├── features/cart/           # Isolated cart domain
+└── types/                   # TypeScript models
 ```
 
-Domain models are independent of UI; pages consume repository interfaces, so a future
-`ApiProductRepository` can replace `LocalProductRepository` without touching components.
+---
 
-## Key decisions
+## 🚀 Commands
 
-- **Next.js 16 App Router + Turbopack**, React 19, Tailwind CSS v4 design tokens in `globals.css`.
-- **Design system**: Tailwind v4 with centralized semantic tokens in `src/app/globals.css`;
-  primitives use the shadcn/ui convention (`components/ui/*` with CVA + `cn()`),
-  icons via **lucide-react**. A modern slim scrollbar (no arrow buttons at top/bottom)
-  is applied globally via `::-webkit-scrollbar` rules.
-- **i18n**: `[lang]` dynamic segment + `proxy.ts` negotiation (Negotiator +
-  intl-localematcher). A single `[lang]` route tree serves both locales — no duplicated pages.
-- **RTL/LTR**: `dir` set on `<html>` per locale; logical properties in CSS (`ms-`, `me-`, `rtl:`/`ltr:` variants).
-- **Data**: no runtime calls to the source site. The crawler paginates the public
-  JSON feed and writes normalized, Zod-validated JSON + local images.
-- **Crawling ethics**: 350 ms delays, retries with backoff, no auth, no checkout/cart
-  mutations, no customer data. Only publicly reachable assets are mirrored.
-- **Cart**: isolated `features/cart` domain, `CartStorage` abstraction over localStorage,
-  cleared of any direct DOM dependencies so it can be swapped with an API later.
+| Command | Purpose |
+|---------|---------|
+| `pnpm dev` | Start dev server |
+| `pnpm build` | Build for production |
+| `pnpm start` | Run production server |
+| `pnpm lint` | Lint code |
+| `pnpm typecheck` | TypeScript check |
+| `pnpm test` | Unit tests (Vitest) |
+| `pnpm test:e2e` | E2E tests (Playwright) |
+| `pnpm validate:data` | Validate dataset |
+| `pnpm crawl` | Refresh data from source |
 
-## Environment
+---
 
-`.env` (optional): `NEXT_PUBLIC_SITE_URL=https://your-domain.tld` — used for canonical
-URLs, OpenGraph, sitemap, and JSON-LD.
+## 🎨 Design System
 
-## Testing
+**Brand Colors** (defined in `src/app/globals.css`):
+- **Purple** `#4e0161` — Primary actions
+- **Gold** `#b88539` — Accents & highlights
+- **Pink** `#e83e8c` — Secondary accents
 
-- Unit: catalog repositories, cart utils, i18n dictionary parity, SEO helpers, Zod
-  dataset validation, ProductCard interaction (Vitest + Testing Library).
-- E2E: homepage RTL/LTR, locale switch, category/product browse, search, contact
-  validation, legal pages, mobile drawer (Playwright).
+All colors as CSS custom properties for easy theming.
+
+---
+
+## 🌍 Localization
+
+- **Dual-locale:** Arabic (RTL) + English (LTR)
+- **Single route tree:** `/[lang]/...` generates `/ar/...` and `/en/...`
+- **Translations:** `src/lib/i18n/dictionaries.*.json`
+- **Helper:** `t(dict, "key.path")` for type-safe strings
+
+---
+
+## 📊 Key Features
+
+✅ **Static Site Generation (SSG)** — All pages pre-built at deploy time  
+✅ **RTL/LTR Support** — Full Arabic + English from day one  
+✅ **Accessible** — WCAG AA standards, keyboard navigation  
+✅ **SEO** — JSON-LD, canonical URLs, hreflang tags  
+✅ **Shopping Cart** — localStorage-backed with Context API  
+✅ **Contact Form** — Validated with React Hook Form + Zod  
+✅ **Ethical Crawling** — 350ms delays, public endpoints only  
+✅ **Type-Safe Data** — Zod validation for all models  
+
+---
+
+## 🔧 Architecture Highlights
+
+### Repository Pattern
+Domain models independent of UI — swap `LocalProductRepository` for `ApiProductRepository` without touching components.
+
+### Localization at Build Time
+No runtime locale logic — locales baked into SSG. Fast, cacheable, predictable.
+
+### Isolated Cart Feature
+`CartStorage` abstraction over localStorage — swappable with API without refactoring.
+
+### Design Tokens
+Tailwind v4 + CSS custom properties in `globals.css` — scale themes without code changes.
+
+---
+
+## 📚 Documentation
+
+Complete guides in `docs/`:
+- **[DEVELOPMENT.md](./docs/DEVELOPMENT.md)** — Setup & workflow
+- **[ARCHITECTURE.md](./docs/ARCHITECTURE.md)** — System design
+- **[COMPONENTS.md](./docs/COMPONENTS.md)** — Component patterns
+- **[STYLES.md](./docs/STYLES.md)** — Design system reference
+
+---
+
+## 🧪 Testing
+
+```bash
+# Unit tests (Vitest)
+pnpm test
+
+# E2E tests (Playwright)
+pnpm test:e2e
+
+# Full quality check
+pnpm lint && pnpm typecheck && pnpm test && pnpm validate:data
+```
+
+---
+
+## 🌐 Environment
+
+Optional `.env.local` for canonical URLs:
+
+```env
+NEXT_PUBLIC_SITE_URL=https://jak.sa.com
+```
+
+Used for OpenGraph, sitemap, and JSON-LD.
+
+---
+
+## 🤝 Contributing
+
+1. Create feature branch: `git checkout -b feature/my-feature`
+2. Make changes & test: `pnpm lint && pnpm typecheck && pnpm test`
+3. Commit: `git commit -m "feat: description"`
+4. Push: `git push -u origin feature/my-feature`
+
+See [docs/DEVELOPMENT.md](./docs/DEVELOPMENT.md) for full workflow.
+
+---
+
+## 📄 License
+
+Private project — All rights reserved
+
+---
+
+**Repository:** https://github.com/we3ds-solution/jak-SA-Coffee-F  
+**Built with ❤️ for JAK Storefront**
