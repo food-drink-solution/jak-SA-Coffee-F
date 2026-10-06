@@ -140,6 +140,11 @@ const ar: Dictionary = {
     contact: "معلومات التواصل",
     links: "روابط سريعة",
     rights: "جميع الحقوق محفوظة",
+    social: "تابعنا",
+    builtWith: "تم التطوير بواسطة فريق WE3DS",
+    facebook: "فيسبوك",
+    instagram: "انستغرام",
+    youtube: "يوتيوب",
   },
   common: {
     viewAll: "عرض الكل",
@@ -290,6 +295,11 @@ const en: Dictionary = {
     contact: "Contact info",
     links: "Quick links",
     rights: "All rights reserved",
+    social: "Follow us",
+    builtWith: "Built with team WE3DS",
+    facebook: "Facebook",
+    instagram: "Instagram",
+    youtube: "YouTube",
   },
   common: {
     viewAll: "View all",

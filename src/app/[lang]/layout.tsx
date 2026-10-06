@@ -29,6 +29,12 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     metadataBase: new URL(siteConfig.url),
     title: { default: t(getDictionary(locale), "meta.siteTitle"), template: `%s | ${siteConfig.name[locale]}` },
     description: t(getDictionary(locale), "meta.siteDescription"),
+    icons: {
+      icon: "/images/brand/favicon.png",
+      shortcut: "/images/brand/favicon.png",
+      apple: "/images/brand/favicon.png",
+    },
+    manifest: "/manifest.webmanifest",
   };
 }
 

@@ -49,7 +49,7 @@ export function ContactForm({ labels }: { labels: ContactLabels }) {
 
   if (sent) {
     return (
-      <p role="status" className="rounded-[var(--radius-md)] border border-green-200 bg-green-50 p-4 text-sm font-bold text-[var(--color-success)]">
+      <p role="status" className="rounded-[var(--radius-md)] border border-[var(--color-success)]/20 bg-[var(--color-success)]/5 p-4 text-sm font-bold text-[var(--color-success)]">
         {labels.success}
       </p>
     );

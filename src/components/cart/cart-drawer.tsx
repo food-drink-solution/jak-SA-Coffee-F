@@ -75,7 +75,7 @@ export function CartDrawer({ locale, labels }: CartDrawerProps) {
                       <button type="button" aria-label="+" onClick={() => setQty(item.productId, item.quantity + 1)} className="rounded border border-[var(--color-border)] p-1">
                         <Plus className="h-3 w-3" aria-hidden />
                       </button>
-                      <button type="button" aria-label={isAr ? "حذف" : "Remove"} onClick={() => remove(item.productId)} className="ms-auto rounded p-1 text-[var(--color-danger)] hover:bg-red-50">
+                      <button type="button" aria-label={isAr ? "حذف" : "Remove"} onClick={() => remove(item.productId)} className="ms-auto rounded p-1 text-[var(--color-danger)] hover:bg-[var(--color-danger)]/5">
                         <Trash2 className="h-4 w-4" aria-hidden />
                       </button>
                     </div>
