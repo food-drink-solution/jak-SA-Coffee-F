@@ -52,6 +52,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
   const iconMap: Record<string, string> = {
     sandwiches: "/images/home/icons/sandwiches.png",
     crossonite: "/images/home/icons/croissant.png",
+    pretzel: "/images/home/icons/pretzel.png",
     salad: "/images/home/icons/salads.png",
     desserts: "/images/home/icons/desserts.png",
     beverage: "/images/home/icons/beverages.png",
@@ -69,7 +70,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
         <SectionHeading
           title={t(dict, "home.bestSellers")}
           action={
-            <Link href={`/${lang}/products`} className="text-sm font-extrabold text-[var(--color-primary)] transition-colors hover:underline focus-ring rounded">
+            <Link href={`/${lang}/products`} className="text-sm font-extrabold text-[var(--color-primary-text)] transition-colors hover:underline focus-ring rounded">
               {t(dict, "common.viewAll")}
             </Link>
           }
@@ -104,14 +105,14 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
               <Link
                 key={c.id}
                 href={`/${lang}/categories/${c.slug}`}
-                className="group flex flex-col items-center gap-2.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4 text-center shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-[var(--color-primary)]/30 hover:shadow-md focus-ring"
+                className="group flex flex-col items-center gap-2.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4 text-center shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-[var(--color-primary-text)]/30 hover:shadow-md focus-ring"
               >
-                <span className="flex h-16 w-16 items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                <span className="flex h-20 w-20 items-center justify-center rounded-2xl bg-[var(--color-header-foreground)] p-2 shadow-sm transition-transform duration-300 group-hover:scale-110">
                   {icon || c.image ? (
-                    <Image src={icon ?? c.image!} alt={name} width={64} height={64} className="h-16 w-16 object-contain" />
+                    <Image src={icon ?? c.image!} alt={name} width={64} height={64} className="h-full w-full object-contain" />
                   ) : null}
                 </span>
-                <span className="text-sm font-bold text-[var(--color-foreground)] group-hover:text-[var(--color-primary)]">{name}</span>
+                <span className="text-sm font-bold text-[var(--color-foreground)] group-hover:text-[var(--color-primary-text)]">{name}</span>
               </Link>
             );
           })}

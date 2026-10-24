@@ -96,12 +96,12 @@ export function ProductToolbar({
               value={qInput}
               onChange={(e) => setQInput(e.target.value)}
               placeholder={labels.searchPlaceholder}
-              className="h-11 min-h-[44px] w-full rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] px-4 text-sm text-[var(--color-foreground)] placeholder:text-[var(--color-muted-foreground)] transition-colors focus:border-[var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)]/30"
+              className="h-11 min-h-[44px] w-full rounded-[var(--radius-md)] border border-[var(--color-border-control)] bg-[var(--color-surface)] px-4 text-sm text-[var(--color-foreground)] placeholder:text-[var(--color-muted-foreground)] transition-colors focus:border-[var(--color-primary-text)] focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)]/30"
             />
           </label>
           <button
             type="submit"
-            className="inline-flex h-11 min-h-[44px] shrink-0 items-center justify-center gap-2 rounded-[var(--radius-md)] bg-[var(--color-primary)] px-4 sm:px-6 text-sm font-extrabold text-[var(--color-primary-foreground)] transition-all hover:bg-[var(--color-primary-dark)] active:scale-[0.98] focus-ring cursor-pointer"
+            className="inline-flex h-11 min-h-[44px] shrink-0 items-center justify-center gap-2 rounded-[var(--radius-md)] bg-[var(--color-primary)] px-4 sm:px-6 text-sm font-extrabold text-[var(--color-primary-foreground)] transition-all hover:bg-[var(--color-primary-hover)] active:scale-[0.98] focus-ring cursor-pointer"
           >
             <Search className="h-4 w-4" aria-hidden />
             <span className="hidden min-[380px]:inline">{labels.searchSubmit}</span>
@@ -133,7 +133,7 @@ export function ProductToolbar({
         <div
           role="group"
           aria-label={labels.viewLabel}
-          className="flex shrink-0 overflow-hidden rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)]"
+          className="flex shrink-0 overflow-hidden rounded-[var(--radius-md)] border border-[var(--color-border-control)] bg-[var(--color-surface)]"
         >
           <ViewButton
             active={view === "grid"}

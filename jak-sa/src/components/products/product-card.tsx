@@ -40,9 +40,9 @@ export function ProductCard({ product, locale, addToCartLabel, addedLabel, price
         </Link>
         <div className="flex flex-1 flex-col justify-between gap-3 p-3 sm:flex-row sm:items-center sm:gap-6 sm:p-4">
           <div className="flex min-w-0 flex-1 flex-col gap-1.5">
-            <span className="text-xs font-bold text-[var(--color-primary)]">{category}</span>
+            <span className="text-xs font-bold text-[var(--color-primary-text)]">{category}</span>
             <Link href={`/${locale}/products/${product.slug}`}>
-              <h3 className="line-clamp-2 text-sm font-bold text-[var(--color-foreground)] transition-colors group-hover:text-[var(--color-primary)] sm:text-base">
+              <h3 className="line-clamp-2 text-sm font-bold text-[var(--color-foreground)] transition-colors group-hover:text-[var(--color-primary-text)] sm:text-base">
                 {name}
               </h3>
             </Link>
@@ -83,9 +83,9 @@ export function ProductCard({ product, locale, addToCartLabel, addedLabel, price
         )}
       </Link>
       <div className="flex flex-1 flex-col gap-2 p-3 sm:p-4">
-        <span className="text-xs font-bold text-[var(--color-primary)]">{category}</span>
+        <span className="text-xs font-bold text-[var(--color-primary-text)]">{category}</span>
         <Link href={`/${locale}/products/${product.slug}`}>
-          <h3 className="line-clamp-2 text-sm font-bold text-[var(--color-foreground)] transition-colors group-hover:text-[var(--color-primary)]">
+          <h3 className="line-clamp-2 text-sm font-bold text-[var(--color-foreground)] transition-colors group-hover:text-[var(--color-primary-text)]">
             {name}
           </h3>
         </Link>

@@ -17,8 +17,8 @@ export function TrustFeatures({ items }: { items: { label: string; image: string
       <div className="container-app grid grid-cols-2 gap-4 sm:gap-6 py-12 sm:grid-cols-4 md:grid-cols-4">
         {items.map((item) => (
           <div key={item.label} className="flex flex-col items-center gap-3 rounded-[var(--radius-md)] p-3 text-center transition-colors hover:bg-[var(--color-surface-muted)]">
-            <span className="flex h-12 w-12 items-center justify-center">
-              <Image src={item.image} alt={item.label} width={50} height={50} className="h-[50px] w-[50px] object-contain transition-transform hover:scale-105" />
+            <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-[var(--color-header-foreground)] p-1 shadow-sm">
+              <Image src={item.image} alt={item.label} width={50} height={50} className="h-full w-full object-contain transition-transform hover:scale-105" />
             </span>
             <p className="text-sm font-bold leading-6 text-[var(--color-foreground)]">{item.label}</p>
           </div>
@@ -33,7 +33,7 @@ export function StatsBar({ items }: { items: { value: string; label: string }[] 
     <section className="container-app grid grid-cols-2 gap-3 py-10 sm:gap-4 md:grid-cols-4">
       {items.map((item) => (
         <div key={item.label} className="rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-surface)] p-5 text-center shadow-sm transition-all hover:shadow-[var(--shadow-card-hover)] hover:-translate-y-0.5 sm:p-6">
-          <p className="text-2xl font-extrabold text-[var(--color-primary)] sm:text-3xl">{item.value}</p>
+          <p className="text-2xl font-extrabold text-[var(--color-primary-text)] sm:text-3xl">{item.value}</p>
           <p className="mt-1 text-xs font-bold text-[var(--color-muted)] sm:text-sm">{item.label}</p>
         </div>
       ))}

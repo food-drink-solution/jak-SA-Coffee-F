@@ -20,10 +20,10 @@ export function LanguageSwitcher({ locale, label, variant = "default" }: Languag
   return (
     <Link
       href={switchLocalePath(pathname, target)}
-      className={`rounded-full border px-4 py-1.5 text-xs font-extrabold transition-colors focus-ring ${
+      className={`rounded-full border px-4 py-1.5 text-xs font-extrabold transition-colors ${
         isHeader
-          ? "border-[var(--color-header-foreground)]/40 text-[var(--color-header-foreground)] hover:border-[var(--color-header-foreground)] hover:bg-[var(--color-header-foreground)]/15"
-          : "border-[var(--color-border)] text-[var(--color-foreground)] hover:bg-[var(--color-background)]"
+          ? "border-[var(--color-header-foreground)]/40 text-[var(--color-header-foreground)] hover:border-[var(--color-header-foreground)] hover:bg-[var(--color-header-foreground)]/15 focus-ring-inverse"
+          : "border-[var(--color-border-control)] text-[var(--color-foreground)] hover:bg-[var(--color-surface-muted)] focus-ring"
       }`}
     >
       {label}

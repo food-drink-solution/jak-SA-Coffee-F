@@ -8,7 +8,7 @@ export function ProductSizesSection({ title, text, image }: { title: string; tex
         className="bg-cover bg-center py-12 sm:py-20 md:py-24 min-h-[200px]"
         style={{ backgroundImage: `url("${image}")` }}
       >
-        <div className="absolute inset-0 bg-[var(--color-primary)]/55" />
+        <div className="absolute inset-0 bg-[var(--color-jak-primary)]/55" />
         <div className="relative container-app">
           <div className="max-w-3xl text-[var(--color-header-foreground)]">
             <h2 className="text-2xl font-extrabold leading-snug sm:text-3xl">{title}</h2>
