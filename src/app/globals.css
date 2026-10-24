@@ -84,12 +84,19 @@
   --foreground: #343a40;
 }
 
+html {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 /* Arabic-first typography niceties */
@@ -140,11 +147,6 @@ body {
   display: none;
   width: 0;
   height: 0;
-}
-
-/* Firefox: slim style */
-* {
-  scrollbar-gutter: stable;
 }
 
 /* Selection colors — JAK branded */
