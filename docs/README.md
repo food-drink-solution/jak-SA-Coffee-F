@@ -251,4 +251,4 @@ See [DEVELOPMENT.md → Git Workflow](./DEVELOPMENT.md#git-workflow) for details
 
 **Last Updated:** October 2026  
 **Project:** JAK Storefront — Next.js Reconstruction  
-**Repository:** https://github.com/we3ds-solution/jak-SA-Coffee-F
+**Repository:** https://github.com/food-drink-solution/jak-SA-Coffee-F
