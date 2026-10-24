@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="jak-sa/public/images/brand/logo.svg" alt="JAK Logo" width="160" height="auto" />
+  <img src="https://raw.githubusercontent.com/food-drink-solution/jak-SA-Coffee-F/main/jak-sa/public/images/brand/logo.png" alt="JAK Logo" width="160" height="auto" />
 
   # ☕ JAK Storefront & API Workspace
 

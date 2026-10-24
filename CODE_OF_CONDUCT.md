@@ -2,7 +2,7 @@
 
 <div align="center">
 
-  <img src="jak-sa/public/images/brand/logo.svg" alt="JAK Logo" width="120" height="auto" />
+  <img src="https://raw.githubusercontent.com/food-drink-solution/jak-SA-Coffee-F/main/jak-sa/public/images/brand/logo.png" alt="JAK Logo" width="120" height="auto" />
 
   ### Fostering a respectful, inclusive, and professional community
 
