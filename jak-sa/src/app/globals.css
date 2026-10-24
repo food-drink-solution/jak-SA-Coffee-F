@@ -311,6 +311,180 @@ body {
   animation: spin-slow 0.6s ease-in-out;
 }
 
+/* ═══════════════════════════════════════════════════════════
+   FAILURE STATES — 404 / unexpected error scenes
+   Token-driven decoration shared by both boundaries. Everything
+   is static by default; motion only runs when the visitor has not
+   asked for reduced motion.
+   ═══════════════════════════════════════════════════════════ */
+
+/* Soft dot texture that fades out behind the artwork. */
+.failure-grid {
+  background-image: radial-gradient(circle at 1px 1px, var(--color-border-strong) 1px, transparent 0);
+  background-size: 24px 24px;
+  opacity: 0.4;
+  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 45%, #000 15%, transparent 75%);
+  mask-image: radial-gradient(ellipse 75% 65% at 50% 45%, #000 15%, transparent 75%);
+}
+
+/* Brand gradient for the oversized 404 digits. */
+.failure-digit {
+  line-height: 0.78;
+  font-variant-numeric: tabular-nums;
+  background-image: linear-gradient(
+    135deg,
+    var(--color-primary-text) 8%,
+    var(--color-jak-accent-pink) 55%,
+    var(--color-jak-accent-gold) 96%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* In dark mode the deep brand purple is too dark for large type. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .failure-digit {
+    background-image: linear-gradient(
+      135deg,
+      var(--color-primary-text) 8%,
+      var(--color-jak-accent-pink-light) 55%,
+      var(--color-jak-accent-gold-light) 96%
+    );
+  }
+}
+
+[data-theme="dark"] .failure-digit {
+  background-image: linear-gradient(
+    135deg,
+    var(--color-primary-text) 8%,
+    var(--color-jak-accent-pink-light) 55%,
+    var(--color-jak-accent-gold-light) 96%
+  );
+}
+
+@keyframes failure-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-2deg);
+  }
+  50% {
+    transform: translate3d(0, -9px, 0) rotate(2deg);
+  }
+}
+
+@keyframes failure-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes failure-orbit-reverse {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes failure-ping {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.55;
+  }
+  75%,
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+@keyframes failure-twinkle {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.7) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(20deg);
+  }
+}
+
+@keyframes failure-steam {
+  0% {
+    opacity: 0;
+    transform: translateY(5px) scaleX(0.7);
+  }
+  30% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-14px) scaleX(1.2);
+  }
+}
+
+@keyframes failure-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.failure-steam {
+  transform-origin: bottom center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .failure-float {
+    animation: failure-float 7s ease-in-out infinite;
+  }
+
+  .failure-orbit {
+    animation: failure-orbit 28s linear infinite;
+  }
+
+  .failure-orbit-reverse {
+    animation: failure-orbit-reverse 20s linear infinite;
+  }
+
+  .failure-ping {
+    animation: failure-ping 3.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  }
+
+  .failure-twinkle {
+    animation: failure-twinkle 3.4s ease-in-out infinite;
+  }
+
+  .failure-steam {
+    animation: failure-steam 3s ease-in-out infinite;
+  }
+
+  .failure-rise {
+    animation: failure-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .failure-delay-1 {
+    animation-delay: 0.1s;
+  }
+
+  .failure-delay-2 {
+    animation-delay: 0.2s;
+  }
+
+  .failure-delay-3 {
+    animation-delay: 0.32s;
+  }
+
+  .failure-delay-4 {
+    animation-delay: 0.44s;
+  }
+}
+
 /* Centralized Layout and Component Utility Classes */
 .container-app {
   width: 100%;
