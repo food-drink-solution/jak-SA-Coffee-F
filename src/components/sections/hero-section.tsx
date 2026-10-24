@@ -1,39 +1,69 @@
-import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+"use client";
 
-interface HeroProps {
-  locale: "ar" | "en";
-  badge: string;
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+
+export interface HeroSlide {
+  image: string;
   title: string;
-  subtitle: string;
-  cta: string;
-  secondary: string;
 }
 
-export function HeroSection({ locale, badge, title, subtitle, cta, secondary }: HeroProps) {
-  const Arrow = locale === "ar" ? ArrowLeft : ArrowRight;
+export function HeroSection({ slides, cta, locale }: { slides: HeroSlide[]; cta: string; locale: "ar" | "en" }) {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    if (slides.length <= 1) return;
+    const id = setInterval(() => setActive((i) => (i + 1) % slides.length), 5000);
+    return () => clearInterval(id);
+  }, [slides.length]);
+
   return (
-    <section className="relative overflow-hidden bg-gradient-to-bl from-[var(--color-primary)]/10 via-[var(--color-background)] to-[var(--color-accent)]/10">
-      <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-6 px-4 py-20 sm:py-28">
-        <span className="inline-flex w-fit items-center rounded-full bg-[var(--color-primary)]/10 px-4 py-1.5 text-xs font-extrabold text-[var(--color-primary)]">{badge}</span>
-        <h1 className="max-w-3xl text-4xl font-extrabold leading-tight text-[var(--color-foreground)] sm:text-5xl">{title}</h1>
-        <p className="max-w-2xl text-lg leading-8 text-[var(--color-muted)]">{subtitle}</p>
-        <div className="flex flex-wrap gap-3">
-          <Link
-            href={`/${locale}/products`}
-            className="inline-flex h-12 items-center gap-2 rounded-[var(--radius-md)] bg-[var(--color-primary)] px-7 text-sm font-extrabold text-white transition-colors hover:bg-[var(--color-primary-dark)]"
+    <section id="mainslider" className="relative overflow-hidden">
+      <div className="relative h-[420px] w-full sm:h-[510px]">
+        {slides.map((slide, i) => (
+          <div
+            key={slide.image}
+            className={`absolute inset-0 transition-opacity duration-700 ${i === active ? "opacity-100" : "opacity-0"}`}
+            aria-hidden={i !== active}
           >
-            {cta}
-            <Arrow className="h-4 w-4" aria-hidden />
-          </Link>
-          <Link
-            href={`/${locale}/categories`}
-            className="inline-flex h-12 items-center rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] px-7 text-sm font-extrabold transition-colors hover:bg-[var(--color-background)]"
-          >
-            {secondary}
-          </Link>
-        </div>
+            <Image src={slide.image} alt={slide.title} fill priority={i === 0} sizes="100vw" className="object-cover" />
+            <div className="absolute inset-0 bg-[var(--color-primary)]/45" />
+            <div className="relative flex h-full items-center container-app">
+              <div className="max-w-xl text-white">
+                <h1 className="text-2xl font-extrabold leading-tight sm:text-4xl md:text-5xl">{slide.title}</h1>
+                <div className="mt-6">
+                  <Link
+                    href={`/${locale}/products`}
+                    className="inline-flex h-12 min-h-[44px] items-center rounded-[var(--radius-md)] bg-white px-8 text-sm font-extrabold text-[var(--color-primary)] shadow-lg transition-all hover:bg-white/90 active:scale-[0.98] focus-ring"
+                  >
+                    {cta}
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
+      {slides.length > 1 && (
+        <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 items-center gap-1.5 p-1 rounded-full bg-black/20 backdrop-blur-xs">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => setActive(i)}
+              aria-label={`Slide ${i + 1}`}
+              className="flex h-8 w-8 items-center justify-center rounded-full focus-ring cursor-pointer"
+            >
+              <span
+                className={`h-2.5 rounded-full transition-all duration-300 ${
+                  i === active ? "w-6 bg-white" : "w-2.5 bg-white/50 hover:bg-white/75"
+                }`}
+              />
+            </button>
+          ))}
+        </div>
+      )}
     </section>
   );
 }

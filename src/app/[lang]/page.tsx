@@ -5,12 +5,14 @@ import { isLocale } from "@/config/locales";
 import { getDictionary, t } from "@/lib/i18n/dictionaries";
 import { categoryRepository, getBestSellers } from "@/lib/data/catalog";
 import { HeroSection } from "@/components/sections/hero-section";
-import { ValuePropositionSection, TrustFeatures, StatsBar } from "@/components/sections/value-sections";
-import { OrderCtaSection, ProductSizesSection } from "@/components/sections/order-cta";
+import { ValuePropositionSection, TrustFeatures } from "@/components/sections/value-sections";
+import { DownloadSection, ProductSizesSection } from "@/components/sections/order-cta";
 import { SectionHeading } from "@/components/common/section-heading";
 import { ProductGrid } from "@/components/products/product-grid";
 import { CategoryCard } from "@/components/categories/category-card";
 import { alternatesFor } from "@/lib/seo/metadata";
+import Image from "next/image";
+import { pick } from "@/types/localization";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
@@ -29,48 +31,45 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
   const bestSellers = getBestSellers(8);
   const categories = await categoryRepository.getCategories();
 
-  const features: Record<string, string> = {
-    quality: t(dict, "home.features.quality"),
-    size: t(dict, "home.features.size"),
-    source: t(dict, "home.features.source"),
-    date: t(dict, "home.features.date"),
-    support: t(dict, "home.features.support"),
-    delivery: t(dict, "home.features.delivery"),
-    count: t(dict, "home.features.count"),
-    deliveryTime: t(dict, "home.features.deliveryTime"),
+  const features = [
+    { label: t(dict, "home.features.quality"), image: "/images/home/feature-quality.webp" },
+    { label: t(dict, "home.features.count"), image: "/images/home/feature-count.webp" },
+    { label: t(dict, "home.features.source"), image: "/images/home/feature-source.webp" },
+    { label: t(dict, "home.features.support"), image: "/images/home/feature-support.webp" },
+    { label: t(dict, "home.features.size"), image: "/images/home/feature-size.webp" },
+    { label: t(dict, "home.features.date"), image: "/images/home/feature-date.webp" },
+    { label: t(dict, "home.features.delivery"), image: "/images/home/feature-delivery.webp" },
+    { label: t(dict, "home.features.deliveryTime"), image: "/images/home/feature-delivery-time.webp" },
+  ];
+
+  const heroSlides = [
+    { image: "/images/home/hero-slide-1.webp", title: t(dict, "home.heroSlide1") },
+    { image: "/images/home/hero-slide-2.webp", title: t(dict, "home.heroSlide2") },
+    { image: "/images/home/hero-slide-3.webp", title: t(dict, "home.heroSlide3") },
+    { image: "/images/home/hero-slide-4.webp", title: t(dict, "home.heroSlide4") },
+  ];
+
+  const iconMap: Record<string, string> = {
+    sandwiches: "/images/home/icons/sandwiches.png",
+    crossonite: "/images/home/icons/croissant.png",
+    salad: "/images/home/icons/salads.png",
+    desserts: "/images/home/icons/desserts.png",
+    beverage: "/images/home/icons/beverages.png",
   };
 
   return (
     <>
-      <HeroSection
-        locale={lang}
-        badge={t(dict, "home.heroBadge")}
-        title={t(dict, "home.heroTitle")}
-        subtitle={t(dict, "home.heroSubtitle")}
-        cta={t(dict, "home.heroCta")}
-        secondary={t(dict, "home.heroSecondary")}
-      />
+      <HeroSection locale={lang} cta={t(dict, "home.heroCta")} slides={heroSlides} />
 
-      <section className="mx-auto w-full max-w-[1200px] px-4 py-4">
-        <ValuePropositionSection title={t(dict, "home.valuesTitle")} text={t(dict, "home.valuesText")} />
-      </section>
+      <ValuePropositionSection title={t(dict, "home.valuesTitle")} text={t(dict, "home.valuesText")} />
 
-      <TrustFeatures features={features} />
+      <TrustFeatures items={features} />
 
-      <StatsBar
-        items={[
-          { value: t(dict, "home.statsProductsValue"), label: t(dict, "home.statsProducts") },
-          { value: t(dict, "home.statsCoverageValue"), label: t(dict, "home.statsCoverage") },
-          { value: "6", label: t(dict, "home.categoriesTitle") },
-          { value: "24/7", label: t(dict, "home.features.support") },
-        ]}
-      />
-
-      <section className="mx-auto w-full max-w-[1200px] px-4 py-6">
+      <section className="container-app py-8 sm:py-12">
         <SectionHeading
           title={t(dict, "home.bestSellers")}
           action={
-            <Link href={`/${lang}/products`} className="text-sm font-extrabold text-[var(--color-primary)]">
+            <Link href={`/${lang}/products`} className="text-sm font-extrabold text-[var(--color-primary)] transition-colors hover:underline focus-ring rounded">
               {t(dict, "common.viewAll")}
             </Link>
           }
@@ -82,17 +81,44 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
         />
       </section>
 
-      <section className="mx-auto w-full max-w-[1200px] px-4 py-10">
+      <section className="container-app py-8 sm:py-12">
         <SectionHeading title={t(dict, "home.categoriesTitle")} />
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-6 lg:gap-5">
           {categories.map((c) => (
-            <CategoryCard key={c.id} category={c} locale={lang} cta={t(dict, "categories.products")} />
+            <CategoryCard key={c.id} category={c} locale={lang} cta={t(dict, "categories.shopNow")} />
           ))}
         </div>
       </section>
 
-      <ProductSizesSection title={t(dict, "home.sizesTitle")} text={t(dict, "home.sizesText")} />
-      <OrderCtaSection title={t(dict, "home.orderTitle")} text={t(dict, "home.orderText")} cta={t(dict, "home.orderButton")} locale={lang} />
+      <ProductSizesSection title={t(dict, "home.sizesTitle")} text={t(dict, "home.sizesText")} image="/images/home/sizes-background.jpg" />
+
+      <section className="container-app py-8 sm:py-12">
+        <div className="mb-6">
+          <h3 className="text-xl font-extrabold text-[var(--color-foreground)] sm:text-2xl">{t(dict, "home.ourCategories")}</h3>
+        </div>
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-6 lg:gap-4">
+          {categories.map((c) => {
+            const name = pick(c.name, lang);
+            const icon = iconMap[c.slug];
+            return (
+              <Link
+                key={c.id}
+                href={`/${lang}/categories/${c.slug}`}
+                className="group flex flex-col items-center gap-2.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4 text-center shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-[var(--color-primary)]/30 hover:shadow-md focus-ring"
+              >
+                <span className="flex h-16 w-16 items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                  {icon || c.image ? (
+                    <Image src={icon ?? c.image!} alt={name} width={64} height={64} className="h-16 w-16 object-contain" />
+                  ) : null}
+                </span>
+                <span className="text-sm font-bold text-[var(--color-foreground)] group-hover:text-[var(--color-primary)]">{name}</span>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+
+      <DownloadSection title={t(dict, "home.orderTitle")} text={t(dict, "home.orderText")} />
     </>
   );
 }

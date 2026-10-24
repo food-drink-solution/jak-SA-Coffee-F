@@ -18,12 +18,12 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
   const dict = getDictionary(lang);
 
   return (
-    <section className="mx-auto w-full max-w-[1200px] px-4 py-12">
-      <h1 className="mb-3 text-3xl font-extrabold">{t(dict, "contact.title")}</h1>
-      <p className="mb-10 max-w-2xl leading-7 text-[var(--color-muted)]">{t(dict, "contact.subtitle")}</p>
+    <section className="container-app py-8 sm:py-12">
+      <h1 className="mb-3 text-2xl font-extrabold text-[var(--color-foreground)] sm:text-3xl">{t(dict, "contact.title")}</h1>
+      <p className="mb-8 max-w-2xl text-base leading-7 text-[var(--color-muted)] sm:mb-10">{t(dict, "contact.subtitle")}</p>
 
-      <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
-        <div className="rounded-[var(--radius-xl)] border border-[var(--color-border)] bg-[var(--color-surface)] p-8 shadow-[var(--shadow-card)]">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-10">
+        <div className="rounded-[var(--radius-xl)] border border-[var(--color-border)] bg-[var(--color-surface)] p-6 shadow-sm sm:p-8">
           <ContactForm
             labels={{
               name: t(dict, "contact.name"),
@@ -41,21 +41,28 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
           />
         </div>
 
-        <div>
-          <dl className="space-y-4">
-            <div>
-              <dt className="text-sm font-bold text-[var(--color-muted)]">{t(dict, "footer.contact")}</dt>
-              <dd className="text-lg font-extrabold">
-                <a dir="ltr" href={`tel:${siteConfig.contact.phoneHref}`}>{siteConfig.contact.phone}</a>
-              </dd>
-            </div>
-            <div>
-              <dd><a href={`mailto:${siteConfig.contact.email}`} className="font-bold text-[var(--color-primary)]">{siteConfig.contact.email}</a></dd>
-            </div>
-            <div>
-              <dd>{siteConfig.contact.country[lang]}</dd>
-            </div>
-          </dl>
+        <div className="flex flex-col gap-4">
+          <div className="rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-surface)] p-6 shadow-sm">
+            <h2 className="mb-4 text-base font-extrabold text-[var(--color-foreground)]">{t(dict, "footer.contact")}</h2>
+            <dl className="space-y-4">
+              <div>
+                <dt className="text-xs font-bold text-[var(--color-muted)]">{t(dict, "contact.phone")}</dt>
+                <dd className="mt-1 text-base font-extrabold text-[var(--color-foreground)]">
+                  <a dir="ltr" href={`tel:${siteConfig.contact.phoneHref}`} className="transition-colors hover:text-[var(--color-primary)] focus-ring rounded">{siteConfig.contact.phone}</a>
+                </dd>
+              </div>
+              <div>
+                <dt className="text-xs font-bold text-[var(--color-muted)]">{t(dict, "contact.email")}</dt>
+                <dd className="mt-1 text-base font-bold text-[var(--color-primary)]">
+                  <a href={`mailto:${siteConfig.contact.email}`} className="break-all hover:underline focus-ring rounded">{siteConfig.contact.email}</a>
+                </dd>
+              </div>
+              <div>
+                <dt className="text-xs font-bold text-[var(--color-muted)]">{lang === "ar" ? "الموقع" : "Location"}</dt>
+                <dd className="mt-1 text-sm font-medium text-[var(--color-foreground)]">{siteConfig.contact.country[lang]}</dd>
+              </div>
+            </dl>
+          </div>
         </div>
       </div>
     </section>
