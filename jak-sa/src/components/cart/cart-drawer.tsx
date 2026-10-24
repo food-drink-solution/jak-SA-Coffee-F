@@ -136,9 +136,14 @@ export function CartDrawer({ locale, labels }: CartDrawerProps) {
               </div>
               <p className="mb-4 text-[11px] text-[var(--color-muted-foreground)]">{labels.taxNote}</p>
               <div className="flex gap-2">
-                <Button className="flex-1" onClick={() => {}}>
-                  {labels.checkout}
-                </Button>
+                <Link
+                href={`/${locale}/checkout`}
+                onClick={() => setOpen(false)}
+                aria-label={labels.checkout}
+                className="flex-1 inline-flex h-11 min-h-[44px] items-center justify-center gap-2 rounded-[var(--radius-md)] bg-[var(--color-primary)] px-5 text-sm font-bold text-[var(--color-primary-foreground)] transition-colors hover:bg-[var(--color-primary-dark)] active:scale-[0.98] focus-ring"
+              >
+                {labels.checkout}
+              </Link>
                 <Button variant="secondary" onClick={clear}>
                   {labels.clear}
                 </Button>
