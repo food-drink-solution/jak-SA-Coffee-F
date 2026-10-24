@@ -33,6 +33,7 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
               send: t(dict, "contact.send"),
               sending: t(dict, "contact.sending"),
               success: t(dict, "contact.success"),
+              errorSend: t(dict, "contact.errorSend"),
               errorName: t(dict, "contact.errorName"),
               errorEmail: t(dict, "contact.errorEmail"),
               errorPhone: t(dict, "contact.errorPhone"),
