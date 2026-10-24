@@ -10,6 +10,7 @@
     "typecheck": "pnpm --filter jak-sa typecheck",
     "test": "pnpm --filter jak-sa test",
     "crawl": "pnpm --filter jak-sa crawl",
-    "validate:data": "pnpm --filter jak-sa validate:data"
+    "validate:data": "pnpm --filter jak-sa validate:data",
+    "release:tag": "node scripts/release-tag.mjs"
   }
 }

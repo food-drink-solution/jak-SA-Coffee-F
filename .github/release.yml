@@ -1,0 +1,46 @@
+changelog:
+  exclude:
+    labels:
+      - 'ignore-for-release'
+    authors:
+      - 'dependabot[bot]'
+  categories:
+    - title: '🚀 Features & Capabilities'
+      labels:
+        - 'enhancement'
+        - 'feature'
+        - 'feat'
+    - title: '🎨 UI, Responsive & Styling'
+      labels:
+        - 'ui'
+        - 'style'
+        - 'responsive'
+        - 'css'
+    - title: '🐛 Bug Fixes & Defect Corrections'
+      labels:
+        - 'bug'
+        - 'fix'
+        - 'hotfix'
+    - title: '🏗️ Architecture & Monorepo Refactoring'
+      labels:
+        - 'refactor'
+        - 'chore'
+        - 'architecture'
+    - title: '⚡ Performance & Core Web Vitals'
+      labels:
+        - 'performance'
+        - 'perf'
+    - title: '🧪 Testing & Quality Gates'
+      labels:
+        - 'testing'
+        - 'tests'
+        - 'test'
+        - 'ci'
+    - title: '📚 Documentation & Guides'
+      labels:
+        - 'documentation'
+        - 'docs'
+    - title: '🔒 Security & Dependencies'
+      labels:
+        - 'security'
+        - 'dependencies'

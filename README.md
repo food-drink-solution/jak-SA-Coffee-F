@@ -16,6 +16,7 @@
   </p>
 
   <p align="center">
+    <a href="https://github.com/food-drink-solution/jak-SA-Coffee-F/releases"><img src="https://img.shields.io/github/v/release/food-drink-solution/jak-SA-Coffee-F?style=flat-square&color=4e0161" alt="Latest Release" /></a>
     <img src="https://img.shields.io/badge/i18n-Arabic_(RTL)_%2B_English_(LTR)-b88539?style=flat-square" alt="Bilingual i18n" />
     <img src="https://img.shields.io/badge/Tests-44_Passing_(Vitest)-28a745?style=flat-square&logo=vitest&logoColor=white" alt="Tests Passing" />
     <img src="https://img.shields.io/badge/E2E-Playwright-bc4f38?style=flat-square&logo=playwright&logoColor=white" alt="Playwright" />
@@ -166,6 +167,7 @@ Explore detailed documentation in the [`docs/`](docs/) directory:
 - 🧩 **[Component Development Guide](docs/COMPONENTS.md)** — Primitives, CVA variants, layout components, and accessibility patterns.
 - 💻 **[Development Workflow](docs/DEVELOPMENT.md)** — Setup instructions, commands, git conventions, and deployment.
 - 🤝 **[Contributing Guidelines](CONTRIBUTING.md)** — How to contribute, branching strategies, and PR guidelines.
+- 📋 **[Changelog & Releases](CHANGELOG.md)** — Automated release workflows, tagging conventions, and version history.
 
 ---
 

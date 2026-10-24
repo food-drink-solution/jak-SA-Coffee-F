@@ -1,0 +1,59 @@
+name-template: 'v$RESOLVED_VERSION'
+tag-template: 'v$RESOLVED_VERSION'
+categories:
+  - title: '🚀 Features & Capabilities'
+    labels:
+      - 'feature'
+      - 'enhancement'
+      - 'feat'
+  - title: '🎨 UI & Responsive Experience'
+    labels:
+      - 'ui'
+      - 'style'
+      - 'responsive'
+  - title: '🐛 Bug Fixes'
+    labels:
+      - 'fix'
+      - 'bug'
+      - 'hotfix'
+  - title: '🏗️ Architecture & Refactoring'
+    labels:
+      - 'refactor'
+      - 'chore'
+  - title: '⚡ Performance'
+    labels:
+      - 'performance'
+      - 'perf'
+  - title: '📚 Documentation'
+    labels:
+      - 'documentation'
+      - 'docs'
+  - title: '🔒 Security & Dependencies'
+    labels:
+      - 'security'
+      - 'dependencies'
+change-template: '- $TITLE (#$NUMBER) by @$AUTHOR'
+change-title-escapes: '\<*_&'
+version-resolver:
+  major:
+    labels:
+      - 'major'
+      - 'breaking'
+  minor:
+    labels:
+      - 'minor'
+      - 'enhancement'
+      - 'feature'
+  patch:
+    labels:
+      - 'patch'
+      - 'fix'
+      - 'bug'
+  default: patch
+template: |
+  ## What's Changed in this Release
+
+  $CHANGES
+
+  ---
+  **Full Commit Comparison**: https://github.com/food-drink-solution/jak-SA-Coffee-F/compare/$PREVIOUS_TAG...$RESOLVED_VERSION

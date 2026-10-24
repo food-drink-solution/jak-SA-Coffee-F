@@ -1,0 +1,63 @@
+name: CI Quality Gates
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'jak-sa/**'
+      - 'scripts/**'
+      - 'package.json'
+      - '.github/workflows/ci.yml'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'jak-sa/**'
+      - 'scripts/**'
+      - 'package.json'
+      - '.github/workflows/ci.yml'
+
+jobs:
+  validate:
+    name: Lint, Test & Build Frontend
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node.js (v20)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+          cache-dependency-path: 'jak-sa/pnpm-lock.yaml'
+
+      - name: Install Dependencies
+        working-directory: ./jak-sa
+        run: pnpm install --frozen-lockfile
+
+      - name: Run Schema & Data Validation
+        run: node scripts/validate-data.mjs
+
+      - name: Lint Check
+        working-directory: ./jak-sa
+        run: pnpm lint
+
+      - name: TypeScript Strict Compiler Check
+        working-directory: ./jak-sa
+        run: pnpm typecheck
+
+      - name: Run Vitest Unit Tests
+        working-directory: ./jak-sa
+        run: pnpm test
+
+      - name: Build Next.js Production Bundle
+        working-directory: ./jak-sa
+        run: pnpm build
