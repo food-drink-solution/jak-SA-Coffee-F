@@ -73,7 +73,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
 
         <div>
           <p className="text-sm font-extrabold text-[var(--color-primary)]">{pick(product.categoryName, lang)}</p>
-          <h1 className="mt-2 text-3xl font-extrabold leading-snug">{pick(product.name, lang)}</h1>
+          <h1 className="mt-2 text-2xl font-extrabold leading-snug sm:text-3xl">{pick(product.name, lang)}</h1>
           {product.price && (
             <p className="mt-4 text-2xl font-extrabold">
               {formatPrice(product.price.amount, "SAR", lang)}
@@ -101,7 +101,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             ))}
           </dl>
 
-          <div className="mt-8 max-w-xs">
+          <div className="mt-8 w-full sm:max-w-xs">
             <AddToCartButton product={product} label={t(dict, "products.addToCart")} addedLabel={t(dict, "cart.added")} />
           </div>
         </div>

@@ -20,7 +20,7 @@ export function HeroSection({ slides, cta, locale }: { slides: HeroSlide[]; cta:
 
   return (
     <section id="mainslider" className="relative overflow-hidden">
-      <div className="relative h-[380px] w-full sm:h-[480px] md:h-[520px]">
+      <div className="relative h-[260px] w-full xs:h-[320px] sm:h-[420px] md:h-[520px]">
         {slides.map((slide, i) => (
           <div
             key={slide.image}
@@ -31,11 +31,11 @@ export function HeroSection({ slides, cta, locale }: { slides: HeroSlide[]; cta:
             <div className="absolute inset-0 bg-[var(--color-primary)]/45" />
             <div className="relative flex h-full items-center container-app">
               <div className="max-w-xl text-white">
-                <h1 className="text-2xl font-extrabold leading-tight sm:text-4xl md:text-5xl">{slide.title}</h1>
+                <h1 className="text-xl font-extrabold leading-tight sm:text-3xl md:text-5xl">{slide.title}</h1>
                 <div className="mt-6">
                   <Link
                     href={`/${locale}/products`}
-                    className="inline-flex h-12 min-h-[44px] items-center rounded-[var(--radius-md)] bg-white px-8 text-sm font-extrabold text-[var(--color-primary)] shadow-lg transition-all hover:bg-white/90 active:scale-[0.98] focus-ring"
+                    className="inline-flex h-11 min-h-[44px] items-center rounded-[var(--radius-md)] bg-white px-6 sm:px-8 text-sm font-extrabold text-[var(--color-primary)] shadow-lg transition-all hover:bg-white/90 active:scale-[0.98] focus-ring"
                   >
                     {cta}
                   </Link>

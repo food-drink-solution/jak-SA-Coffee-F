@@ -36,7 +36,7 @@ export default async function SearchPage({
 
   return (
     <section className="container-app py-8 sm:py-12">
-      <h1 className="mb-2 text-3xl font-extrabold">{t(dict, "search.title")}</h1>
+      <h1 className="mb-2 text-2xl font-extrabold sm:text-3xl">{t(dict, "search.title")}</h1>
       {q && (
         <p className="mb-8 text-[var(--color-muted)]">
           {t(dict, "search.resultsFor")} <q className="font-bold text-[var(--color-foreground)]">{q}</q> — {slice.totalItems} {t(dict, "products.count")}

@@ -68,7 +68,7 @@ export function SiteHeader({ locale, items, labels }: SiteHeaderProps) {
                   name="q"
                   type="search"
                   placeholder={labels.searchPlaceholder}
-                  className="h-9 w-32 rounded-full border border-white/30 bg-white/10 ps-9 pe-3 text-sm text-white placeholder:text-white/50 transition-all focus:w-44 focus:border-white/60 focus:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/30 md:w-40 md:focus:w-52"
+                  className="h-9 w-32 rounded-full border border-white/30 bg-white/10 ps-9 pe-3 text-sm text-white placeholder:text-white/50 transition-all focus:w-44 focus:border-white/60 focus:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/30 md:w-40 md:focus:w-52 lg:w-44 lg:focus:w-60"
                 />
               </label>
             </form>
