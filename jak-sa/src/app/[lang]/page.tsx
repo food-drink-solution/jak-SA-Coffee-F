@@ -50,12 +50,12 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
   ];
 
   const iconMap: Record<string, string> = {
-    sandwiches: "/images/home/icons/sandwiches.png",
-    crossonite: "/images/home/icons/croissant.png",
-    pretzel: "/images/home/icons/pretzel.png",
-    salad: "/images/home/icons/salads.png",
-    desserts: "/images/home/icons/desserts.png",
-    beverage: "/images/home/icons/beverages.png",
+    sandwiches: "/images/home/icons/sandwiches.webp",
+    crossonite: "/images/home/icons/croissant.webp",
+    pretzel: "/images/home/icons/pretzel.webp",
+    salad: "/images/home/icons/salads.webp",
+    desserts: "/images/home/icons/desserts.webp",
+    beverage: "/images/home/icons/beverages.webp",
   };
 
   return (
@@ -91,7 +91,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
         </div>
       </section>
 
-      <ProductSizesSection title={t(dict, "home.sizesTitle")} text={t(dict, "home.sizesText")} image="/images/home/sizes-background.jpg" />
+      <ProductSizesSection title={t(dict, "home.sizesTitle")} text={t(dict, "home.sizesText")} image="/images/home/sizes-background.webp" />
 
       <section className="container-app py-8 sm:py-12">
         <div className="mb-6">
@@ -109,7 +109,15 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
               >
                 <span className="flex h-20 w-20 items-center justify-center rounded-2xl bg-[var(--color-header-foreground)] p-2 shadow-sm transition-transform duration-300 group-hover:scale-110">
                   {icon || c.image ? (
-                    <Image src={icon ?? c.image!} alt={name} width={64} height={64} className="h-full w-full object-contain" />
+                    <Image
+                      src={icon ?? c.image!}
+                      alt={name}
+                      width={64}
+                      height={64}
+                      sizes="64px"
+                      quality={90}
+                      className="h-full w-full object-contain"
+                    />
                   ) : null}
                 </span>
                 <span className="text-sm font-bold text-[var(--color-foreground)] group-hover:text-[var(--color-primary-text)]">{name}</span>

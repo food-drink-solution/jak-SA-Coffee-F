@@ -241,7 +241,7 @@ export function SiteHeader({ locale, items, labels }: SiteHeaderProps) {
         {/* Logo */}
         <Link href={`/${locale}`} className="flex-shrink-0">
           <Image
-            src="/images/brand/logo.png"
+            src="/images/brand/logo.webp"
             alt="JAK Logo"
             width={40}
             height={40}

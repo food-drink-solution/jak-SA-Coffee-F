@@ -17,7 +17,15 @@ export function StaticPage({ page, locale, heading }: { page: PageContent | null
       {heading ? <h1 className="mb-8 text-3xl font-extrabold">{heading}</h1> : null}
       {image && (
         <figure className="mb-8 overflow-hidden rounded-[var(--radius-lg)] border border-[var(--color-border)]">
-          <Image src={image} alt={heading} width={900} height={600} className="h-auto w-full" unoptimized />
+          <Image
+            src={image}
+            alt={heading}
+            width={1200}
+            height={849}
+            sizes="(max-width: 768px) 100vw, 768px"
+            quality={75}
+            className="h-auto w-full"
+          />
         </figure>
       )}
       <div className="space-y-4 leading-8 text-[var(--color-foreground)]/90">

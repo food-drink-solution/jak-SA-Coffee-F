@@ -3,13 +3,13 @@
     "id": "29",
     "slug": "crossonite",
     "name": "CROSSONITE",
-    "image": "/images/categories/category-1701343830-656872562a4cf.jpg"
+    "image": "/images/categories/category-1701343830-656872562a4cf.webp"
   },
   {
     "id": "31",
     "slug": "sandwiches",
     "name": "sandwiches",
-    "image": "/images/categories/category-1679389688-641973f8b6eb4.jpg"
+    "image": "/images/categories/category-1679389688-641973f8b6eb4.webp"
   },
   {
     "id": "46",
@@ -21,18 +21,18 @@
     "id": "33",
     "slug": "salad",
     "name": "SALAD",
-    "image": "/images/categories/category-1680004740-6422d684a0b7d.jpeg"
+    "image": "/images/categories/category-1680004740-6422d684a0b7d.webp"
   },
   {
     "id": "37",
     "slug": "desserts",
     "name": "DESSERTS",
-    "image": "/images/categories/category-1680177081-642577b99a39c.jpeg"
+    "image": "/images/categories/category-1680177081-642577b99a39c.webp"
   },
   {
     "id": "43",
     "slug": "beverage",
     "name": "BEVERAGE",
-    "image": "/images/categories/category-1701344272-656874100eb48.jpg"
+    "image": "/images/categories/category-1701344272-656874100eb48.webp"
   }
 ]

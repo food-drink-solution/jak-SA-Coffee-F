@@ -25,7 +25,15 @@ export function SiteFooter({ locale, categories }: SiteFooterProps) {
     <footer className="mt-20 border-t border-[var(--color-border)] bg-[var(--color-surface)]">
       <div className="container-app grid grid-cols-1 gap-8 py-12 sm:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-1">
-          <Image src="/images/brand/footer-logo.png" alt={siteConfig.name[locale]} width={120} height={48} className="h-12 w-auto" />
+          <Image
+            src="/images/brand/footer-logo.webp"
+            alt={siteConfig.name[locale]}
+            width={400}
+            height={172}
+            sizes="160px"
+            quality={90}
+            className="h-12 w-auto"
+          />
           <p className="mt-4 text-sm leading-6 text-[var(--color-muted)]">{siteConfig.description[locale]}</p>
           
           {/* Social Links */}
