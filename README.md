@@ -81,14 +81,25 @@ src/
 
 ---
 
-## 🎨 Design System
+## 🎨 Design System & Responsive Architecture
 
-**Brand Colors** (defined in `src/app/globals.css`):
-- **Purple** `#4e0161` — Primary actions
-- **Gold** `#b88539` — Accents & highlights
-- **Pink** `#e83e8c` — Secondary accents
+**Brand Colors** (defined in `src/app/globals.css` from official [jak.sa.com](https://jak.sa.com)):
+- **JAK Primary Purple** `#4e0161` — Dominant brand identity, buttons, links, header & active states
+- **JAK Gold** `#b88539` — Highlights, badges, awards & premium accents
+- **JAK Pink** `#e83e8c` — Secondary CTAs and decorative accents
+- **JAK Violet** `#82588d` — Supporting brand accents
 
-All colors as CSS custom properties for easy theming.
+**Centralized Utility Classes**:
+- `.container-app` — Centralized max-width (1200px) and responsive horizontal padding
+- `.card-base` & `.card-interactive` — Uniform border, background, and hover elevations
+- `.focus-ring` — Accessible brand focus ring indicator
+- `.safe-bottom` — Mobile safe-area padding for floating controls
+
+**Responsive Grid & Layout Scale**:
+- Progressive 4-tier responsive grids: `grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6`
+- Zero horizontal overflow (`html, body { overflow-x: hidden; max-width: 100%; }`)
+- Balanced 2-column hero composition with desktop highlights card
+- Cohesive product toolbar grouping with seamless RTL alignment
 
 ---
 
@@ -103,11 +114,14 @@ All colors as CSS custom properties for easy theming.
 
 ## 📊 Key Features
 
+✅ **Authentic JAK Branding** — Official SVG logo, brand favicon, and signature color scheme  
 ✅ **Static Site Generation (SSG)** — All pages pre-built at deploy time  
-✅ **RTL/LTR Support** — Full Arabic + English from day one  
-✅ **Accessible** — WCAG AA standards, keyboard navigation  
-✅ **SEO** — JSON-LD, canonical URLs, hreflang tags  
-✅ **Shopping Cart** — localStorage-backed with Context API  
+✅ **Full Responsive Design** — Fluid layouts from extra-small mobile (320px) to ultra-wide displays  
+✅ **Centralized Styles** — Design tokens and layout classes in `globals.css` without duplication  
+✅ **RTL/LTR Support** — Full Arabic + English bidirectional typography and layout rhythm  
+✅ **Accessible** — WCAG AA standards, minimum 44px tap targets, visible focus rings  
+✅ **SEO** — JSON-LD, canonical URLs, hreflang tags, dynamic OpenGraph  
+✅ **Shopping Cart** — Drawer cart backed by localStorage with Context API  
 ✅ **Contact Form** — Validated with React Hook Form + Zod  
 ✅ **Ethical Crawling** — 350ms delays, public endpoints only  
 ✅ **Type-Safe Data** — Zod validation for all models  
@@ -125,8 +139,8 @@ No runtime locale logic — locales baked into SSG. Fast, cacheable, predictable
 ### Isolated Cart Feature
 `CartStorage` abstraction over localStorage — swappable with API without refactoring.
 
-### Design Tokens
-Tailwind v4 + CSS custom properties in `globals.css` — scale themes without code changes.
+### Centralized Design Tokens & Responsive Utilities
+Tailwind v4 + CSS custom properties in `globals.css` — uniform containers, cards, and interactive states without code drift.
 
 ---
 
@@ -184,5 +198,5 @@ Private project — All rights reserved
 
 ---
 
-**Repository:** https://github.com/we3ds-solution/jak-SA-Coffee-F  
+**Repository:** https://github.com/food-drink-solution/jak-SA-Coffee-F  
 **Built with ❤️ for JAK Storefront**
