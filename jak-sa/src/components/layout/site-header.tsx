@@ -7,6 +7,7 @@ import { pick } from "@/types/localization";
 import { siteConfig } from "@/config/site";
 import { LanguageSwitcher } from "./language-switcher";
 import { MobileNav } from "./mobile-nav";
+import { ThemeToggle } from "./theme-toggle";
 import { CartButton } from "@/components/cart/cart-button";
 
 interface SiteHeaderProps {
@@ -20,7 +21,7 @@ export function SiteHeader({ locale, items, labels }: SiteHeaderProps) {
   return (
     <header className="sticky top-0 z-30 w-full shadow-md">
       {/* ── JAK Purple Top-bar ── */}
-      <div className="bg-[#4e0161] w-full">
+      <div className="bg-[var(--color-primary)] w-full">
         <div className="container-app flex h-14 items-center justify-between gap-2">
           {/* Logo */}
           <Link
@@ -47,7 +48,7 @@ export function SiteHeader({ locale, items, labels }: SiteHeaderProps) {
               <Link
                 key={item.id}
                 href={`/${locale}${item.href === "/" ? "" : item.href}`}
-                className="rounded-md px-3 py-1.5 text-sm font-semibold text-white/90 transition-colors hover:bg-white/15 hover:text-white focus-ring"
+                className="rounded-md px-3 py-1.5 text-sm font-semibold text-[var(--color-header-foreground-muted)] transition-colors hover:bg-[var(--color-header-foreground)]/15 hover:text-[var(--color-header-foreground)] focus-ring"
               >
                 {pick(item.label, locale)}
               </Link>
@@ -60,7 +61,7 @@ export function SiteHeader({ locale, items, labels }: SiteHeaderProps) {
             <form action={`/${locale}/search`} className="hidden sm:block" role="search">
               <label className="relative block">
                 <Search
-                  className="absolute top-1/2 start-3 h-4 w-4 -translate-y-1/2 text-white/60"
+                  className="absolute top-1/2 start-3 h-4 w-4 -translate-y-1/2 text-[var(--color-header-foreground-subtle)]"
                   aria-hidden
                 />
                 <span className="sr-only">{labels.searchPlaceholder}</span>
@@ -68,13 +69,18 @@ export function SiteHeader({ locale, items, labels }: SiteHeaderProps) {
                   name="q"
                   type="search"
                   placeholder={labels.searchPlaceholder}
-                  className="h-9 w-32 rounded-full border border-white/30 bg-white/10 ps-9 pe-3 text-sm text-white placeholder:text-white/50 transition-all focus:w-44 focus:border-white/60 focus:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/30 md:w-40 md:focus:w-52 lg:w-44 lg:focus:w-60"
+                  className="h-9 w-32 rounded-full border border-[var(--color-header-foreground)]/30 bg-[var(--color-primary)]/10 ps-9 pe-3 text-sm text-[var(--color-header-foreground)] placeholder:text-[var(--color-header-foreground-subtle)] transition-all focus:w-44 focus:border-[var(--color-header-foreground)]/60 focus:bg-[var(--color-primary)]/20 focus:outline-none focus:ring-2 focus:ring-[var(--color-header-foreground)]/30 md:w-40 md:focus:w-52 lg:w-44 lg:focus:w-60"
                 />
               </label>
             </form>
 
             {/* Cart */}
             <CartButton label={labels.cart} variant="header" />
+
+            {/* Theme Toggle — desktop only */}
+            <span className="hidden md:inline">
+              <ThemeToggle />
+            </span>
 
             {/* Language Switcher — desktop */}
             <span className="hidden md:inline">

@@ -18,14 +18,14 @@ export function CartButton({ label, variant = "default" }: CartButtonProps) {
       onClick={() => setOpen(true)}
       className={`relative rounded-md p-2 transition-colors focus-ring ${
         isHeader
-          ? "text-white hover:bg-white/15"
+          ? "text-[var(--color-header-foreground)] hover:bg-[var(--color-header-foreground)]/15"
           : "text-[var(--color-foreground)] hover:bg-black/5"
       }`}
       aria-label={`${label} (${count})`}
     >
       <ShoppingCart className="h-6 w-6" aria-hidden />
       {count > 0 && (
-        <span className="absolute -top-1 -end-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-[var(--color-jak-accent-gold)] px-1 text-[11px] font-extrabold text-white">
+        <span className="absolute -top-1 -end-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-[var(--color-accent)] px-1 text-[11px] font-extrabold text-[var(--color-accent-foreground)]">
           {count}
         </span>
       )}

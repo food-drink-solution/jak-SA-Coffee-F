@@ -10,9 +10,9 @@ export function ProductSizesSection({ title, text, image }: { title: string; tex
       >
         <div className="absolute inset-0 bg-[var(--color-primary)]/55" />
         <div className="relative container-app">
-          <div className="max-w-3xl text-white">
+          <div className="max-w-3xl text-[var(--color-header-foreground)]">
             <h2 className="text-2xl font-extrabold leading-snug sm:text-3xl">{title}</h2>
-            <p className="mt-4 text-base leading-7 text-white/90 sm:text-lg sm:leading-8">{text}</p>
+            <p className="mt-4 text-base leading-7 text-[var(--color-header-foreground-muted)] sm:text-lg sm:leading-8">{text}</p>
           </div>
         </div>
       </div>

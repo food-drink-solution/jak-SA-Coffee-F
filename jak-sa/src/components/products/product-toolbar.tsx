@@ -101,7 +101,7 @@ export function ProductToolbar({
           </label>
           <button
             type="submit"
-            className="inline-flex h-11 min-h-[44px] shrink-0 items-center justify-center gap-2 rounded-[var(--radius-md)] bg-[var(--color-primary)] px-4 sm:px-6 text-sm font-extrabold text-white transition-all hover:bg-[var(--color-primary-dark)] active:scale-[0.98] focus-ring cursor-pointer"
+            className="inline-flex h-11 min-h-[44px] shrink-0 items-center justify-center gap-2 rounded-[var(--radius-md)] bg-[var(--color-primary)] px-4 sm:px-6 text-sm font-extrabold text-[var(--color-primary-foreground)] transition-all hover:bg-[var(--color-primary-dark)] active:scale-[0.98] focus-ring cursor-pointer"
           >
             <Search className="h-4 w-4" aria-hidden />
             <span className="hidden min-[380px]:inline">{labels.searchSubmit}</span>
@@ -172,7 +172,7 @@ function ViewButton({
       title={label}
       onClick={onClick}
       className={`inline-flex h-11 w-11 items-center justify-center transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-ring)] ${
-        active ? "bg-[var(--color-primary)] text-white" : "bg-[var(--color-surface)] text-[var(--color-foreground)] hover:bg-[var(--color-surface-muted)]"
+        active ? "bg-[var(--color-primary)] text-[var(--color-primary-foreground)]" : "bg-[var(--color-surface)] text-[var(--color-foreground)] hover:bg-[var(--color-surface-muted)]"
       }`}
     >
       {icon}

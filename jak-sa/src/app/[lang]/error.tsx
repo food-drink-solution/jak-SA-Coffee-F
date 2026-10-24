@@ -16,7 +16,7 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
       <button
         type="button"
         onClick={reset}
-        className="mt-2 min-h-[44px] inline-flex cursor-pointer items-center rounded-[var(--radius-md)] bg-[var(--color-primary)] px-6 py-3 text-sm font-extrabold text-white hover:opacity-90 focus-ring"
+        className="mt-2 min-h-[44px] inline-flex cursor-pointer items-center rounded-[var(--radius-md)] bg-[var(--color-primary)] px-6 py-3 text-sm font-extrabold text-[var(--color-primary-foreground)] hover:opacity-90 focus-ring"
       >
         {t(dict, "common.retry")}
       </button>

@@ -59,7 +59,7 @@ export function Pagination({ page, totalPages, locale, hrefForPage, labels }: Pa
               "inline-flex h-9 min-w-9 sm:h-10 sm:min-w-10 items-center justify-center rounded-[var(--radius-md)] border px-2 sm:px-3 text-xs sm:text-sm font-bold transition-colors",
               "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-ring)]",
               n === page
-                ? "border-transparent bg-[var(--color-primary)] text-white shadow-sm"
+                ? "border-transparent bg-[var(--color-primary)] text-[var(--color-primary-foreground)] shadow-sm"
                 : "border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-foreground)] hover:bg-[var(--color-surface-muted)]",
             )}
           >

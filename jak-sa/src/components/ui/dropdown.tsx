@@ -157,7 +157,7 @@ export function Dropdown({ label, value, options, onChange, placeholder, classNa
                   className={cn(
                     "flex w-full items-center justify-between gap-2 px-4 py-2 text-start text-sm transition-colors",
                     "focus-visible:outline-none focus-visible:bg-[var(--color-surface-muted)]",
-                    selected ? "font-bold text-[var(--color-jak-primary)]" : "text-[var(--color-foreground)]",
+                    selected ? "font-bold text-[var(--color-primary)]" : "text-[var(--color-foreground)]",
                     index === activeIndex && "bg-[var(--color-surface-muted)]",
                   )}
                 >
