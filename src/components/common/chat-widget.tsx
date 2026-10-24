@@ -44,13 +44,13 @@ export function ChatWidget({ locale, labels }: ChatWidgetProps) {
   }, [open]);
 
   return (
-    <div ref={rootRef} className="fixed bottom-6 end-6 z-30 flex flex-col items-end gap-3">
+    <div ref={rootRef} className="fixed bottom-[max(1.5rem,env(safe-area-inset-bottom,1.5rem))] end-4 sm:end-6 z-30 flex flex-col items-end gap-3">
       {open ? (
         <div
           id={panelId}
           role="dialog"
           aria-label={labels.title}
-          className="w-64 rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-surface)] p-4 shadow-[var(--shadow-card-hover)]"
+          className="w-[calc(100vw-2rem)] max-w-xs rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-surface)] p-4 shadow-[var(--shadow-card-hover)]"
         >
           <div className="mb-3 flex items-start justify-between gap-2">
             <h2 className="text-sm font-extrabold text-[var(--color-foreground)]">{labels.title}</h2>

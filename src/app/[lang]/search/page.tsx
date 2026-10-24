@@ -35,7 +35,7 @@ export default async function SearchPage({
   const slice = paginate(sorted, parsePageParam(page));
 
   return (
-    <section className="mx-auto w-full max-w-[1200px] px-4 py-10">
+    <section className="container-app py-8 sm:py-12">
       <h1 className="mb-2 text-3xl font-extrabold">{t(dict, "search.title")}</h1>
       {q && (
         <p className="mb-8 text-[var(--color-muted)]">

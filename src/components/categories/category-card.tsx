@@ -9,7 +9,7 @@ export function CategoryCard({ category, locale, cta }: { category: Category; lo
   return (
     <Link
       href={`/${locale}/categories/${category.slug}`}
-      className="group overflow-hidden rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-surface)] text-center shadow-[var(--shadow-card)] transition-shadow hover:shadow-[var(--shadow-card-hover)]"
+      className="group overflow-hidden rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-surface)] text-center shadow-[var(--shadow-card)] transition-shadow hover:shadow-[var(--shadow-card-hover)] focus-ring"
     >
       <div className="relative aspect-[4/3] bg-[var(--color-background)]">
         {category.image ? (
@@ -20,7 +20,7 @@ export function CategoryCard({ category, locale, cta }: { category: Category; lo
           </div>
         )}
       </div>
-      <div className="p-4">
+      <div className="p-3 sm:p-4">
         <h3 className="text-base font-extrabold text-[var(--color-foreground)]">{name}</h3>
         <p className="mt-1 text-xs font-bold text-[var(--color-primary)]">{cta}</p>
       </div>

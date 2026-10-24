@@ -40,7 +40,7 @@ export default async function ProductsPage({
   const labels = getListingLabels(dict);
 
   return (
-    <section className="mx-auto w-full max-w-[1200px] px-4 py-10">
+    <section className="container-app py-8 sm:py-12">
       <SectionHeading
         title={t(dict, "products.title")}
         action={<span className="text-sm text-[var(--color-muted)]">{slice.totalItems} {t(dict, "products.count")}</span>}

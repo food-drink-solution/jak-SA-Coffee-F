@@ -127,7 +127,7 @@ export function Dropdown({ label, value, options, onChange, placeholder, classNa
         onClick={() => (open ? closeMenu() : openMenu())}
         onKeyDown={onTriggerKeyDown}
         className={cn(
-          "inline-flex h-11 items-center justify-between gap-2 rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] px-4 text-sm text-[var(--color-foreground)] transition-colors",
+          "inline-flex h-11 min-h-[44px] w-full items-center justify-between gap-2 rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] px-4 text-sm text-[var(--color-foreground)] transition-colors cursor-pointer",
           "hover:bg-[var(--color-surface-muted)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-ring)]",
         )}
       >
@@ -141,7 +141,7 @@ export function Dropdown({ label, value, options, onChange, placeholder, classNa
           role="listbox"
           aria-label={label}
           onKeyDown={onListKeyDown}
-          className="absolute z-40 mt-1 max-h-72 w-full min-w-[10rem] overflow-auto rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] py-1 shadow-[var(--shadow-card-hover)]"
+          className="absolute start-0 z-40 mt-1 max-h-72 w-full min-w-[10rem] overflow-auto rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] py-1 shadow-[var(--shadow-card-hover)]"
         >
           {options.map((option, index) => {
             const selected = option.value === value;

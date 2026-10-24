@@ -28,7 +28,7 @@ export function ScrollTopButton({ label }: { label: string }) {
       onClick={scrollToTop}
       aria-label={label}
       title={label}
-      className={`fixed bottom-6 start-6 z-30 inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-primary)] shadow-[var(--shadow-card-hover)] transition-all duration-200 hover:bg-[var(--color-surface-muted)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-ring)] ${
+      className={`fixed bottom-[max(1.5rem,env(safe-area-inset-bottom,1.5rem))] start-4 sm:start-6 z-30 inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-primary)] shadow-[var(--shadow-card-hover)] transition-all duration-200 hover:bg-[var(--color-surface-muted)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-ring)] ${
         visible ? "opacity-100 translate-y-0 visible" : "pointer-events-none opacity-0 translate-y-2 invisible"
       }`}
     >

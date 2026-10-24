@@ -103,7 +103,7 @@ export function CartDrawer({ locale, labels }: CartDrawerProps) {
                         type="button"
                         aria-label="-"
                         onClick={() => setQty(item.productId, item.quantity - 1)}
-                        className="flex h-7 w-7 items-center justify-center rounded border border-[var(--color-border)] text-[var(--color-foreground)] transition-colors hover:bg-[var(--color-surface-muted)] focus-ring cursor-pointer"
+                      className="flex h-11 w-11 items-center justify-center rounded border border-[var(--color-border)] text-[var(--color-foreground)] transition-colors hover:bg-[var(--color-surface-muted)] focus-ring cursor-pointer"
                       >
                         <Minus className="h-3 w-3" aria-hidden />
                       </button>
@@ -112,7 +112,7 @@ export function CartDrawer({ locale, labels }: CartDrawerProps) {
                         type="button"
                         aria-label="+"
                         onClick={() => setQty(item.productId, item.quantity + 1)}
-                        className="flex h-7 w-7 items-center justify-center rounded border border-[var(--color-border)] text-[var(--color-foreground)] transition-colors hover:bg-[var(--color-surface-muted)] focus-ring cursor-pointer"
+                        className="flex h-11 w-11 items-center justify-center rounded border border-[var(--color-border)] text-[var(--color-foreground)] transition-colors hover:bg-[var(--color-surface-muted)] focus-ring cursor-pointer"
                       >
                         <Plus className="h-3 w-3" aria-hidden />
                       </button>
@@ -120,7 +120,7 @@ export function CartDrawer({ locale, labels }: CartDrawerProps) {
                         type="button"
                         aria-label={isAr ? "حذف" : "Remove"}
                         onClick={() => remove(item.productId)}
-                        className="ms-auto flex h-7 w-7 items-center justify-center rounded text-[var(--color-danger)] transition-colors hover:bg-[var(--color-danger)]/10 focus-ring cursor-pointer"
+                        className="ms-auto flex h-11 w-11 items-center justify-center rounded text-[var(--color-danger)] transition-colors hover:bg-[var(--color-danger)]/10 focus-ring cursor-pointer"
                       >
                         <Trash2 className="h-4 w-4" aria-hidden />
                       </button>

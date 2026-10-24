@@ -18,9 +18,9 @@ interface SiteHeaderProps {
 export function SiteHeader({ locale, items, labels }: SiteHeaderProps) {
   const isAr = locale === "ar";
   return (
-    <header className="sticky top-0 z-30 border-b border-[var(--color-border)] bg-[var(--color-surface)]/90 backdrop-blur">
-      <div className="mx-auto flex h-16 w-full max-w-[1200px] items-center justify-between gap-4 px-4">
-        <Link href={`/${locale}`} className="flex items-center gap-3" aria-label={siteConfig.name[locale]}>
+    <header className="sticky top-0 z-30 border-b border-[var(--color-border)] bg-[var(--color-surface)]/90 backdrop-blur supports-[backdrop-filter]:bg-[var(--color-surface)]/80">
+      <div className="container-app flex h-16 items-center justify-between gap-2 sm:gap-4">
+        <Link href={`/${locale}`} className="flex shrink-0 items-center gap-3 transition-opacity hover:opacity-90" aria-label={siteConfig.name[locale]}>
           <Image src="/images/brand/logo.png" alt={siteConfig.name[locale]} width={40} height={40} className="h-10 w-auto" priority />
         </Link>
 
@@ -29,23 +29,23 @@ export function SiteHeader({ locale, items, labels }: SiteHeaderProps) {
             <Link
               key={item.id}
               href={`/${locale}${item.href === "/" ? "" : item.href}`}
-              className="rounded-lg px-3 py-2 text-sm font-bold text-[var(--color-foreground)] transition-colors hover:bg-[var(--color-background)]"
+              className="rounded-lg px-3 py-2 text-sm font-bold text-[var(--color-foreground)] transition-colors hover:bg-[var(--color-surface-muted)] hover:text-[var(--color-primary)] focus-ring"
             >
               {pick(item.label, locale)}
             </Link>
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2">
           <form action={`/${locale}/search`} className="hidden sm:block" role="search">
-            <label className="relative">
-              <Search className="absolute top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--color-muted)] ltr:left-3 rtl:right-3" aria-hidden />
+            <label className="relative block">
+              <Search className="absolute top-1/2 start-3 h-4 w-4 -translate-y-1/2 text-[var(--color-muted)]" aria-hidden />
               <span className="sr-only">{labels.searchPlaceholder}</span>
               <input
                 name="q"
                 type="search"
                 placeholder={labels.searchPlaceholder}
-                className="h-10 w-44 rounded-full border border-[var(--color-border)] bg-[var(--color-background)] px-10 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)]/40 md:w-56"
+                className="h-10 w-36 rounded-full border border-[var(--color-border)] bg-[var(--color-background)] ps-9 pe-4 text-sm transition-all focus:w-48 focus:border-[var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)]/30 md:w-52 md:focus:w-60"
               />
             </label>
           </form>

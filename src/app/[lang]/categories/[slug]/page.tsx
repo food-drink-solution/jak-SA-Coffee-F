@@ -42,7 +42,7 @@ export default async function CategoryDetailPage({
   const slice = paginate(sorted, parsePageParam(page));
 
   return (
-    <section className="mx-auto w-full max-w-[1200px] px-4 py-10">
+    <section className="container-app py-8 sm:py-12">
       <h1 className="mb-8 text-3xl font-extrabold">{pick(category.name, lang)}</h1>
       <ProductListing
         products={slice.items}
