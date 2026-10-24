@@ -1,0 +1,63 @@
+name: PR Guardrails
+
+# Enforces the branching path documented in docs/branching-strategy.md:
+# PRs must follow the branch-naming convention and target the correct base.
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, edited]
+  pull_request_target:
+    types: [opened, reopened, synchronize, edited]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  path-and-title:
+    name: Path & Title Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Validate head-branch naming, PR base, and PR title
+        env:
+          HEAD_BRANCH: ${{ github.head_ref }}
+          BASE_BRANCH: ${{ github.base_ref }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          IS_PR_TARGET: ${{ github.event_name == 'pull_request_target' }}
+        run: |
+          set -euo pipefail
+          fail() {
+            echo "::error title=PR Guardrails::$1"
+            exit 1
+          }
+
+          # 1) Branch naming convention
+          #    feature work / fixes / chores -> target develop.
+          #    release/* and hotfix/* and develop -> target main (see path map).
+          case "$HEAD_BRANCH" in
+            feat/*|feature/*|fix/*|bug/*|bugfix/*|chore/*|refactor/*|perf/*|docs/*|test/*|ci/*|build/*|style/*|update/*)
+              allowed_bases="develop" ;;
+            release/*)
+              allowed_bases="main" ;;
+            hotfix/*)
+              allowed_bases="main develop" ;;
+            dependabot/*)
+              allowed_bases="develop main" ;;
+            develop)
+              allowed_bases="main" ;;
+            *)
+              fail "Branch '$HEAD_BRANCH' does not follow the naming convention: feat/*, fix/*, bug/*, chore/*, refactor/*, perf/*, docs/*, test/*, ci/*, build/*, style/*, update/*, release/*, hotfix/* (see docs/branching-strategy.md)." ;;
+          esac
+
+          # 2) Base-branch path map
+          if ! echo "$allowed_bases" | tr ' ' '\n' | grep -qx -- "$BASE_BRANCH"; then
+            fail "PR '$HEAD_BRANCH' -> '$BASE_BRANCH' is not an allowed path. Expected base(s): $allowed_bases."
+          fi
+
+          # 3) Conventional PR title (same vocabulary as branch prefixes)
+          if [ "$IS_PR_TARGET" = "true" ]; then exit 0; fi
+          if ! echo "$PR_TITLE" | grep -Eq '^(feat|fix|bug|bugfix|chore|refactor|perf|docs|test|ci|build|style|update|release|hotfix)(\([a-zA-Z0-9-]+\))?(!)?: '; then
+            fail "PR title must be conventional: '<type>(<scope>)?: <summary>' — e.g. 'feat(cart): wire checkout button'."
+          fi
+
+          echo "OK: '$HEAD_BRANCH' -> '$BASE_BRANCH' | title: '$PR_TITLE'"

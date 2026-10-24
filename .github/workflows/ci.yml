@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+      - develop
+      - 'release/**'
     paths:
       - 'jak-sa/**'
       - 'scripts/**'
@@ -12,11 +14,18 @@ on:
   pull_request:
     branches:
       - main
+      - develop
+      - 'release/**'
     paths:
       - 'jak-sa/**'
       - 'scripts/**'
       - 'package.json'
       - '.github/workflows/ci.yml'
+
+concurrency:
+  # Cancel superseded runs on the same ref (fresh pushes to open PRs/branches)
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   validate:
