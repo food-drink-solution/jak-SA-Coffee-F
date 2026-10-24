@@ -564,6 +564,35 @@ export function ContactForm({
 
 ---
 
+## Section & Interactive Layout Components
+
+### HeroSection (`src/components/sections/hero-section.tsx`)
+
+The main banner slider utilizes a balanced 2-column layout on desktop (`lg:flex`) to eliminate empty side space:
+
+- **Start Column**: Headline, B2B supplier badge, primary action ("Order Now"), and secondary action ("Contact Us").
+- **End Column**: Frosted-glass highlights card (`w-80 border-white/20 bg-black/25 backdrop-blur-md`) highlighting Kingdom delivery, 24/7 supply, and 160+ products.
+- **Fluid Heights**: `h-[260px] xs:h-[320px] sm:h-[420px] md:h-[520px]`.
+- **Directional Gradient**: `bg-gradient-to-r ... rtl:bg-gradient-to-l` adapts automatically to the locale direction.
+
+### ProductToolbar (`src/components/products/product-toolbar.tsx`)
+
+A unified search and filtering toolbar providing URL-driven state updates and responsive control distribution:
+
+- **Search Form**: Fluid search input with integrated submit button.
+- **Filters & View Group**: Category dropdown, Sort dropdown, and Grid/List toggle buttons grouped cohesively without rogue directional margins (`ms-auto`) to guarantee zero awkward whitespace.
+- **RTL Integrity**: Automatically preserves start/end alignment without floating elements.
+
+### ProductGrid (`src/components/products/product-grid.tsx`)
+
+Fluid 4-tier responsive grid:
+- Mobile (<640px): 2 columns (`grid-cols-2 gap-3`)
+- Small tablet (640px+): 3 columns (`sm:grid-cols-3 sm:gap-4`)
+- Tablet/laptop (1024px+): 4 columns (`lg:grid-cols-4 lg:gap-6`)
+- Categories grid expands smoothly up to 6 columns (`lg:grid-cols-6`)
+
+---
+
 ## Component Best Practices
 
 ### 1. **Type-First Design**

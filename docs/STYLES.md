@@ -141,6 +141,89 @@ For quick styling without Tailwind modifiers:
 
 ---
 
+## Centralized Layout & Component Utilities
+
+Common layout and interaction classes are centralized in `src/app/globals.css` to eliminate duplicated arbitrary values and maintain uniform rhythm across the app:
+
+```css
+/* Standard maximum width with responsive fluid padding */
+.container-app {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media (min-width: 640px) {
+  .container-app {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .container-app {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Base card container with consistent border and surface background */
+.card-base {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+}
+
+/* Interactive card with elevation on hover */
+.card-interactive {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-card);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-interactive:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+/* Standardized accessible focus indicator using brand ring */
+.focus-ring {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+}
+
+/* Safe area inset padding for bottom-anchored floating widgets */
+.safe-bottom {
+  padding-bottom: max(1.5rem, env(safe-area-inset-bottom, 1.5rem));
+}
+```
+
+---
+
+## Responsive Breakpoint Standards
+
+To ensure smooth visual progression from small mobile screens (down to 320px) up to large displays without awkward wrapping or empty voids:
+
+### Grid Scales
+- **Product & Category Grids**: Use fluid 4-tier scaling instead of jumping abruptly:
+  `grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-6 lg:gap-5`
+- **Hero Heights**: Scaled progressively:
+  `h-[260px] xs:h-[320px] sm:h-[420px] md:h-[520px]`
+- **Hero Composition**: 2-column balanced layout on desktop (`lg:flex`) with a frosted-glass highlight card to eliminate empty side voids.
+- **Controls & Toolbars**: Actions and view toggles are kept cohesive without rogue `ms-auto` or `me-auto` that isolate controls on one side of the screen.
+
+### Viewport Overflow & Gutter Control
+- Global `html, body { overflow-x: hidden; max-width: 100%; }` prevents horizontal scrollbars and side whitespace drift.
+- Universal `* { scrollbar-gutter: stable; }` is omitted because it reserves unwanted empty gutters on layout containers.
+
+---
+
 ## Typography
 
 ### Font Family
