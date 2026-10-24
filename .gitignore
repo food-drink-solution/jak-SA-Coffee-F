@@ -49,3 +49,6 @@ yarn-error.log*
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
+
+# Contact submissions collected by POST /api/contact at runtime
+jak-sa/data/
