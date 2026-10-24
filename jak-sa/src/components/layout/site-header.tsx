@@ -50,12 +50,13 @@ export function SiteHeader({ locale, items, labels }: SiteHeaderProps) {
             aria-label={siteConfig.name[locale]}
           >
             <Image
-              src="/images/brand/logo.png"
+              src="/images/brand/logo.webp"
               alt={siteConfig.name[locale]}
-              width={80}
-              height={40}
+              width={274}
+              height={118}
+              sizes="80px"
+              quality={90}
               className="h-8 w-auto object-contain"
-              priority
             />
           </Link>
 

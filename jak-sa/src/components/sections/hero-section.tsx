@@ -18,11 +18,20 @@ function subscribeReducedMotion(onChange: () => void) {
 export function HeroSection({ slides, cta, locale }: { slides: HeroSlide[]; cta: string; locale: "ar" | "en" }) {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
+  // Only the first slide image ships in the initial HTML. The rest mount
+  // after a short delay so they never compete with the LCP image, but are
+  // ready before the 5s auto-advance.
+  const [loadAllSlides, setLoadAllSlides] = useState(false);
   const reduceMotion = useSyncExternalStore(
     subscribeReducedMotion,
     () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
     () => false,
   );
+
+  useEffect(() => {
+    const id = window.setTimeout(() => setLoadAllSlides(true), 3000);
+    return () => window.clearTimeout(id);
+  }, []);
 
   useEffect(() => {
     if (slides.length <= 1 || paused || reduceMotion) return;
@@ -57,7 +66,19 @@ export function HeroSection({ slides, cta, locale }: { slides: HeroSlide[]; cta:
             inert={i !== active}
             aria-hidden={i !== active}
           >
-            <Image src={slide.image} alt={slide.title} fill priority={i === 0} sizes="100vw" className="object-cover" />
+            {(loadAllSlides || i === 0 || i === active) && (
+              <Image
+                src={slide.image}
+                alt={slide.title}
+                fill
+                preload={i === 0}
+                loading={i === 0 ? undefined : "lazy"}
+                fetchPriority={i === 0 ? undefined : "low"}
+                quality={75}
+                sizes="100vw"
+                className="object-cover"
+              />
+            )}
             <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-jak-primary)]/80 via-[var(--color-jak-primary)]/50 to-[var(--color-jak-primary)]/25 rtl:bg-gradient-to-l" />
             <div className="container-app relative flex w-full items-center justify-between gap-8 py-16 sm:py-20 lg:py-24">
               <div className="max-w-2xl text-[var(--color-header-foreground)]">

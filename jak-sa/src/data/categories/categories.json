@@ -6,7 +6,7 @@
       "ar": "الكروسان",
       "en": "CROSSONITE"
     },
-    "image": "/images/categories/category-1701343830-656872562a4cf.jpg"
+    "image": "/images/categories/category-1701343830-656872562a4cf.webp"
   },
   {
     "id": "31",
@@ -15,7 +15,7 @@
       "ar": "الساندويش",
       "en": "sandwiches"
     },
-    "image": "/images/categories/category-1679389688-641973f8b6eb4.jpg"
+    "image": "/images/categories/category-1679389688-641973f8b6eb4.webp"
   },
   {
     "id": "46",
@@ -33,7 +33,7 @@
       "ar": "السلطات",
       "en": "SALAD"
     },
-    "image": "/images/categories/category-1680004740-6422d684a0b7d.jpeg"
+    "image": "/images/categories/category-1680004740-6422d684a0b7d.webp"
   },
   {
     "id": "37",
@@ -42,7 +42,7 @@
       "ar": "الحلويات",
       "en": "DESSERTS"
     },
-    "image": "/images/categories/category-1680177081-642577b99a39c.jpeg"
+    "image": "/images/categories/category-1680177081-642577b99a39c.webp"
   },
   {
     "id": "43",
@@ -51,6 +51,6 @@
       "ar": "مشروبات",
       "en": "BEVERAGE"
     },
-    "image": "/images/categories/category-1701344272-656874100eb48.jpg"
+    "image": "/images/categories/category-1701344272-656874100eb48.webp"
   }
 ]

@@ -64,8 +64,9 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
               src={product.images[0].src}
               alt={pick(product.images[0].alt, lang)}
               fill
-              priority
-              sizes="(max-width: 768px) 100vw, 50vw"
+              preload
+              quality={75}
+              sizes="(max-width: 768px) 100vw, 560px"
               className="object-contain p-10"
             />
           )}

@@ -79,10 +79,13 @@ export function MobileNav({ locale, items, openLabel, closeLabel, langLabel, the
             className="rounded-lg bg-[var(--color-header-foreground)] px-2 py-1 focus-ring-inverse"
           >
             <Image
-              src="/images/brand/logo.png"
+              src="/images/brand/logo.webp"
               alt={siteConfig.name[locale]}
-              width={70}
-              height={35}
+              width={274}
+              height={118}
+              sizes="80px"
+              quality={90}
+              loading="eager"
               className="h-8 w-auto object-contain"
             />
           </Link>
