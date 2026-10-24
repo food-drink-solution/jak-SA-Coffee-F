@@ -262,6 +262,25 @@ body {
   }
 }
 
+/* Hero viewport sizing — keep in sync with the sticky header height (h-14). */
+:root {
+  --header-h: 3.5rem;
+}
+
+.hero-canvas {
+  /* Fill the first viewport minus the in-flow sticky header. */
+  min-height: calc(100vh - var(--header-h) - env(safe-area-inset-top, 0rem));
+  /* Small-viewport height: excludes mobile browser UI collapse/overlays. */
+  min-height: calc(100svh - var(--header-h) - env(safe-area-inset-top, 0rem));
+}
+
+@media (min-width: 768px) {
+  /* Keep short landscape windows (laptops/tablet landscape) usable. */
+  .hero-canvas {
+    min-height: max(560px, calc(100svh - var(--header-h) - env(safe-area-inset-top, 0rem)));
+  }
+}
+
 .card-base {
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
