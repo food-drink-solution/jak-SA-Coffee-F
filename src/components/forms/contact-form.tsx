@@ -59,17 +59,17 @@ export function ContactForm({ labels }: { labels: ContactLabels }) {
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-4">
       <div>
         <label htmlFor="contact-name" className="mb-1 block text-sm font-bold">{labels.name}</label>
-        <Input id="contact-name" {...register("name")} aria-invalid={Boolean(errors.name)} aria-describedby="err-name" />
+        <Input id="contact-name" {...register("name")} aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "err-name" : undefined} />
         {errors.name && <p id="err-name" role="alert" className="mt-1 text-xs font-bold text-[var(--color-danger)]">{errors.name.message}</p>}
       </div>
       <div>
         <label htmlFor="contact-email" className="mb-1 block text-sm font-bold">{labels.email}</label>
-        <Input id="contact-email" type="email" dir="ltr" {...register("email")} aria-invalid={Boolean(errors.email)} aria-describedby="err-email" />
+        <Input id="contact-email" type="email" dir="ltr" {...register("email")} aria-invalid={Boolean(errors.email)} aria-describedby={errors.email ? "err-email" : undefined} />
         {errors.email && <p id="err-email" role="alert" className="mt-1 text-xs font-bold text-[var(--color-danger)]">{errors.email.message}</p>}
       </div>
       <div>
         <label htmlFor="contact-phone" className="mb-1 block text-sm font-bold">{labels.phone}</label>
-        <Input id="contact-phone" dir="ltr" {...register("phone")} aria-invalid={Boolean(errors.phone)} aria-describedby="err-phone" />
+        <Input id="contact-phone" dir="ltr" {...register("phone")} aria-invalid={Boolean(errors.phone)} aria-describedby={errors.phone ? "err-phone" : undefined} />
         {errors.phone && <p id="err-phone" role="alert" className="mt-1 text-xs font-bold text-[var(--color-danger)]">{errors.phone.message}</p>}
       </div>
       <div>
@@ -78,9 +78,8 @@ export function ContactForm({ labels }: { labels: ContactLabels }) {
           id="contact-message"
           rows={5}
           {...register("message")}
-          aria-invalid={Boolean(errors.message)}
-          aria-describedby="err-message"
-          className="w-full rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] p-4 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)]/40"
+          aria-describedby={errors.message ? "err-message" : undefined}
+          className="w-full resize-y rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-2.5 text-sm text-[var(--color-foreground)] placeholder:text-[var(--color-muted)] transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)]/40 disabled:cursor-not-allowed disabled:opacity-50 aria-[invalid=true]:border-[var(--color-danger)]"
         />
         {errors.message && <p id="err-message" role="alert" className="mt-1 text-xs font-bold text-[var(--color-danger)]">{errors.message.message}</p>}
       </div>

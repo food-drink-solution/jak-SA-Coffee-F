@@ -19,7 +19,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ lang: 
   const company = getCompany();
 
   return (
-    <section className="mx-auto w-full max-w-[1200px] px-4 py-12">
+    <section className="container-app py-8 sm:py-12">
       <h1 className="mb-3 text-3xl font-extrabold">{t(dict, "pages.profileTitle")}</h1>
       <p className="mb-10 max-w-2xl leading-7 text-[var(--color-muted)]">{t(dict, "pages.profileDesc")}</p>
 

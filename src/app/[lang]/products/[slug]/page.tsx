@@ -48,7 +48,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
   };
 
   return (
-    <article className="mx-auto w-full max-w-[1200px] px-4 py-10">
+    <article className="container-app py-8 sm:py-12">
       <nav aria-label="breadcrumb" className="mb-6 text-sm text-[var(--color-muted)]">
         <Link href={`/${lang}`} className="hover:underline">{t(dict, "nav.home")}</Link>
         <span aria-hidden> / </span>

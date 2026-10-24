@@ -20,12 +20,12 @@ export default async function CategoriesPage({ params }: { params: Promise<{ lan
   const categories = await categoryRepository.getCategories();
 
   return (
-    <section className="mx-auto w-full max-w-[1200px] px-4 py-10">
+    <section className="container-app py-8 sm:py-12">
       <SectionHeading title={t(dict, "categories.title")} />
       {categories.length === 0 ? (
         <p className="text-[var(--color-muted)]">{t(dict, "categories.empty")}</p>
       ) : (
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-6">
           {categories.map((c) => (
             <CategoryCard key={c.id} category={c} locale={lang} cta={t(dict, "categories.products")} />
           ))}

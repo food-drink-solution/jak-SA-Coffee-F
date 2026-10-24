@@ -20,7 +20,7 @@ export function HeroSection({ slides, cta, locale }: { slides: HeroSlide[]; cta:
 
   return (
     <section id="mainslider" className="relative overflow-hidden">
-      <div className="relative h-[420px] w-full sm:h-[510px]">
+      <div className="relative h-[380px] w-full sm:h-[480px] md:h-[520px]">
         {slides.map((slide, i) => (
           <div
             key={slide.image}
@@ -46,7 +46,7 @@ export function HeroSection({ slides, cta, locale }: { slides: HeroSlide[]; cta:
         ))}
       </div>
       {slides.length > 1 && (
-        <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 items-center gap-1.5 p-1 rounded-full bg-black/20 backdrop-blur-xs">
+        <div className="absolute bottom-4 inset-x-0 z-10 mx-auto flex w-fit items-center gap-1.5 rounded-full bg-black/20 p-1 backdrop-blur-xs">
           {slides.map((_, i) => (
             <button
               key={i}

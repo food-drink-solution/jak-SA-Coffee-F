@@ -86,45 +86,53 @@ export function ProductToolbar({
   ];
 
   return (
-    <div className="mb-8 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+    <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
       {showSearch ? (
-        <form onSubmit={onSubmit} className="flex w-full flex-1 items-center gap-3 lg:max-w-xl" role="search">
-          <label className="flex-1">
+        <form onSubmit={onSubmit} className="flex w-full flex-1 items-center gap-2 sm:gap-3 lg:max-w-xl" role="search">
+          <label className="relative min-w-0 flex-1">
             <span className="sr-only">{labels.searchPlaceholder}</span>
             <input
               name="q"
               value={qInput}
               onChange={(e) => setQInput(e.target.value)}
               placeholder={labels.searchPlaceholder}
-              className="h-11 w-full rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] px-4 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)]/40"
+              className="h-11 min-h-[44px] w-full rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] px-4 text-sm text-[var(--color-foreground)] placeholder:text-[var(--color-muted-foreground)] transition-colors focus:border-[var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)]/30"
             />
           </label>
           <button
             type="submit"
-            className="inline-flex h-11 items-center justify-center gap-2 rounded-[var(--radius-md)] bg-[var(--color-primary)] px-6 text-sm font-extrabold text-white transition-colors hover:bg-[var(--color-primary-dark)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-ring)]"
+            className="inline-flex h-11 min-h-[44px] shrink-0 items-center justify-center gap-2 rounded-[var(--radius-md)] bg-[var(--color-primary)] px-4 sm:px-6 text-sm font-extrabold text-white transition-all hover:bg-[var(--color-primary-dark)] active:scale-[0.98] focus-ring cursor-pointer"
           >
             <Search className="h-4 w-4" aria-hidden />
-            {labels.searchSubmit}
+            <span className="hidden min-[380px]:inline">{labels.searchSubmit}</span>
           </button>
         </form>
       ) : null}
 
-      <div className="flex flex-wrap items-center gap-3">
+      <div className="flex flex-wrap items-center gap-2 sm:gap-3">
         {showCategoryFilter ? (
-          <Dropdown
-            label={labels.categoryLabel}
-            value={category ?? ""}
-            options={categoryOptions}
-            onChange={(value) => navigate({ category: value })}
-          />
+          <div className="flex-1 min-w-[130px] sm:flex-none sm:w-auto">
+            <Dropdown
+              label={labels.categoryLabel}
+              value={category ?? ""}
+              options={categoryOptions}
+              onChange={(value) => navigate({ category: value })}
+            />
+          </div>
         ) : null}
-        <Dropdown
-          label={labels.sortLabel}
-          value={sort}
-          options={sortOptions}
-          onChange={(value) => navigate({ sort: value as SortKey })}
-        />
-        <div role="group" aria-label={labels.viewLabel} className="flex overflow-hidden rounded-[var(--radius-md)] border border-[var(--color-border)]">
+        <div className="flex-1 min-w-[130px] sm:flex-none sm:w-auto">
+          <Dropdown
+            label={labels.sortLabel}
+            value={sort}
+            options={sortOptions}
+            onChange={(value) => navigate({ sort: value as SortKey })}
+          />
+        </div>
+        <div
+          role="group"
+          aria-label={labels.viewLabel}
+          className="ms-auto flex shrink-0 overflow-hidden rounded-[var(--radius-md)] border border-[var(--color-border)] sm:ms-0"
+        >
           <ViewButton
             active={view === "grid"}
             label={labels.viewGrid}

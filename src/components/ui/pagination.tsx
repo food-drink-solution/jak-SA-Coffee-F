@@ -36,7 +36,7 @@ export function Pagination({ page, totalPages, locale, hrefForPage, labels }: Pa
   if (totalPages <= 1) return null;
   const numbers = pageNumbers(page, totalPages);
   return (
-    <nav aria-label={labels.navLabel} className="mt-10 flex items-center justify-center gap-1">
+    <nav aria-label={labels.navLabel} className="mt-10 flex flex-wrap items-center justify-center gap-1 sm:gap-1.5">
       <PageNavButton
         href={hrefForPage(page - 1)}
         disabled={page <= 1}
@@ -46,7 +46,7 @@ export function Pagination({ page, totalPages, locale, hrefForPage, labels }: Pa
       />
       {numbers.map((n, index) =>
         n === "ellipsis" ? (
-          <span key={`ellipsis-${index}`} aria-hidden className="px-2 text-[var(--color-muted)]">
+          <span key={`ellipsis-${index}`} aria-hidden className="px-1.5 sm:px-2 text-[var(--color-muted)]">
             …
           </span>
         ) : (
@@ -56,10 +56,10 @@ export function Pagination({ page, totalPages, locale, hrefForPage, labels }: Pa
             aria-label={`${labels.pageLabel} ${n}`}
             aria-current={n === page ? "page" : undefined}
             className={cn(
-              "inline-flex h-10 min-w-10 items-center justify-center rounded-[var(--radius-md)] border px-3 text-sm font-bold transition-colors",
+              "inline-flex h-9 min-w-9 sm:h-10 sm:min-w-10 items-center justify-center rounded-[var(--radius-md)] border px-2 sm:px-3 text-xs sm:text-sm font-bold transition-colors",
               "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-ring)]",
               n === page
-                ? "border-transparent bg-[var(--color-primary)] text-white"
+                ? "border-transparent bg-[var(--color-primary)] text-white shadow-sm"
                 : "border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-foreground)] hover:bg-[var(--color-surface-muted)]",
             )}
           >
@@ -91,7 +91,7 @@ function PageNavButton({
   direction: "previous" | "next";
 }) {
   const base = cn(
-    "inline-flex h-10 min-w-10 items-center justify-center rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] px-3 text-[var(--color-foreground)] transition-colors",
+    "inline-flex h-9 min-w-9 sm:h-10 sm:min-w-10 items-center justify-center rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] px-2 sm:px-3 text-[var(--color-foreground)] transition-colors",
     "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-ring)]",
     disabled ? "pointer-events-none opacity-40" : "hover:bg-[var(--color-surface-muted)]",
   );

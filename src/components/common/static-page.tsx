@@ -4,7 +4,7 @@ import type { PageContent } from "@/types/navigation";
 export function StaticPage({ page, locale, heading }: { page: PageContent | null; locale: "ar" | "en"; heading: string }) {
   if (!page) {
     return (
-      <section className="mx-auto w-full max-w-[1200px] px-4 py-16">
+      <section className="container-app py-12 sm:py-16">
         <p className="text-[var(--color-muted)]">No content available.</p>
       </section>
     );
@@ -13,7 +13,7 @@ export function StaticPage({ page, locale, heading }: { page: PageContent | null
   const image = page.images?.[locale] ?? page.images?.ar;
 
   return (
-    <article className="mx-auto w-full max-w-3xl px-4 py-12">
+    <article className="container-app max-w-3xl py-8 sm:py-12">
       {heading ? <h1 className="mb-8 text-3xl font-extrabold">{heading}</h1> : null}
       {image && (
         <figure className="mb-8 overflow-hidden rounded-[var(--radius-lg)] border border-[var(--color-border)]">

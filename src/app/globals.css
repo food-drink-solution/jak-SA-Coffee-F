@@ -45,6 +45,7 @@
   --color-surface-muted: #f8f9fa;
   --color-foreground: #343a40;
   --color-foreground-muted: #7e7e7e;
+  --color-muted-foreground: #7e7e7e;
   --color-muted: #9b9b9b;
   --color-border: #eeeeee;
   --color-border-strong: #dee2e6;
@@ -172,3 +173,60 @@ body {
 
 .jak-text-violet { color: var(--color-jak-violet); }
 .jak-bg-violet { background-color: var(--color-jak-violet); }
+
+/* Centralized Layout and Component Utility Classes */
+.container-app {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-app {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-app {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.card-base {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+}
+
+.card-interactive {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-card);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-interactive:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+.focus-ring {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+}
+
+.safe-bottom {
+  padding-bottom: max(1.5rem, env(safe-area-inset-bottom, 1.5rem));
+}
