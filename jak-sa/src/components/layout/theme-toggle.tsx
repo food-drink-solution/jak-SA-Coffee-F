@@ -1,26 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 
 export function ThemeToggle() {
   const [theme, setTheme] = useState<"light" | "dark" | null>(null);
   const [mounted, setMounted] = useState(false);
 
-  // Hydrate from localStorage and system preference on mount
-  useEffect(() => {
-    setMounted(true);
-    
-    // Get stored preference or system preference
-    const stored = localStorage.getItem("theme") as "light" | "dark" | null;
-    const prefers = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-    const initial = stored || prefers;
-    
-    setTheme(initial);
-    applyTheme(initial);
-  }, []);
-
-  const applyTheme = (t: "light" | "dark") => {
+  // Memoized theme application function
+  const applyTheme = useCallback((t: "light" | "dark") => {
     try {
       const html = document.documentElement;
       
@@ -42,15 +30,28 @@ export function ThemeToggle() {
     } catch (error) {
       console.error("Failed to apply theme:", error);
     }
-  };
+  }, []);
 
-  const toggleTheme = () => {
-    if (!theme || theme === null) return;
+  // Hydrate from localStorage and system preference on mount
+  useEffect(() => {
+    setMounted(true);
     
-    const newTheme = theme === "dark" ? "light" : "dark";
-    setTheme(newTheme);
-    applyTheme(newTheme);
-  };
+    // Get stored preference or system preference
+    const stored = localStorage.getItem("theme") as "light" | "dark" | null;
+    const prefers = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    const initial = stored || prefers;
+    
+    setTheme(initial);
+    applyTheme(initial);
+  }, [applyTheme]);
+
+  const toggleTheme = useCallback(() => {
+    setTheme((prevTheme) => {
+      const newTheme = prevTheme === "dark" ? "light" : "dark";
+      applyTheme(newTheme);
+      return newTheme;
+    });
+  }, [applyTheme]);
 
   // Don't render until hydrated (prevents hydration mismatch)
   if (!mounted || theme === null) {
