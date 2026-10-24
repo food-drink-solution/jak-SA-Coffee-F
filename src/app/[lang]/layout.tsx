@@ -32,7 +32,9 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     title: { default: t(getDictionary(locale), "meta.siteTitle"), template: `%s | ${siteConfig.name[locale]}` },
     description: t(getDictionary(locale), "meta.siteDescription"),
     icons: {
-      icon: "/images/brand/favicon.png",
+      icon: [
+        { url: "/images/brand/favicon.png", type: "image/png" },
+      ],
       shortcut: "/images/brand/favicon.png",
       apple: "/images/brand/favicon.png",
     },
