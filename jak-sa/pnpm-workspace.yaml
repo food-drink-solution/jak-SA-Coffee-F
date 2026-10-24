@@ -1,6 +1,3 @@
-packages:
-  - 'jak-sa'
-
 allowBuilds:
   unrs-resolver: true
 
