@@ -127,7 +127,7 @@ export function Dropdown({ label, value, options, onChange, placeholder, classNa
         onClick={() => (open ? closeMenu() : openMenu())}
         onKeyDown={onTriggerKeyDown}
         className={cn(
-          "inline-flex h-11 min-h-[44px] w-full items-center justify-between gap-2 rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] px-4 text-sm text-[var(--color-foreground)] transition-colors cursor-pointer",
+          "inline-flex h-11 min-h-[44px] w-full items-center justify-between gap-2 rounded-[var(--radius-md)] border border-[var(--color-border-control)] bg-[var(--color-surface)] px-4 text-sm text-[var(--color-foreground)] transition-colors cursor-pointer",
           "hover:bg-[var(--color-surface-muted)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-ring)]",
         )}
       >
@@ -157,7 +157,7 @@ export function Dropdown({ label, value, options, onChange, placeholder, classNa
                   className={cn(
                     "flex w-full items-center justify-between gap-2 px-4 py-2 text-start text-sm transition-colors",
                     "focus-visible:outline-none focus-visible:bg-[var(--color-surface-muted)]",
-                    selected ? "font-bold text-[var(--color-primary)]" : "text-[var(--color-foreground)]",
+                    selected ? "font-bold text-[var(--color-primary-text)]" : "text-[var(--color-foreground)]",
                     index === activeIndex && "bg-[var(--color-surface-muted)]",
                   )}
                 >

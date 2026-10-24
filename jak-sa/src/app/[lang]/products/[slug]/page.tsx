@@ -72,7 +72,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
         </div>
 
         <div>
-          <p className="text-sm font-extrabold text-[var(--color-primary)]">{pick(product.categoryName, lang)}</p>
+          <p className="text-sm font-extrabold text-[var(--color-primary-text)]">{pick(product.categoryName, lang)}</p>
           <h1 className="mt-2 text-2xl font-extrabold leading-snug sm:text-3xl">{pick(product.name, lang)}</h1>
           {product.price && (
             <p className="mt-4 text-2xl font-extrabold">
@@ -85,7 +85,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
           {product.tags.length > 0 && (
             <div className="mt-4 flex flex-wrap gap-2">
               {product.tags.map((tag) => (
-                <span key={tag} className="rounded-full bg-[var(--color-primary)]/10 px-3 py-1 text-xs font-bold text-[var(--color-primary)]">
+                <span key={tag} className="rounded-full bg-[var(--color-primary-soft)] px-3 py-1 text-xs font-bold text-[var(--color-primary-text)]">
                   {tag}
                 </span>
               ))}

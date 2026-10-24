@@ -9,6 +9,7 @@ import type { NavItem } from "@/types/navigation";
 import { pick } from "@/types/localization";
 import { siteConfig } from "@/config/site";
 import { LanguageSwitcher } from "./language-switcher";
+import { ThemeToggle, type ThemeToggleLabels } from "./theme-toggle";
 
 interface MobileNavProps {
   locale: Locale;
@@ -16,9 +17,10 @@ interface MobileNavProps {
   openLabel: string;
   closeLabel: string;
   langLabel: string;
+  themeLabels: ThemeToggleLabels;
 }
 
-export function MobileNav({ locale, items, openLabel, closeLabel, langLabel }: MobileNavProps) {
+export function MobileNav({ locale, items, openLabel, closeLabel, langLabel, themeLabels }: MobileNavProps) {
   const [open, setOpen] = useState(false);
 
   // Lock body scroll when mobile menu is open
@@ -41,7 +43,7 @@ export function MobileNav({ locale, items, openLabel, closeLabel, langLabel }: M
       {/* Hamburger toggle — only visible on mobile */}
       <button
         type="button"
-        className="flex h-10 w-10 items-center justify-center rounded-md text-[var(--color-header-foreground)] transition-colors hover:bg-[var(--color-header-foreground)]/15 focus-ring md:hidden"
+        className="flex h-11 w-11 items-center justify-center rounded-md text-[var(--color-header-foreground)] transition-colors hover:bg-[var(--color-header-foreground)]/15 focus-ring-inverse md:hidden"
         aria-expanded={open}
         aria-controls="mobile-nav"
         aria-label={open ? closeLabel : openLabel}
@@ -63,16 +65,18 @@ export function MobileNav({ locale, items, openLabel, closeLabel, langLabel }: M
       <nav
         id="mobile-nav"
         aria-hidden={!open}
-        className={`fixed top-0 bottom-0 start-0 z-50 flex w-72 max-w-[85vw] flex-col shadow-2xl transition-transform duration-300 ease-out md:hidden ${
+        inert={!open}
+        className={`fixed top-0 bottom-0 start-0 z-50 flex w-72 max-w-[85vw] flex-col bg-[var(--color-surface)] shadow-2xl transition-transform duration-300 ease-out md:hidden ${
           open ? "translate-x-0" : "ltr:-translate-x-full rtl:translate-x-full"
         }`}
       >
         {/* Drawer Header — JAK purple */}
-        <div className="flex items-center justify-between bg-[var(--color-primary)] px-5 py-4">
+        <div className="flex items-center justify-between bg-[var(--color-jak-primary)] px-5 py-4">
           <Link
             href={`/${locale}`}
             onClick={() => setOpen(false)}
             aria-label={siteConfig.name[locale]}
+            className="rounded-lg bg-[var(--color-header-foreground)] px-2 py-1 focus-ring-inverse"
           >
             <Image
               src="/images/brand/logo.png"
@@ -86,7 +90,7 @@ export function MobileNav({ locale, items, openLabel, closeLabel, langLabel }: M
             type="button"
             onClick={() => setOpen(false)}
             aria-label={closeLabel}
-            className="flex h-9 w-9 items-center justify-center rounded-md text-[var(--color-header-foreground-muted)] hover:bg-[var(--color-header-foreground)]/15 hover:text-[var(--color-header-foreground)] focus-ring"
+            className="flex h-11 w-11 items-center justify-center rounded-md text-[var(--color-header-foreground-muted)] hover:bg-[var(--color-header-foreground)]/15 hover:text-[var(--color-header-foreground)] focus-ring-inverse"
           >
             <X className="h-5 w-5" aria-hidden />
           </button>
@@ -103,7 +107,7 @@ export function MobileNav({ locale, items, openLabel, closeLabel, langLabel }: M
                   name="q"
                   type="search"
                   placeholder={locale === "ar" ? "ابحث عن قهوة أو منتج..." : "Search coffee or product..."}
-                  className="h-10 w-full rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-background)] ps-9 pe-3 text-sm focus:border-[var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)]/30"
+                  className="h-10 w-full rounded-[var(--radius-md)] border border-[var(--color-border-control)] bg-[var(--color-background)] ps-9 pe-3 text-sm text-[var(--color-foreground)] placeholder:text-[var(--color-muted-foreground)] focus:border-[var(--color-primary-text)] focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)]/30"
                 />
               </label>
             </form>
@@ -116,7 +120,7 @@ export function MobileNav({ locale, items, openLabel, closeLabel, langLabel }: M
                 <Link
                   href={`/${locale}${item.href === "/" ? "" : item.href}`}
                   onClick={() => setOpen(false)}
-                  className="flex min-h-[44px] items-center rounded-lg px-3 py-2.5 font-semibold text-[var(--color-foreground)] transition-colors hover:bg-[var(--color-primary)]/8 hover:text-[var(--color-primary)] focus-ring"
+                  className="flex min-h-[44px] items-center rounded-lg px-3 py-2.5 font-semibold text-[var(--color-foreground)] transition-colors hover:bg-[var(--color-primary-soft)] hover:text-[var(--color-primary-text)] focus-ring"
                 >
                   {pick(item.label, locale)}
                 </Link>
@@ -124,9 +128,13 @@ export function MobileNav({ locale, items, openLabel, closeLabel, langLabel }: M
             ))}
           </ul>
 
-          {/* Footer — language switcher */}
+          {/* Footer — theme and language */}
           <div className="border-t border-[var(--color-border)] px-4 py-4 safe-bottom">
             <div className="flex items-center justify-between">
+              <span className="text-xs font-semibold text-[var(--color-muted)]">{themeLabels.label}</span>
+              <ThemeToggle labels={themeLabels} variant="surface" />
+            </div>
+            <div className="mt-2 flex items-center justify-between border-t border-[var(--color-border)] pt-3">
               <span className="text-xs font-semibold text-[var(--color-muted)]">{langLabel}</span>
               <LanguageSwitcher locale={locale} label={langLabel} />
             </div>

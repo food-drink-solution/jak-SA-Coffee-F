@@ -60,7 +60,7 @@ export function Pagination({ page, totalPages, locale, hrefForPage, labels }: Pa
               "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-ring)]",
               n === page
                 ? "border-transparent bg-[var(--color-primary)] text-[var(--color-primary-foreground)] shadow-sm"
-                : "border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-foreground)] hover:bg-[var(--color-surface-muted)]",
+                : "border-[var(--color-border-control)] bg-[var(--color-surface)] text-[var(--color-foreground)] hover:bg-[var(--color-surface-muted)]",
             )}
           >
             {n}
@@ -91,7 +91,7 @@ function PageNavButton({
   direction: "previous" | "next";
 }) {
   const base = cn(
-    "inline-flex h-9 min-w-9 sm:h-10 sm:min-w-10 items-center justify-center rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] px-2 sm:px-3 text-[var(--color-foreground)] transition-colors",
+    "inline-flex h-9 min-w-9 sm:h-10 sm:min-w-10 items-center justify-center rounded-[var(--radius-md)] border border-[var(--color-border-control)] bg-[var(--color-surface)] px-2 sm:px-3 text-[var(--color-foreground)] transition-colors",
     "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-ring)]",
     disabled ? "pointer-events-none opacity-40" : "hover:bg-[var(--color-surface-muted)]",
   );

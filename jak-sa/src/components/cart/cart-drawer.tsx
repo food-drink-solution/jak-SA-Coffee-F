@@ -60,14 +60,14 @@ export function CartDrawer({ locale, labels }: CartDrawerProps) {
       >
         <div className="flex items-center justify-between border-b border-[var(--color-border)] p-4 sm:p-5">
           <div className="flex items-center gap-2">
-            <ShoppingBag className="h-5 w-5 text-[var(--color-primary)]" aria-hidden />
+            <ShoppingBag className="h-5 w-5 text-[var(--color-primary-text)]" aria-hidden />
             <h2 className="text-lg font-extrabold text-[var(--color-foreground)]">{labels.title}</h2>
           </div>
           <button
             type="button"
             onClick={() => setOpen(false)}
             aria-label={isAr ? "إغلاق" : "Close"}
-            className="flex h-9 w-9 items-center justify-center rounded-md text-[var(--color-muted)] hover:bg-[var(--color-surface-muted)] hover:text-[var(--color-foreground)] focus-ring cursor-pointer"
+            className="flex h-11 w-11 items-center justify-center rounded-md text-[var(--color-muted)] hover:bg-[var(--color-surface-muted)] hover:text-[var(--color-foreground)] focus-ring cursor-pointer"
           >
             <X className="h-5 w-5" aria-hidden />
           </button>
@@ -103,7 +103,7 @@ export function CartDrawer({ locale, labels }: CartDrawerProps) {
                         type="button"
                         aria-label="-"
                         onClick={() => setQty(item.productId, item.quantity - 1)}
-                      className="flex h-11 w-11 items-center justify-center rounded border border-[var(--color-border)] text-[var(--color-foreground)] transition-colors hover:bg-[var(--color-surface-muted)] focus-ring cursor-pointer"
+                      className="flex h-11 w-11 items-center justify-center rounded border border-[var(--color-border-control)] text-[var(--color-foreground)] transition-colors hover:bg-[var(--color-surface-muted)] focus-ring cursor-pointer"
                       >
                         <Minus className="h-3 w-3" aria-hidden />
                       </button>
@@ -112,7 +112,7 @@ export function CartDrawer({ locale, labels }: CartDrawerProps) {
                         type="button"
                         aria-label="+"
                         onClick={() => setQty(item.productId, item.quantity + 1)}
-                        className="flex h-11 w-11 items-center justify-center rounded border border-[var(--color-border)] text-[var(--color-foreground)] transition-colors hover:bg-[var(--color-surface-muted)] focus-ring cursor-pointer"
+                        className="flex h-11 w-11 items-center justify-center rounded border border-[var(--color-border-control)] text-[var(--color-foreground)] transition-colors hover:bg-[var(--color-surface-muted)] focus-ring cursor-pointer"
                       >
                         <Plus className="h-3 w-3" aria-hidden />
                       </button>
@@ -140,7 +140,7 @@ export function CartDrawer({ locale, labels }: CartDrawerProps) {
                 href={`/${locale}/checkout`}
                 onClick={() => setOpen(false)}
                 aria-label={labels.checkout}
-                className="flex-1 inline-flex h-11 min-h-[44px] items-center justify-center gap-2 rounded-[var(--radius-md)] bg-[var(--color-primary)] px-5 text-sm font-bold text-[var(--color-primary-foreground)] transition-colors hover:bg-[var(--color-primary-dark)] active:scale-[0.98] focus-ring"
+                className="flex-1 inline-flex h-11 min-h-[44px] items-center justify-center gap-2 rounded-[var(--radius-md)] bg-[var(--color-primary)] px-5 text-sm font-bold text-[var(--color-primary-foreground)] transition-colors hover:bg-[var(--color-primary-hover)] active:scale-[0.98] focus-ring"
               >
                 {labels.checkout}
               </Link>
