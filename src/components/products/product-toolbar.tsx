@@ -88,7 +88,7 @@ export function ProductToolbar({
   return (
     <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
       {showSearch ? (
-        <form onSubmit={onSubmit} className="flex w-full flex-1 items-center gap-2 sm:gap-3 lg:max-w-xl" role="search">
+        <form onSubmit={onSubmit} className="flex w-full flex-1 items-center gap-2 sm:gap-3 lg:max-w-md" role="search">
           <label className="relative min-w-0 flex-1">
             <span className="sr-only">{labels.searchPlaceholder}</span>
             <input
@@ -109,29 +109,31 @@ export function ProductToolbar({
         </form>
       ) : null}
 
-      <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-        {showCategoryFilter ? (
-          <div className="flex-1 min-w-[130px] sm:flex-none sm:w-auto">
+      <div className={`flex flex-wrap items-center gap-2.5 sm:gap-3 ${showSearch ? "w-full lg:w-auto justify-between lg:justify-end" : "w-full justify-between sm:justify-start"}`}>
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3 flex-1 sm:flex-initial">
+          {showCategoryFilter ? (
+            <div className="min-w-[130px] flex-1 sm:flex-initial sm:w-44">
+              <Dropdown
+                label={labels.categoryLabel}
+                value={category ?? ""}
+                options={categoryOptions}
+                onChange={(value) => navigate({ category: value })}
+              />
+            </div>
+          ) : null}
+          <div className="min-w-[130px] flex-1 sm:flex-initial sm:w-44">
             <Dropdown
-              label={labels.categoryLabel}
-              value={category ?? ""}
-              options={categoryOptions}
-              onChange={(value) => navigate({ category: value })}
+              label={labels.sortLabel}
+              value={sort}
+              options={sortOptions}
+              onChange={(value) => navigate({ sort: value as SortKey })}
             />
           </div>
-        ) : null}
-        <div className="flex-1 min-w-[130px] sm:flex-none sm:w-auto">
-          <Dropdown
-            label={labels.sortLabel}
-            value={sort}
-            options={sortOptions}
-            onChange={(value) => navigate({ sort: value as SortKey })}
-          />
         </div>
         <div
           role="group"
           aria-label={labels.viewLabel}
-          className="ms-auto flex shrink-0 overflow-hidden rounded-[var(--radius-md)] border border-[var(--color-border)] sm:ms-0"
+          className="flex shrink-0 overflow-hidden rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)]"
         >
           <ViewButton
             active={view === "grid"}
