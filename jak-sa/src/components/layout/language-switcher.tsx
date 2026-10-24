@@ -22,7 +22,7 @@ export function LanguageSwitcher({ locale, label, variant = "default" }: Languag
       href={switchLocalePath(pathname, target)}
       className={`rounded-full border px-4 py-1.5 text-xs font-extrabold transition-colors focus-ring ${
         isHeader
-          ? "border-white/40 text-white hover:border-white hover:bg-white/15"
+          ? "border-[var(--color-header-foreground)]/40 text-[var(--color-header-foreground)] hover:border-[var(--color-header-foreground)] hover:bg-[var(--color-header-foreground)]/15"
           : "border-[var(--color-border)] text-[var(--color-foreground)] hover:bg-[var(--color-background)]"
       }`}
     >

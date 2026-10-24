@@ -39,10 +39,17 @@
   --color-accent-light: var(--color-jak-accent-gold-light);
   --color-accent-foreground: var(--color-jak-accent-gold-foreground);
 
+  /* Header foreground colors for contrast on primary background */
+  --color-header-foreground: #ffffff;
+  --color-header-foreground-muted: rgba(255, 255, 255, 0.90);
+  --color-header-foreground-subtle: rgba(255, 255, 255, 0.75);
+  --color-header-foreground-faint: rgba(255, 255, 255, 0.60);
+
   /* Base colors — clean, premium, white-space focused */
   --color-background: #ffffff;
   --color-surface: #ffffff;
   --color-surface-muted: #f8f9fa;
+  --color-surface-subtle: rgba(78, 1, 97, 0.05);
   --color-foreground: #343a40;
   --color-foreground-muted: #7e7e7e;
   --color-muted-foreground: #7e7e7e;
@@ -97,6 +104,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   max-width: 100%;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Arabic-first typography niceties */
@@ -160,6 +168,40 @@ body {
   color: var(--color-jak-primary-foreground);
 }
 
+/* ═══════════════════════════════════════════════════════════
+   DARK MODE SUPPORT
+   ═══════════════════════════════════════════════════════════ */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Override light mode colors for dark mode */
+    --color-background: #0f0f0f;
+    --color-surface: #1a1a1a;
+    --color-surface-muted: #2a2a2a;
+    --color-surface-subtle: rgba(255, 255, 255, 0.05);
+    --color-foreground: #f0f0f0;
+    --color-foreground-muted: #b0b0b0;
+    --color-muted-foreground: #b0b0b0;
+    --color-muted: #808080;
+    --color-border: #333333;
+    --color-border-strong: #444444;
+  }
+}
+
+/* Explicit dark mode via data-theme attribute */
+[data-theme="dark"] {
+  --color-background: #0f0f0f;
+  --color-surface: #1a1a1a;
+  --color-surface-muted: #2a2a2a;
+  --color-surface-subtle: rgba(255, 255, 255, 0.05);
+  --color-foreground: #f0f0f0;
+  --color-foreground-muted: #b0b0b0;
+  --color-muted-foreground: #b0b0b0;
+  --color-muted: #808080;
+  --color-border: #333333;
+  --color-border-strong: #444444;
+}
+
 /* JAK utility classes for direct use */
 .jak-text-primary { color: var(--color-jak-primary); }
 .jak-bg-primary { background-color: var(--color-jak-primary); }
@@ -175,6 +217,26 @@ body {
 
 .jak-text-violet { color: var(--color-jak-violet); }
 .jak-bg-violet { background-color: var(--color-jak-violet); }
+
+/* Semantic utility classes — prefer these over brand-specific classes */
+.text-primary { color: var(--color-primary); }
+.bg-primary { background-color: var(--color-primary); }
+.border-primary { border-color: var(--color-primary); }
+
+.text-accent { color: var(--color-accent); }
+.bg-accent { background-color: var(--color-accent); }
+.border-accent { border-color: var(--color-accent); }
+
+/* Animation for theme toggle */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Tailwind utility (optional, for class-based usage) */
+.animate-spin-slow {
+  animation: spin-slow 0.6s ease-in-out;
+}
 
 /* Centralized Layout and Component Utility Classes */
 .container-app {
@@ -208,7 +270,7 @@ body {
 .hero-canvas {
   /* Fill the first viewport minus the in-flow sticky header. */
   min-height: calc(100vh - var(--header-h) - env(safe-area-inset-top, 0rem));
-  /* Small-viewport height: excludes mobile browser UI collapses/overlays. */
+  /* Small-viewport height: excludes mobile browser UI collapse/overlays. */
   min-height: calc(100svh - var(--header-h) - env(safe-area-inset-top, 0rem));
 }
 
@@ -250,4 +312,4 @@ body {
 
 .safe-bottom {
   padding-bottom: max(1.5rem, env(safe-area-inset-bottom, 1.5rem));
-}
+}
