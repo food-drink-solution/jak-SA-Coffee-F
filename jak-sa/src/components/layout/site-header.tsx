@@ -20,7 +20,7 @@ export function SiteHeader({ locale, items, labels }: SiteHeaderProps) {
   return (
     <header className="sticky top-0 z-30 w-full shadow-md">
       {/* ── JAK Purple Top-bar ── */}
-      <div className="bg-[#4e0161] w-full">
+      <div className="bg-[var(--color-primary)] w-full">
         <div className="container-app flex h-14 items-center justify-between gap-2">
           {/* Logo */}
           <Link
@@ -68,7 +68,7 @@ export function SiteHeader({ locale, items, labels }: SiteHeaderProps) {
                   name="q"
                   type="search"
                   placeholder={labels.searchPlaceholder}
-                  className="h-9 w-32 rounded-full border border-white/30 bg-white/10 ps-9 pe-3 text-sm text-white placeholder:text-white/50 transition-all focus:w-44 focus:border-white/60 focus:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/30 md:w-40 md:focus:w-52 lg:w-44 lg:focus:w-60"
+                  className="h-9 w-32 rounded-full border border-white/30 bg-[var(--color-primary)]/10 ps-9 pe-3 text-sm text-white placeholder:text-white/50 transition-all focus:w-44 focus:border-white/60 focus:bg-[var(--color-primary)]/20 focus:outline-none focus:ring-2 focus:ring-white/30 md:w-40 md:focus:w-52 lg:w-44 lg:focus:w-60"
                 />
               </label>
             </form>

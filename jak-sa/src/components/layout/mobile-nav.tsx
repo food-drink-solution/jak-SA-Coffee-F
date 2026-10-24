@@ -68,7 +68,7 @@ export function MobileNav({ locale, items, openLabel, closeLabel, langLabel }: M
         }`}
       >
         {/* Drawer Header — JAK purple */}
-        <div className="flex items-center justify-between bg-[#4e0161] px-5 py-4">
+        <div className="flex items-center justify-between bg-[var(--color-primary)] px-5 py-4">
           <Link
             href={`/${locale}`}
             onClick={() => setOpen(false)}
@@ -116,7 +116,7 @@ export function MobileNav({ locale, items, openLabel, closeLabel, langLabel }: M
                 <Link
                   href={`/${locale}${item.href === "/" ? "" : item.href}`}
                   onClick={() => setOpen(false)}
-                  className="flex min-h-[44px] items-center rounded-lg px-3 py-2.5 font-semibold text-[var(--color-foreground)] transition-colors hover:bg-[#4e0161]/8 hover:text-[#4e0161] focus-ring"
+                  className="flex min-h-[44px] items-center rounded-lg px-3 py-2.5 font-semibold text-[var(--color-foreground)] transition-colors hover:bg-[var(--color-primary)]/8 hover:text-[var(--color-primary)] focus-ring"
                 >
                   {pick(item.label, locale)}
                 </Link>

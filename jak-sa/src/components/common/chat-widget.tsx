@@ -69,7 +69,7 @@ export function ChatWidget({ locale, labels }: ChatWidgetProps) {
                 href={`tel:${siteConfig.contact.phoneHref}`}
                 className="flex items-center gap-3 rounded-[var(--radius-md)] px-3 py-2 text-sm text-[var(--color-foreground)] transition-colors hover:bg-[var(--color-surface-muted)] focus-visible:outline-2 focus-visible:outline-[var(--color-ring)]"
               >
-                <Phone className="h-4 w-4 text-[var(--color-jak-primary)]" aria-hidden />
+                <Phone className="h-4 w-4 text-[var(--color-primary)]" aria-hidden />
                 {labels.call}
               </a>
             </li>
@@ -78,7 +78,7 @@ export function ChatWidget({ locale, labels }: ChatWidgetProps) {
                 href={`mailto:${siteConfig.contact.email}`}
                 className="flex items-center gap-3 rounded-[var(--radius-md)] px-3 py-2 text-sm text-[var(--color-foreground)] transition-colors hover:bg-[var(--color-surface-muted)] focus-visible:outline-2 focus-visible:outline-[var(--color-ring)]"
               >
-                <Mail className="h-4 w-4 text-[var(--color-jak-primary)]" aria-hidden />
+                <Mail className="h-4 w-4 text-[var(--color-primary)]" aria-hidden />
                 {labels.email}
               </a>
             </li>
@@ -88,7 +88,7 @@ export function ChatWidget({ locale, labels }: ChatWidgetProps) {
                 onClick={() => setOpen(false)}
                 className="flex items-center gap-3 rounded-[var(--radius-md)] px-3 py-2 text-sm text-[var(--color-foreground)] transition-colors hover:bg-[var(--color-surface-muted)] focus-visible:outline-2 focus-visible:outline-[var(--color-ring)]"
               >
-                <MessageCircle className="h-4 w-4 text-[var(--color-jak-primary)]" aria-hidden />
+                <MessageCircle className="h-4 w-4 text-[var(--color-primary)]" aria-hidden />
                 {labels.contactPage}
               </Link>
             </li>
