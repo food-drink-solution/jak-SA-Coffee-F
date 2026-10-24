@@ -12,8 +12,11 @@
 
 ```bash
 # Clone repository
-git clone https://github.com/we3ds-solution/jak-SA-Coffee-F.git
+git clone https://github.com/food-drink-solution/jak-SA-Coffee-F.git
 cd jak-SA-Coffee-F
+
+# Navigate to frontend package
+cd jak-sa
 
 # Install dependencies
 pnpm install
@@ -30,11 +33,19 @@ pnpm dev
 
 Visit `http://localhost:3000` — redirects to `/ar` by default.
 
+> **Tip:** You can also run commands directly from the workspace root:
+> ```bash
+> pnpm dev          # Runs frontend dev server
+> pnpm build        # Runs frontend production build
+> pnpm typecheck    # Runs TypeScript check
+> pnpm test         # Runs Vitest unit tests
+> ```
+
 ---
 
 ## Development Commands
 
-### Running the App
+### Running the App (inside `jak-sa/` or root)
 
 ```bash
 # Development server (hot reload)

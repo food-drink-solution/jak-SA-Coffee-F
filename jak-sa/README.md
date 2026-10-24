@@ -146,11 +146,11 @@ Tailwind v4 + CSS custom properties in `globals.css` — uniform containers, car
 
 ## 📚 Documentation
 
-Complete guides in `docs/`:
-- **[DEVELOPMENT.md](./docs/DEVELOPMENT.md)** — Setup & workflow
-- **[ARCHITECTURE.md](./docs/ARCHITECTURE.md)** — System design
-- **[COMPONENTS.md](./docs/COMPONENTS.md)** — Component patterns
-- **[STYLES.md](./docs/STYLES.md)** — Design system reference
+Complete guides in `../docs/`:
+- **[DEVELOPMENT.md](../docs/DEVELOPMENT.md)** — Setup & workflow
+- **[ARCHITECTURE.md](../docs/ARCHITECTURE.md)** — System design
+- **[COMPONENTS.md](../docs/COMPONENTS.md)** — Component patterns
+- **[STYLES.md](../docs/STYLES.md)** — Design system reference
 
 ---
 

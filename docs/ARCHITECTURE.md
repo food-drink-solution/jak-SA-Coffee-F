@@ -8,30 +8,33 @@ JAK Storefront is a production-grade Next.js (App Router, TypeScript strict) rec
 
 ## Directory Structure
 
-### Root Level
+### Monorepo Overview
 
 ```
-jak/
-├── src/                        # Source code
-├── public/                     # Static assets (images, favicons)
-├── docs/                       # Documentation
-├── scripts/                    # Build and utility scripts
-├── tests/                      # Test suites
-├── .next/                      # Build output (gitignored)
-├── node_modules/               # Dependencies (gitignored)
-├── package.json               # Project manifest
-├── tsconfig.json              # TypeScript config
-├── next.config.ts             # Next.js config
-├── tailwind.config.ts         # Tailwind config
-├── vitest.config.ts           # Unit test config
-├── playwright.config.ts       # E2E test config
-├── eslint.config.mjs          # Linter config
-└── postcss.config.mjs         # PostCSS config
+jak-storefront/
+├── jak-sa/                     # Frontend Next.js 16 Storefront
+│   ├── src/                    # Source code
+│   ├── public/                 # Static assets (images, brand assets, favicons)
+│   ├── tests/                  # Test suites (Vitest, Playwright)
+│   ├── package.json            # Frontend dependencies & scripts
+│   ├── tsconfig.json           # TypeScript config
+│   ├── next.config.ts          # Next.js config
+│   ├── vitest.config.ts        # Unit test config
+│   ├── playwright.config.ts    # E2E test config
+│   ├── eslint.config.mjs       # Linter config
+│   └── postcss.config.mjs      # PostCSS config
+├── server-api/                 # ASP.NET Core Backend REST API
+│   ├── README.md               # Backend API docs
+│   └── .gitkeep                # Reserved for backend implementation
+├── docs/                       # Monorepo technical documentation
+├── scripts/                    # Workspace migration and utility scripts
+├── package.json                # Root convenience scripts
+└── README.md                   # Monorepo overview
 ```
 
 ---
 
-## Detailed Source Structure
+## Detailed Frontend Source Structure (`jak-sa/src/`)
 
 ### `src/app/` — Next.js App Router
 
