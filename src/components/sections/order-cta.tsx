@@ -5,7 +5,7 @@ export function ProductSizesSection({ title, text, image }: { title: string; tex
   return (
     <section className="relative overflow-hidden">
       <div
-        className="bg-cover bg-center py-16"
+        className="bg-cover bg-center py-12 sm:py-20 md:py-24 min-h-[200px]"
         style={{ backgroundImage: `url("${image}")` }}
       >
         <div className="absolute inset-0 bg-[var(--color-primary)]/55" />

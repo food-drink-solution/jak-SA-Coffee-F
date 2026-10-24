@@ -43,7 +43,7 @@ export default async function CategoryDetailPage({
 
   return (
     <section className="container-app py-8 sm:py-12">
-      <h1 className="mb-8 text-3xl font-extrabold">{pick(category.name, lang)}</h1>
+      <h1 className="mb-8 text-2xl font-extrabold sm:text-3xl">{pick(category.name, lang)}</h1>
       <ProductListing
         products={slice.items}
         locale={lang}

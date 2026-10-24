@@ -25,7 +25,7 @@ export default async function CategoriesPage({ params }: { params: Promise<{ lan
       {categories.length === 0 ? (
         <p className="text-[var(--color-muted)]">{t(dict, "categories.empty")}</p>
       ) : (
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-6">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-6">
           {categories.map((c) => (
             <CategoryCard key={c.id} category={c} locale={lang} cta={t(dict, "categories.products")} />
           ))}

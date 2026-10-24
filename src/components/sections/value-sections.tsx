@@ -14,7 +14,7 @@ export function ValuePropositionSection({ title, text }: { title: string; text: 
 export function TrustFeatures({ items }: { items: { label: string; image: string }[] }) {
   return (
     <section aria-label="features" className="border-y border-[var(--color-border)] bg-[var(--color-surface)]">
-      <div className="container-app grid grid-cols-2 gap-4 sm:gap-6 py-12 md:grid-cols-4">
+      <div className="container-app grid grid-cols-2 gap-4 sm:gap-6 py-12 sm:grid-cols-4 md:grid-cols-4">
         {items.map((item) => (
           <div key={item.label} className="flex flex-col items-center gap-3 rounded-[var(--radius-md)] p-3 text-center transition-colors hover:bg-[var(--color-surface-muted)]">
             <span className="flex h-12 w-12 items-center justify-center">

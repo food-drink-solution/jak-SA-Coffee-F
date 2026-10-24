@@ -83,7 +83,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
 
       <section className="container-app py-8 sm:py-12">
         <SectionHeading title={t(dict, "home.categoriesTitle")} />
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-6 lg:gap-5">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-6 lg:gap-5">
           {categories.map((c) => (
             <CategoryCard key={c.id} category={c} locale={lang} cta={t(dict, "categories.shopNow")} />
           ))}
@@ -96,7 +96,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
         <div className="mb-6">
           <h3 className="text-xl font-extrabold text-[var(--color-foreground)] sm:text-2xl">{t(dict, "home.ourCategories")}</h3>
         </div>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-6 lg:gap-4">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-6 lg:gap-4">
           {categories.map((c) => {
             const name = pick(c.name, lang);
             const icon = iconMap[c.slug];
