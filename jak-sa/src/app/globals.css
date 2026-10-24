@@ -104,6 +104,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   max-width: 100%;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Arabic-first typography niceties */
@@ -167,6 +168,40 @@ body {
   color: var(--color-jak-primary-foreground);
 }
 
+/* ═══════════════════════════════════════════════════════════
+   DARK MODE SUPPORT
+   ═══════════════════════════════════════════════════════════ */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Override light mode colors for dark mode */
+    --color-background: #0f0f0f;
+    --color-surface: #1a1a1a;
+    --color-surface-muted: #2a2a2a;
+    --color-surface-subtle: rgba(255, 255, 255, 0.05);
+    --color-foreground: #f0f0f0;
+    --color-foreground-muted: #b0b0b0;
+    --color-muted-foreground: #b0b0b0;
+    --color-muted: #808080;
+    --color-border: #333333;
+    --color-border-strong: #444444;
+  }
+}
+
+/* Explicit dark mode via data-theme attribute */
+[data-theme="dark"] {
+  --color-background: #0f0f0f;
+  --color-surface: #1a1a1a;
+  --color-surface-muted: #2a2a2a;
+  --color-surface-subtle: rgba(255, 255, 255, 0.05);
+  --color-foreground: #f0f0f0;
+  --color-foreground-muted: #b0b0b0;
+  --color-muted-foreground: #b0b0b0;
+  --color-muted: #808080;
+  --color-border: #333333;
+  --color-border-strong: #444444;
+}
+
 /* JAK utility classes for direct use */
 .jak-text-primary { color: var(--color-jak-primary); }
 .jak-bg-primary { background-color: var(--color-jak-primary); }
@@ -191,6 +226,17 @@ body {
 .text-accent { color: var(--color-accent); }
 .bg-accent { background-color: var(--color-accent); }
 .border-accent { border-color: var(--color-accent); }
+
+/* Animation for theme toggle */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Tailwind utility (optional, for class-based usage) */
+.animate-spin-slow {
+  animation: spin-slow 0.6s ease-in-out;
+}
 
 /* Centralized Layout and Component Utility Classes */
 .container-app {
