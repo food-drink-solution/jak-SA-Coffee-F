@@ -10,6 +10,7 @@ interface CartContextValue {
   count: number;
   subtotal: number;
   itemCount: number;
+  hydrated: boolean;
   add: (product: Product, quantity?: number) => void;
   remove: (productId: string) => void;
   setQty: (productId: string, quantity: number) => void;
@@ -50,6 +51,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       count: cartCount(state),
       subtotal: cartSubtotal(state),
       itemCount: state.items.length,
+      hydrated,
       add,
       remove,
       setQty,
@@ -57,7 +59,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       open,
       setOpen,
     }),
-    [state, add, remove, setQty, clear, open],
+    [state, hydrated, add, remove, setQty, clear, open],
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
