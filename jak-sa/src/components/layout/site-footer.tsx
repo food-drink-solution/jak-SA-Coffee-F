@@ -54,7 +54,7 @@ export function SiteFooter({ locale, categories }: SiteFooterProps) {
           <ul className="space-y-2 text-sm text-[var(--color-muted)]">
             {categories.map((c) => (
               <li key={c.id}>
-                <Link href={`/${locale}/categories/${c.slug}`} className="transition-colors hover:text-[var(--color-primary)] focus-ring rounded">
+                <Link href={`/${locale}/categories/${c.slug}`} className="transition-colors hover:text-[var(--color-primary-text)] focus-ring rounded">
                   {pick(c.name, locale)}
                 </Link>
               </li>
@@ -65,19 +65,19 @@ export function SiteFooter({ locale, categories }: SiteFooterProps) {
         <nav aria-label={t(dict, "footer.links")}>
           <h3 className="mb-4 font-extrabold text-[var(--color-foreground)]">{t(dict, "footer.links")}</h3>
           <ul className="space-y-2 text-sm text-[var(--color-muted)]">
-            <li><Link href={`/${locale}/about`} className="transition-colors hover:text-[var(--color-primary)] focus-ring rounded">{t(dict, "nav.about")}</Link></li>
-            <li><Link href={`/${locale}/contact`} className="transition-colors hover:text-[var(--color-primary)] focus-ring rounded">{t(dict, "nav.contact")}</Link></li>
-            <li><Link href={`/${locale}/terms`} className="transition-colors hover:text-[var(--color-primary)] focus-ring rounded">{t(dict, "nav.terms")}</Link></li>
-            <li><Link href={`/${locale}/privacy`} className="transition-colors hover:text-[var(--color-primary)] focus-ring rounded">{t(dict, "nav.privacy")}</Link></li>
-            <li><Link href={`/${locale}/profile`} className="transition-colors hover:text-[var(--color-primary)] focus-ring rounded">{t(dict, "nav.profile")}</Link></li>
+            <li><Link href={`/${locale}/about`} className="transition-colors hover:text-[var(--color-primary-text)] focus-ring rounded">{t(dict, "nav.about")}</Link></li>
+            <li><Link href={`/${locale}/contact`} className="transition-colors hover:text-[var(--color-primary-text)] focus-ring rounded">{t(dict, "nav.contact")}</Link></li>
+            <li><Link href={`/${locale}/terms`} className="transition-colors hover:text-[var(--color-primary-text)] focus-ring rounded">{t(dict, "nav.terms")}</Link></li>
+            <li><Link href={`/${locale}/privacy`} className="transition-colors hover:text-[var(--color-primary-text)] focus-ring rounded">{t(dict, "nav.privacy")}</Link></li>
+            <li><Link href={`/${locale}/profile`} className="transition-colors hover:text-[var(--color-primary-text)] focus-ring rounded">{t(dict, "nav.profile")}</Link></li>
           </ul>
         </nav>
 
         <div>
           <h3 className="mb-4 font-extrabold text-[var(--color-foreground)]">{t(dict, "footer.contact")}</h3>
           <ul className="space-y-2 text-sm text-[var(--color-muted)]">
-            <li><a href={`tel:${siteConfig.contact.phoneHref}`} dir="ltr" className="transition-colors hover:text-[var(--color-primary)] focus-ring rounded">{siteConfig.contact.phone}</a></li>
-            <li><a href={`mailto:${siteConfig.contact.email}`} className="break-all transition-colors hover:text-[var(--color-primary)] focus-ring rounded">{siteConfig.contact.email}</a></li>
+            <li><a href={`tel:${siteConfig.contact.phoneHref}`} dir="ltr" className="transition-colors hover:text-[var(--color-primary-text)] focus-ring rounded">{siteConfig.contact.phone}</a></li>
+            <li><a href={`mailto:${siteConfig.contact.email}`} className="break-all transition-colors hover:text-[var(--color-primary-text)] focus-ring rounded">{siteConfig.contact.email}</a></li>
             <li>{siteConfig.contact.country[locale]}</li>
           </ul>
         </div>
@@ -92,7 +92,7 @@ export function SiteFooter({ locale, categories }: SiteFooterProps) {
               href="http://we3ds.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[var(--color-primary)] hover:underline font-medium focus-ring rounded"
+              className="text-[var(--color-primary-text)] hover:underline font-medium focus-ring rounded"
             >
               {t(dict, "footer.builtWith")}
             </Link>

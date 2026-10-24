@@ -2,14 +2,31 @@
 
 import { useCallback, useEffect, useSyncExternalStore } from "react";
 import { Moon, Sun } from "lucide-react";
+import {
+  applyThemeToDocument,
+  isTheme,
+  THEME_STORAGE_KEY,
+  type Theme,
+} from "@/lib/theme";
 
-type Theme = "light" | "dark";
+export interface ThemeToggleLabels {
+  label: string;
+  light: string;
+  dark: string;
+  switchToLight: string;
+  switchToDark: string;
+  loading: string;
+}
+
+interface ThemeToggleProps {
+  labels: ThemeToggleLabels;
+  /** "header" = white icon on purple nav; "surface" = adaptive text on panels. */
+  variant?: "header" | "surface";
+}
 
 // ── External theme state (localStorage + system preference) ──────────────
 // Exposed via useSyncExternalStore so hydration is handled correctly without
 // setState-in-effect (react-hooks/set-state-in-effect compliant).
-
-const noListener = () => (): void => {};
 
 function subscribeTheme(onChange: () => void): () => void {
   const handler = (): void => onChange();
@@ -24,57 +41,56 @@ function subscribeTheme(onChange: () => void): () => void {
   };
 }
 
-function resolveTheme(): Theme | null {
-  try {
-    const stored = localStorage.getItem("theme") as Theme | null;
-    const prefers = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-    return stored || prefers;
-  } catch (error) {
-    console.error("Failed to read theme:", error);
-    return null;
-  }
+function getSystemTheme(): Theme {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
-export function ThemeToggle() {
-  const mounted = useSyncExternalStore(
-    noListener,
-    () => true,
-    () => false,
-  );
+function resolveTheme(): Theme {
+  try {
+    const stored = localStorage.getItem(THEME_STORAGE_KEY);
+    if (isTheme(stored)) return stored;
+  } catch {
+    // Storage can be unavailable in privacy modes; fall back to the system.
+  }
+  return getSystemTheme();
+}
+
+export function ThemeToggle({ labels, variant = "header" }: ThemeToggleProps) {
   const theme = useSyncExternalStore(subscribeTheme, resolveTheme, () => null);
 
   // Persist + broadcast the chosen theme (only on explicit interaction).
-  const applyTheme = useCallback((next: Theme) => {
-    try {
-      localStorage.setItem("theme", next);
-      window.dispatchEvent(new CustomEvent("themechange", { detail: { theme: next } }));
-    } catch (error) {
-      console.error("Failed to apply theme:", error);
-    }
-  }, []);
-
+  // Apply immediately so the click feels instant, then broadcast so every
+  // toggle instance stays in sync.
   const toggleTheme = useCallback(() => {
-    applyTheme(theme === "dark" ? "light" : "dark");
-  }, [applyTheme, theme]);
-
-  const current = mounted && theme !== null ? theme : null;
+    const next: Theme = theme === "dark" ? "light" : "dark";
+    applyThemeToDocument(next);
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, next);
+    } catch {
+      // The visual change still works for this session.
+    }
+    window.dispatchEvent(new CustomEvent("themechange", { detail: { theme: next } }));
+  }, [theme]);
 
   // Sync the DOM with the external store (effects are the right place for
   // external-system mutations — no setState needed here).
   useEffect(() => {
-    if (current === null) return;
-    const html = document.documentElement;
-    html.setAttribute("data-theme", current);
-    html.classList.toggle("dark", current === "dark");
-  }, [current]);
+    if (theme !== null) applyThemeToDocument(theme);
+  }, [theme]);
 
-  if (current === null) {
+  const isDark = theme === "dark";
+  const variantClass =
+    variant === "header"
+      ? "text-[var(--color-header-foreground)] hover:bg-[var(--color-header-foreground)]/15 focus-ring-inverse"
+      : "text-[var(--color-primary-text)] hover:bg-[var(--color-ghost-hover)] focus-ring";
+
+  if (theme === null) {
     return (
       <button
         type="button"
         disabled
-        className="flex h-10 w-10 items-center justify-center rounded-md text-[var(--color-header-foreground)] transition-colors opacity-50 cursor-not-allowed"
-        aria-label="Loading theme..."
+        className={`flex h-11 w-11 items-center justify-center rounded-md opacity-50 cursor-not-allowed ${variantClass}`}
+        aria-label={labels.loading}
       >
         <Moon className="h-5 w-5" aria-hidden />
       </button>
@@ -85,12 +101,12 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={toggleTheme}
-      aria-label={current === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-      className="flex h-10 w-10 items-center justify-center rounded-md text-[var(--color-header-foreground)] transition-colors hover:bg-[var(--color-header-foreground)]/15 focus-ring cursor-pointer"
-      title={`Current: ${current} mode • Click to toggle`}
+      aria-label={isDark ? labels.switchToLight : labels.switchToDark}
+      title={`${labels.label}: ${isDark ? labels.dark : labels.light}`}
+      className={`flex h-11 w-11 cursor-pointer items-center justify-center rounded-md transition-colors ${variantClass}`}
     >
-      {current === "dark" ? (
-        <Sun className="h-5 w-5" style={{ animation: "spin-slow 0.6s ease-in-out" }} aria-hidden />
+      {isDark ? (
+        <Sun className="h-5 w-5 animate-spin-slow" aria-hidden />
       ) : (
         <Moon className="h-5 w-5" aria-hidden />
       )}

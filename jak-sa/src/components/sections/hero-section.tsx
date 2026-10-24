@@ -58,7 +58,7 @@ export function HeroSection({ slides, cta, locale }: { slides: HeroSlide[]; cta:
             aria-hidden={i !== active}
           >
             <Image src={slide.image} alt={slide.title} fill priority={i === 0} sizes="100vw" className="object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-primary)]/80 via-[var(--color-primary)]/50 to-[var(--color-primary)]/25 rtl:bg-gradient-to-l" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-jak-primary)]/80 via-[var(--color-jak-primary)]/50 to-[var(--color-jak-primary)]/25 rtl:bg-gradient-to-l" />
             <div className="container-app relative flex w-full items-center justify-between gap-8 py-16 sm:py-20 lg:py-24">
               <div className="max-w-2xl text-[var(--color-header-foreground)]">
                 <span className="mb-2.5 sm:mb-3 inline-flex items-center gap-2 rounded-full bg-[var(--color-header-foreground)]/20 px-3 py-1 text-xs sm:text-sm font-bold text-[var(--color-header-foreground)] backdrop-blur-xs">
@@ -68,13 +68,13 @@ export function HeroSection({ slides, cta, locale }: { slides: HeroSlide[]; cta:
                 <div className="mt-5 sm:mt-6 flex flex-wrap items-center gap-3">
                   <Link
                     href={`/${locale}/products`}
-                    className="inline-flex h-11 min-h-[44px] items-center rounded-[var(--radius-md)] bg-[var(--color-header-foreground)] px-6 sm:px-8 text-sm font-extrabold text-[var(--color-primary)] shadow-lg transition-all hover:bg-[var(--color-header-foreground)]/90 active:scale-[0.98] focus-ring"
+                    className="inline-flex h-11 min-h-[44px] items-center rounded-[var(--radius-md)] bg-[var(--color-header-foreground)] px-6 sm:px-8 text-sm font-extrabold text-[var(--color-jak-primary)] shadow-lg transition-all hover:bg-[var(--color-header-foreground)]/90 active:scale-[0.98] focus-ring-inverse"
                   >
                     {cta}
                   </Link>
                   <Link
                     href={`/${locale}/contact`}
-                    className="inline-flex h-11 min-h-[44px] items-center rounded-[var(--radius-md)] border border-[var(--color-header-foreground)]/40 bg-[var(--color-header-foreground)]/10 px-5 text-sm font-bold text-[var(--color-header-foreground)] backdrop-blur-xs transition-all hover:bg-[var(--color-header-foreground)]/20 active:scale-[0.98] focus-ring"
+                    className="inline-flex h-11 min-h-[44px] items-center rounded-[var(--radius-md)] border border-[var(--color-header-foreground)]/40 bg-[var(--color-header-foreground)]/10 px-5 text-sm font-bold text-[var(--color-header-foreground)] backdrop-blur-xs transition-all hover:bg-[var(--color-header-foreground)]/20 active:scale-[0.98] focus-ring-inverse"
                   >
                     {locale === "ar" ? "تواصل معنا" : "Contact Us"}
                   </Link>
@@ -120,7 +120,7 @@ export function HeroSection({ slides, cta, locale }: { slides: HeroSlide[]; cta:
               onClick={() => setActive(i)}
               aria-label={locale === "ar" ? `الشريحة ${i + 1}` : `Go to slide ${i + 1}`}
               aria-current={i === active}
-              className="flex h-8 w-8 items-center justify-center rounded-full focus-ring cursor-pointer"
+              className="flex h-8 w-8 items-center justify-center rounded-full focus-ring-inverse cursor-pointer"
             >
               <span
                 className={`h-2.5 rounded-full transition-all duration-300 motion-reduce:transition-none ${

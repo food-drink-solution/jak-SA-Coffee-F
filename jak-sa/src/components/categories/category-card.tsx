@@ -22,7 +22,7 @@ export function CategoryCard({ category, locale, cta }: { category: Category; lo
       </div>
       <div className="p-3 sm:p-4">
         <h3 className="text-base font-extrabold text-[var(--color-foreground)]">{name}</h3>
-        <p className="mt-1 text-xs font-bold text-[var(--color-primary)]">{cta}</p>
+        <p className="mt-1 text-xs font-bold text-[var(--color-primary-text)]">{cta}</p>
       </div>
     </Link>
   );

@@ -6,6 +6,7 @@ import { isLocale, type Locale, LOCALES } from "@/config/locales";
 import { siteConfig } from "@/config/site";
 import { getDictionary, t } from "@/lib/i18n/dictionaries";
 import { categoryRepository } from "@/lib/data/catalog";
+import { THEME_INIT_SCRIPT } from "@/lib/theme";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { CartDrawer } from "@/components/cart/cart-drawer";
@@ -33,10 +34,12 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     description: t(getDictionary(locale), "meta.siteDescription"),
     icons: {
       icon: [
-        { url: "/images/brand/favicon.png", type: "image/png" },
+        { url: "/images/brand/favicon-16.png", sizes: "16x16", type: "image/png" },
+        { url: "/images/brand/favicon-32.png", sizes: "32x32", type: "image/png" },
+        { url: "/images/brand/favicon-192.png", sizes: "192x192", type: "image/png" },
       ],
-      shortcut: "/images/brand/favicon.png",
-      apple: "/images/brand/favicon.png",
+      shortcut: "/images/brand/favicon-32.png",
+      apple: { url: "/images/brand/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     },
     manifest: "/manifest.webmanifest",
   };
@@ -63,7 +66,17 @@ export default async function RootLayout({
   ];
 
   return (
-    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} className={almarai.variable}>
+    <html
+      lang={locale}
+      dir={locale === "ar" ? "rtl" : "ltr"}
+      className={almarai.variable}
+      data-theme="light"
+      suppressHydrationWarning
+    >
+      <head>
+        {/* Applies the stored/system theme before first paint to avoid a flash. */}
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+      </head>
       <body className="min-h-screen bg-[var(--color-background)] text-[var(--color-foreground)] antialiased">
         <CartProvider>
           <SiteHeader
@@ -75,6 +88,12 @@ export default async function RootLayout({
               openMenu: t(dict, "header.openMenu"),
               closeMenu: t(dict, "header.closeMenu"),
               cart: t(dict, "header.cart"),
+              theme: t(dict, "header.theme"),
+              lightMode: t(dict, "header.lightMode"),
+              darkMode: t(dict, "header.darkMode"),
+              switchToLight: t(dict, "header.switchToLight"),
+              switchToDark: t(dict, "header.switchToDark"),
+              loadingTheme: t(dict, "header.loadingTheme"),
             }}
           />
           <main id="main-content">{children}</main>

@@ -46,7 +46,7 @@ export function CheckoutSummary({ locale, labels }: CheckoutSummaryProps) {
         <p className="max-w-xs text-sm text-[var(--color-muted)]">{labels.emptyDesc}</p>
         <Link
           href={`/${locale}/products`}
-          className="rounded-[var(--radius-md)] bg-[var(--color-primary)] px-5 py-2.5 text-sm font-bold text-[var(--color-primary-foreground)] transition-colors hover:bg-[var(--color-primary-dark)] focus-ring"
+          className="rounded-[var(--radius-md)] bg-[var(--color-primary)] px-5 py-2.5 text-sm font-bold text-[var(--color-primary-foreground)] transition-colors hover:bg-[var(--color-primary-hover)] focus-ring"
         >
           {labels.continueShopping}
         </Link>
@@ -92,14 +92,14 @@ export function CheckoutSummary({ locale, labels }: CheckoutSummaryProps) {
           href={whatsappHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex h-11 min-h-[44px] items-center justify-center gap-2 rounded-[var(--radius-md)] bg-[var(--color-primary)] px-5 text-sm font-bold text-[var(--color-primary-foreground)] transition-colors hover:bg-[var(--color-primary-dark)] active:scale-[0.98] focus-ring"
+          className="inline-flex h-11 min-h-[44px] items-center justify-center gap-2 rounded-[var(--radius-md)] bg-[var(--color-primary)] px-5 text-sm font-bold text-[var(--color-primary-foreground)] transition-colors hover:bg-[var(--color-primary-hover)] active:scale-[0.98] focus-ring"
         >
           <MessageCircle className="h-4 w-4" aria-hidden />
           {labels.orderViaWhatsApp}
         </a>
         <Link
           href={`/${locale}/contact`}
-          className="inline-flex h-11 min-h-[44px] items-center justify-center gap-2 rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] px-5 text-sm font-bold text-[var(--color-foreground)] transition-colors hover:bg-[var(--color-surface-muted)] active:scale-[0.98] focus-ring"
+          className="inline-flex h-11 min-h-[44px] items-center justify-center gap-2 rounded-[var(--radius-md)] border border-[var(--color-border-control)] bg-[var(--color-surface)] px-5 text-sm font-bold text-[var(--color-foreground)] transition-colors hover:bg-[var(--color-surface-muted)] active:scale-[0.98] focus-ring"
         >
           <MessageSquareText className="h-4 w-4" aria-hidden />
           {labels.orderViaContact}
@@ -109,7 +109,7 @@ export function CheckoutSummary({ locale, labels }: CheckoutSummaryProps) {
 
       <Link
         href={`/${locale}/products`}
-        className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-[var(--color-primary)] hover:underline focus-ring rounded"
+        className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-[var(--color-primary-text)] hover:underline focus-ring rounded"
       >
         <Store className="h-4 w-4" aria-hidden />
         {labels.continueShopping}

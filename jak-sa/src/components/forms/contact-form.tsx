@@ -96,7 +96,7 @@ export function ContactForm({ labels }: { labels: ContactLabels }) {
           rows={5}
           {...register("message")}
           aria-describedby={errors.message ? "err-message" : undefined}
-          className="w-full resize-y rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-2.5 text-sm text-[var(--color-foreground)] placeholder:text-[var(--color-muted)] transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)]/40 disabled:cursor-not-allowed disabled:opacity-50 aria-[invalid=true]:border-[var(--color-danger)]"
+          className="w-full resize-y rounded-[var(--radius-md)] border border-[var(--color-border-control)] bg-[var(--color-surface)] px-3 py-2.5 text-sm text-[var(--color-foreground)] placeholder:text-[var(--color-muted-foreground)] transition-colors focus:border-[var(--color-ring)] focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)]/40 disabled:cursor-not-allowed disabled:opacity-50 aria-[invalid=true]:border-[var(--color-danger)]"
         />
         {errors.message && <p id="err-message" role="alert" className="mt-1 text-xs font-bold text-[var(--color-danger)]">{errors.message.message}</p>}
       </div>

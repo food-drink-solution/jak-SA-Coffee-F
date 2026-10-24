@@ -49,12 +49,12 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
               <div>
                 <dt className="text-xs font-bold text-[var(--color-muted)]">{t(dict, "contact.phone")}</dt>
                 <dd className="mt-1 text-base font-extrabold text-[var(--color-foreground)]">
-                  <a dir="ltr" href={`tel:${siteConfig.contact.phoneHref}`} className="transition-colors hover:text-[var(--color-primary)] focus-ring rounded">{siteConfig.contact.phone}</a>
+                  <a dir="ltr" href={`tel:${siteConfig.contact.phoneHref}`} className="transition-colors hover:text-[var(--color-primary-text)] focus-ring rounded">{siteConfig.contact.phone}</a>
                 </dd>
               </div>
               <div>
                 <dt className="text-xs font-bold text-[var(--color-muted)]">{t(dict, "contact.email")}</dt>
-                <dd className="mt-1 text-base font-bold text-[var(--color-primary)]">
+                <dd className="mt-1 text-base font-bold text-[var(--color-primary-text)]">
                   <a href={`mailto:${siteConfig.contact.email}`} className="break-all hover:underline focus-ring rounded">{siteConfig.contact.email}</a>
                 </dd>
               </div>

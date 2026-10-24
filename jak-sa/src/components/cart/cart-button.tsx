@@ -16,10 +16,10 @@ export function CartButton({ label, variant = "default" }: CartButtonProps) {
     <button
       type="button"
       onClick={() => setOpen(true)}
-      className={`relative rounded-md p-2 transition-colors focus-ring ${
+      className={`relative rounded-md p-2.5 transition-colors ${
         isHeader
-          ? "text-[var(--color-header-foreground)] hover:bg-[var(--color-header-foreground)]/15"
-          : "text-[var(--color-foreground)] hover:bg-black/5"
+          ? "text-[var(--color-header-foreground)] hover:bg-[var(--color-header-foreground)]/15 focus-ring-inverse"
+          : "text-[var(--color-foreground)] hover:bg-[var(--color-ghost-hover)] focus-ring"
       }`}
       aria-label={`${label} (${count})`}
     >

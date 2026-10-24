@@ -4,6 +4,8 @@
 
 JAK Storefront uses **Tailwind CSS v4** with a centralized design token system defined in `src/app/globals.css`. All colors, typography, spacing, and effects follow a cohesive brand language rooted in the JAK brand identity (Saudi coffee retailer).
 
+The colour system supports **light and dark themes**. Brand surfaces stay JAK purple in both; neutral surfaces, text and action colours adapt through semantic tokens (see [Light & Dark Themes](#light--dark-themes)).
+
 ---
 
 ## Color System
@@ -14,7 +16,7 @@ All colors are defined as CSS custom properties in `src/app/globals.css` and map
 
 #### JAK Primary Purple
 
-The dominant brand color — used for primary buttons, links, focus states, and the scrollbar.
+The dominant brand color. Brand surfaces (header, mobile drawer) always use `--color-jak-primary`; adaptive buttons, links and focus rings use the semantic `--color-primary*` tokens, which switch to a light lavender in dark mode.
 
 ```css
 --color-jak-primary: #4e0161;           /* Main purple */
@@ -81,14 +83,16 @@ Subtle purple variant for secondary text and subtle backgrounds.
 Mapped from brand colors for consistent component usage.
 
 ```css
-/* Primary (uses JAK purple) */
---color-primary: #4e0161;
+/* Primary (uses JAK purple in light; lavender action colour in dark) */
+--color-primary: #4e0161;              /* fills, buttons, active states */
 --color-primary-hover: #5a0272;
 --color-primary-light: #6b2a85;
 --color-primary-dark: #3a0148;
---color-primary-foreground: #ffffff;
+--color-primary-foreground: #ffffff;   /* text on a primary fill */
+--color-primary-text: #4e0161;         /* text/icons on neutral surfaces */
+--color-primary-soft: rgba(78, 1, 97, 0.08); /* tinted chips and row hovers */
 
-/* Accent (uses gold by default) */
+/* Accent (uses gold by default; cart badge) */
 --color-accent: #b88539;
 --color-accent-hover: #a07231;
 --color-accent-light: #d4a55a;
@@ -99,21 +103,35 @@ Mapped from brand colors for consistent component usage.
 --color-surface: #ffffff;
 --color-surface-muted: #f8f9fa;
 --color-foreground: #343a40;
---color-foreground-muted: #7e7e7e;
---color-muted: #9b9b9b;
+--color-foreground-muted: #5f6368;
+--color-muted-foreground: #5f6368;
+--color-muted: #6b7280;
 
-/* Borders */
---color-border: #eeeeee;
---color-border-strong: #dee2e6;
+/* Borders and interaction tints */
+--color-border: #eeeeee;            /* dividers and card outlines */
+--color-border-strong: #d4d4da;
+--color-border-control: #8a8f98;    /* inputs and controls (3:1 on surfaces) */
+--color-ghost-hover: rgba(78, 1, 97, 0.06);
 
 /* Focus & rings */
 --color-ring: #4e0161;
+--color-header-ring: #ffffff;       /* focus ring on purple brand surfaces */
 
-/* Status colors */
---color-success: #28a745;
---color-warning: #ffc107;
+/* Brand surface colours (identical in both themes) */
+--color-header-foreground: #ffffff;
+--color-header-foreground-muted: rgba(255, 255, 255, 0.90);
+--color-header-foreground-subtle: rgba(255, 255, 255, 0.75);
+--color-header-foreground-faint: rgba(255, 255, 255, 0.60);
+
+/* Scrollbar */
+--color-scrollbar: #4e0161;
+--color-scrollbar-hover: #5a0272;
+
+/* Status colors (AA text on light surfaces) */
+--color-success: #1e7e34;
+--color-warning: #b45309;
 --color-danger: #bc4f38;
---color-info: #17a2b8;
+--color-info: #0f6f7f;
 ```
 
 ---
@@ -195,6 +213,12 @@ Common layout and interaction classes are centralized in `src/app/globals.css` t
 }
 .focus-ring:focus-visible {
   outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+}
+
+/* White focus ring for purple brand surfaces (header, hero, drawer header) */
+.focus-ring-inverse:focus-visible {
+  outline: 2px solid var(--color-header-ring);
   outline-offset: 2px;
 }
 
@@ -339,7 +363,7 @@ All shadows use JAK primary color (purple) for consistency.
 
 ## Focus States
 
-All interactive elements use the JAK primary color for focus rings:
+Interactive elements use `--color-ring` (purple in light, lavender in dark) for focus rings:
 
 ```css
 :focus-visible {
@@ -348,7 +372,9 @@ All interactive elements use the JAK primary color for focus rings:
 }
 ```
 
-**Result:** Clean, accessible 2px purple ring with 2px offset.
+On deep purple brand surfaces, use `.focus-ring-inverse` so the ring is white (`--color-header-ring`) and remains visible. Components on neutral surfaces use `.focus-ring`.
+
+**Result:** A 2px ring with 2px offset that stays visible in both themes and on brand surfaces.
 
 ---
 
@@ -359,7 +385,7 @@ Modern, premium scrollbar (no arrow buttons) using JAK brand colors:
 ```css
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--color-jak-primary) transparent;
+  scrollbar-color: var(--color-scrollbar) transparent;
 }
 
 *::-webkit-scrollbar {
@@ -373,21 +399,21 @@ Modern, premium scrollbar (no arrow buttons) using JAK brand colors:
 }
 
 *::-webkit-scrollbar-thumb {
-  background: var(--color-jak-primary);
+  background: var(--color-scrollbar);
   border-radius: 999px;
   border: 2px solid var(--color-surface-muted);
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background: var(--color-jak-primary-hover);
+  background: var(--color-scrollbar-hover);
 }
 ```
 
 **Features:**
 - 8px width (mobile & desktop)
 - Rounded track & thumb
-- JAK purple thumb, light background track
-- Hover darkens thumb
+- JAK purple thumb in light, lavender thumb in dark
+- Track follows `--color-surface-muted` in both themes
 - No legacy arrow buttons
 
 ---
@@ -422,8 +448,8 @@ Text selection uses JAK brand:
   Primary Action
 </button>
 
-// Secondary (uses surface with border)
-<button className="px-4 py-2 bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-foreground)] rounded-md hover:bg-[var(--color-surface-muted)] transition-colors">
+// Secondary (uses surface with a control-strength border)
+<button className="px-4 py-2 bg-[var(--color-surface)] border border-[var(--color-border-control)] text-[var(--color-foreground)] rounded-md hover:bg-[var(--color-surface-muted)] transition-colors">
   Secondary Action
 </button>
 
@@ -445,8 +471,8 @@ Text selection uses JAK brand:
 ### Badge Styles
 
 ```jsx
-// Primary badge
-<span className="inline-block px-3 py-1 bg-[var(--color-primary)] text-[var(--color-primary-foreground)] rounded-full text-xs font-medium">
+// Primary badge (soft tint reads well in both themes)
+<span className="inline-block px-3 py-1 bg-[var(--color-primary-soft)] text-[var(--color-primary-text)] rounded-full text-xs font-bold">
   New
 </span>
 
@@ -461,27 +487,77 @@ Text selection uses JAK brand:
 ```jsx
 <input
   type="text"
-  className="w-full px-4 py-2 border border-[var(--color-border)] rounded-md text-[var(--color-foreground)] placeholder-[var(--color-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)] focus:border-transparent transition-all"
+  className="w-full px-4 py-2 border border-[var(--color-border-control)] rounded-md text-[var(--color-foreground)] placeholder-[var(--color-muted-foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)] focus:border-[var(--color-ring)] transition-all"
   placeholder="Enter text..."
 />
 ```
 
 ---
 
-## Light/Dark Mode (Future)
+## Light & Dark Themes
 
-The system is designed to support dark mode via CSS custom property overrides in `prefers-color-scheme`:
+The theme is selected in this order:
 
-```css
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: #1a1a1a;
-    --color-surface: #2d2d2d;
-    --color-foreground: #f5f5f5;
-    /* ... override other colors ... */
-  }
-}
+1. A stored choice in `localStorage` under the key `theme` (`"light"` or `"dark"`).
+2. The operating-system preference (`prefers-color-scheme`).
+3. Light, as the server-rendered default.
+
+`src/lib/theme.ts` owns the storage key, the inline pre-paint script and the
+`applyThemeToDocument` helper. The root layout renders the script in `<head>`
+so the correct theme is applied before first paint — no light flash on reload.
+The script sets both `data-theme` and the legacy `.dark` class on `<html>`;
+`ThemeToggle` keeps them in sync.
+
+```html
+<!-- Rendered before any content by src/app/[lang]/layout.tsx -->
+<html data-theme="light" suppressHydrationWarning>…</html>
+<!-- The inline script replaces "light" with the stored/system theme -->
 ```
+
+### Token overrides
+
+Dark values are declared twice in `globals.css` — once inside
+`@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { … } }`
+and once in `[data-theme="dark"] { … }` — so both the system fallback and an
+explicit choice work, and an explicit light choice wins over a dark system.
+
+| Token | Light | Dark |
+| --- | --- | --- |
+| `--color-background` | `#ffffff` | `#0f0f0f` |
+| `--color-surface` | `#ffffff` | `#1a1a1a` |
+| `--color-surface-muted` | `#f8f9fa` | `#2a2a2a` |
+| `--color-foreground` | `#343a40` | `#f0f0f0` |
+| `--color-foreground-muted` / `--color-muted-foreground` | `#5f6368` | `#c3c3c9` |
+| `--color-muted` | `#6b7280` | `#a7a7b0` |
+| `--color-border` / `--color-border-strong` | `#eeeeee` / `#d4d4da` | `#333333` / `#4a4a52` |
+| `--color-border-control` | `#8a8f98` | `#7a808c` |
+| `--color-primary` | `#4e0161` | `#b98ac7` |
+| `--color-primary-foreground` | `#ffffff` | `#1a0f1e` |
+| `--color-primary-text` | `#4e0161` | `#d9b8e6` |
+| `--color-primary-soft` | `rgba(78,1,97,.08)` | `rgba(217,184,230,.14)` |
+| `--color-ring` | `#4e0161` | `#d9b8e6` |
+| `--color-success` / `--color-warning` | `#1e7e34` / `#b45309` | `#4ade80` / `#fbbf24` |
+| `--color-danger` / `--color-info` | `#bc4f38` / `#0f6f7f` | `#f08a72` / `#67e8f9` |
+| `--shadow-*` | Purple-tinted | Black |
+
+Brand tokens (`--color-jak-primary`, `--color-jak-accent-*`, header foregrounds)
+do **not** change. The header, mobile drawer header, hero overlays and the footer
+logo keep the same brand appearance in both themes.
+
+### Choosing the right primary token
+
+- `--color-primary` — filled actions: buttons, active pagination, chat bubble,
+  social-icon hover. In dark mode this is lavender with dark foreground text.
+- `--color-primary-text` — text and icons on **neutral** surfaces (product
+  category labels, links, chips, icon buttons). In dark mode this is a light
+  lavender that passes contrast on `--color-surface`.
+- `--color-primary-soft` — tinted chip/row backgrounds paired with
+  `--color-primary-text`.
+- `--color-jak-primary` — brand surfaces that must stay deep purple in both
+  themes (header/drawer backgrounds, hero image overlays, white CTA label).
+
+Never use `--color-primary` as text on a neutral surface in dark mode, and never
+use `--color-primary-text` as a fill for filled buttons.
 
 ---
 
@@ -489,10 +565,27 @@ The system is designed to support dark mode via CSS custom property overrides in
 
 ### Color Contrast
 
-All color pairs meet **WCAG AA** standards:
-- Primary on white: 7.2:1 (AAA)
-- Muted on white: 4.5:1 (AA)
-- Accent on white: 5.1:1 (AA)
+Measured against the tokens in this document (WCAG 2.1 relative luminance):
+
+Light theme:
+- Primary text on white: **13.99:1** (AAA)
+- Body foreground on white: **11.51:1** (AAA)
+- Muted foreground on white: **6.05:1** (AA)
+- Muted text on white: **4.83:1**; on `--color-surface-muted`: **4.59:1** (AA)
+- Control borders (`--color-border-control`) on white: **3.25:1**; on surface-muted: **3.08:1** (AA non-text)
+- Status text on white: success **5.14:1**, warning **5.02:1**, danger **4.87:1**, info **5.83:1** (AA)
+- Accent-foreground on gold: **4.51:1** (AA)
+
+Dark theme:
+- Foreground on background: **16.82:1**; on surface: **~14.8:1**
+- Primary text on surface: **9.90:1**; muted on surface: **7.29:1**
+- Primary button foreground on fill: **6.65:1** (hover **8.60:1**)
+- Control borders on surface: **4.39:1**; on surface-muted: **3.62:1**
+- Status text on surface: **7.1–12.0:1**
+- White focus ring on brand purple: **13.99:1**
+
+The theme toggle and other icon buttons use a 44×44px target. Re-run contrast
+checks if tokens change; the ratios above are tied to the current values.
 
 ### Keyboard Navigation
 
@@ -610,19 +703,31 @@ Reason: Tailwind enforces a scale.
 --color-primary-light
 --color-primary-dark
 --color-primary-foreground
+--color-primary-text
+--color-primary-soft
 --color-accent
 --color-accent-hover
 --color-accent-light
 --color-accent-foreground
+--color-header-foreground
+--color-header-foreground-muted
+--color-header-foreground-subtle
+--color-header-foreground-faint
+--color-header-ring
 --color-background
 --color-surface
 --color-surface-muted
 --color-foreground
 --color-foreground-muted
+--color-muted-foreground
 --color-muted
 --color-border
 --color-border-strong
+--color-border-control
 --color-ring
+--color-ghost-hover
+--color-scrollbar
+--color-scrollbar-hover
 
 /* Status Colors */
 --color-success
@@ -656,6 +761,6 @@ Reason: Tailwind enforces a scale.
 
 ## Conclusion
 
-The JAK design system combines brand identity (purple, gold, pink) with accessibility and modern best practices. All tokens are centralized in `src/app/globals.css`, enabling theme evolution without code refactors. Components leverage Tailwind v4 utilities and CSS custom properties for consistency, performance, and scalability.
+The JAK design system combines brand identity (purple, gold, pink) with accessibility and modern best practices. All tokens are centralized in `src/app/globals.css`, enabling light/dark theme switching without component rewrites. Components use Tailwind v4 utilities and CSS custom properties for consistency, performance, and scalability. Brand surfaces remain deep purple; semantic tokens carry the theme adaptation.
 
 For implementation questions, see component examples in `src/components/ui/` and `src/components/layout/`.
