@@ -29,11 +29,16 @@ const ar: Dictionary = {
     orderNow: "اطلب الأن",
   },
   home: {
+    announcement: "احصل على أفضل العروض من جاك",
     heroBadge: "توريد B2B للمقاهي والكافيهات",
     heroTitle: "احصل على أفضل العروض من جاك",
     heroSubtitle: "لتزويد تطبيقك الذكي ومتجرك الإلكتروني باحتياجاته اليومية من المنتجات عالية الجودة.",
     heroCta: "اطلب الأن",
     heroSecondary: "تصفح المنتجات",
+    heroSlide1: "لتزويد B2B تطبيق ذكي ومتجر الكتروني المقهى الخاص بك با caregاته اليومية",
+    heroSlide2: "توريد وتزويد متواصل على مدار (24/ الساعة وطوال الأسبوع (24/7)",
+    heroSlide3: "توصيل لكافة أناء المملكة",
+    heroSlide4: "خدمات مميزة وعروض خاصة",
     valuesTitle: "مورد واحد، مكان واحد — يوفر جميع احتياجات عملك!",
     valuesText:
       "نلبي كافة احتياجات عملك بطريقة منظمة وسلسة لتتميز بين منافسيك، وتكون دوما بكامل استعدادك وجاهزيتك من المواد اللازمة لتشغيل منشأتك من الألف إلى الياء.",
@@ -53,9 +58,10 @@ const ar: Dictionary = {
     statsCoverageValue: "24/7",
     bestSellers: "الأكثر مبيعا",
     categoriesTitle: "الأقسام",
+    ourCategories: "اصنافنا",
     sizesTitle: "تنوع في الأحجام",
     sizesText:
-      "نوفر لك أصناف الأطعمة الخفيفة الجاهزة للأكل بأربعة أحجام مختلفة (Mini - Small - Medium - Large)، مما يسمح لك بتلبية تفضيلات العملاء المختلفة من ناحية الحجم ويزيد نسبة الرضا، ويتيح لك التحكم في التكاليف وتحسين ميزانيتك دون المساومة على الجودة.",
+      "نوفر لك أصناف الأطعمة الخفيفة الجاهزة للأكل بأربعة أحجام مختلفة (Mini - Small - Medium - Large(. يقدم هذا النهج العديد من الفوائد لعملك، حيث يسمح لك بتلبية تفضيلات العملاء المختلفة من ناحية الحجم، ويزيد نسبة الرضا. إضافى إلى أن المرونة في الأحجام تتيح لك التحكم في التكاليف، وتحسين ميزانيتك دون المساومة على الجودة. كل هذا يعزز منتجك، لأنه يوضح الالتزام بتلبية الاحتياجات الفردية ويعزز الشعور بالتخصيص.",
     orderTitle: "اطلب الان",
     orderText: "أحصل على احتياجات عملك كاملة من خلال تطبيقنا الذي يضم منتجات عالية الجودة، بشكل مباشر من مكان واحد دون الحاجة إلى التعامل مع عدة موردين.",
     orderButton: "اطلب الان",
@@ -91,6 +97,7 @@ const ar: Dictionary = {
     title: "الأقسام",
     empty: "لا توجد أقسام",
     products: "عرض المنتجات",
+    shopNow: "تسوق الان",
   },
   search: {
     title: "نتائج البحث",
@@ -208,11 +215,16 @@ const en: Dictionary = {
     orderNow: "Order Now",
   },
   home: {
+    announcement: "GET THE BEST OFFERS FROM JAK",
     heroBadge: "B2B supply for cafes & coffee shops",
     heroTitle: "Get the best offers from JAK",
     heroSubtitle: "Powering your smart app and online store with its daily supply of high-quality products.",
     heroCta: "Order Now",
     heroSecondary: "Browse Products",
+    heroSlide1: "To supply your café's B2B smart application and online store with its daily needs",
+    heroSlide2: "Continuous supply and provision around the clock (24/7)",
+    heroSlide3: "Delivery services covering all of Saudi Arabia",
+    heroSlide4: "Special services and exclusive offers",
     valuesTitle: "One supplier, one place — for all your business needs!",
     valuesText:
       "We meet all your business needs in an organized, smooth way so you stand out from competitors, fully prepared with everything needed to run your facility from A to Z.",
@@ -232,9 +244,10 @@ const en: Dictionary = {
     statsCoverageValue: "24/7",
     bestSellers: "Best Sellers",
     categoriesTitle: "Categories",
+    ourCategories: "Our Categories",
     sizesTitle: "Variety of sizes",
     sizesText:
-      "We supply ready-to-eat light foods in four different sizes (Mini - Small - Medium - Large), letting you serve different preferences, improve satisfaction, control costs and optimize your budget without compromising quality.",
+      "We offer ready-to-eat snack items in four different sizes (Mini - Small - Medium - Large). This approach provides several benefits for your business, allowing you to meet the diverse preferences of customers in terms of size, thereby increasing satisfaction. Additionally, the flexibility in sizes enables you to control costs and improve your budget without compromising on quality. All of this enhances your product, as it demonstrates a commitment to meeting individual needs and promotes a sense of customization.",
     orderTitle: "Order now",
     orderText: "Get your business needs in full through our app with high-quality products, directly from one place — no need to deal with multiple suppliers.",
     orderButton: "Order now",
@@ -270,6 +283,7 @@ const en: Dictionary = {
     title: "Categories",
     empty: "No categories",
     products: "View products",
+    shopNow: "Shopping Now",
   },
   search: {
     title: "Search results",
