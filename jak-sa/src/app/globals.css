@@ -39,6 +39,12 @@
   --color-accent-light: var(--color-jak-accent-gold-light);
   --color-accent-foreground: var(--color-jak-accent-gold-foreground);
 
+  /* Header foreground colors for contrast on primary background */
+  --color-header-foreground: #ffffff;
+  --color-header-foreground-muted: rgba(255, 255, 255, 0.90);
+  --color-header-foreground-subtle: rgba(255, 255, 255, 0.75);
+  --color-header-foreground-faint: rgba(255, 255, 255, 0.60);
+
   /* Base colors — clean, premium, white-space focused */
   --color-background: #ffffff;
   --color-surface: #ffffff;

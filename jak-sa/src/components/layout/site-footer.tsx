@@ -38,7 +38,7 @@ export function SiteFooter({ locale, categories }: SiteFooterProps) {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-surface-muted)] text-[var(--color-muted)] transition-all hover:bg-[var(--color-primary)] hover:text-white focus-ring"
+                    className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-surface-muted)] text-[var(--color-muted)] transition-all hover:bg-[var(--color-primary)] hover:text-[var(--color-primary-foreground)] focus-ring"
                     aria-label={social.ariaLabel}
                   >
                     <social.icon className="h-5 w-5" aria-hidden />
