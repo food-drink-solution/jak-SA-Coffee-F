@@ -1,21 +1,30 @@
-# Security Policy
+# 🔒 Security Policy — JAK Platform
+
+We take the security and integrity of the **JAK** storefront and platform seriously.
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+Security patches are actively applied to the primary codebase branch:
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+| Component | Branch / Version | Supported |
+|-----------|------------------|:---------:|
+| Frontend (`jak-sa`) | Next.js 16.x / `main` | :white_check_mark: |
+| Backend (`server-api`) | ASP.NET Core 8/9 / `main` | :white_check_mark: |
+| Dependencies | Latest audit & dependabot fixes | :white_check_mark: |
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
+If you discover a security vulnerability within this project:
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+1. **Do not disclose publicly.** Please avoid filing public issues on GitHub.
+2. **Email the security team directly:** Send details to [security@jak.sa.com](mailto:security@jak.sa.com).
+3. **Include helpful context:**
+   - Detailed description of the vulnerability.
+   - Steps to reproduce or proof-of-concept.
+   - Affected URLs, endpoints, or components.
+
+## Response Process
+
+- **Acknowledgement:** Within 48 hours of initial report.
+- **Triage & Remediation:** A severity assessment will be conducted, and a patch will be deployed to the `main` branch.
+- **Disclosure:** We coordinate disclosure timelines responsibly once a fix is verified.
