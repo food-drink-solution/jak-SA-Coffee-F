@@ -11,6 +11,14 @@ const securityHeaders = [
   { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains" },
 ];
 
+// Static artwork is immutable between deploys; allow browsers and CDNs to reuse it.
+const imageCacheHeaders = [
+  { key: "Cache-Control", value: "public, max-age=2592000, stale-while-revalidate=86400" },
+];
+const faviconCacheHeaders = [
+  { key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=604800" },
+];
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
@@ -25,7 +33,11 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 60 * 60 * 24 * 30,
   },
   async headers() {
-    return [{ source: "/:path*", headers: securityHeaders }];
+    return [
+      { source: "/images/:path*", headers: imageCacheHeaders },
+      { source: "/favicon.ico", headers: faviconCacheHeaders },
+      { source: "/:path*", headers: securityHeaders },
+    ];
   },
 };
 

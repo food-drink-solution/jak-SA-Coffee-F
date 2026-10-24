@@ -18,7 +18,15 @@ export function TrustFeatures({ items }: { items: { label: string; image: string
         {items.map((item) => (
           <div key={item.label} className="flex flex-col items-center gap-3 rounded-[var(--radius-md)] p-3 text-center transition-colors hover:bg-[var(--color-surface-muted)]">
             <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-[var(--color-header-foreground)] p-1 shadow-sm">
-              <Image src={item.image} alt={item.label} width={50} height={50} className="h-full w-full object-contain transition-transform hover:scale-105" />
+              <Image
+                src={item.image}
+                alt={item.label}
+                width={50}
+                height={50}
+                sizes="56px"
+                quality={90}
+                className="h-full w-full object-contain transition-transform hover:scale-105"
+              />
             </span>
             <p className="text-sm font-bold leading-6 text-[var(--color-foreground)]">{item.label}</p>
           </div>

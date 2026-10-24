@@ -4,16 +4,12 @@ import Image from "next/image";
 export function ProductSizesSection({ title, text, image }: { title: string; text: string; image: string }) {
   return (
     <section className="relative overflow-hidden">
-      <div
-        className="bg-cover bg-center py-12 sm:py-20 md:py-24 min-h-[200px]"
-        style={{ backgroundImage: `url("${image}")` }}
-      >
-        <div className="absolute inset-0 bg-[var(--color-jak-primary)]/55" />
-        <div className="relative container-app">
-          <div className="max-w-3xl text-[var(--color-header-foreground)]">
-            <h2 className="text-2xl font-extrabold leading-snug sm:text-3xl">{title}</h2>
-            <p className="mt-4 text-base leading-7 text-[var(--color-header-foreground-muted)] sm:text-lg sm:leading-8">{text}</p>
-          </div>
+      <Image src={image} alt="" fill sizes="100vw" quality={50} className="object-cover" aria-hidden />
+      <div className="absolute inset-0 bg-[var(--color-jak-primary)]/55" />
+      <div className="relative container-app py-12 sm:py-20 md:py-24">
+        <div className="max-w-3xl text-[var(--color-header-foreground)]">
+          <h2 className="text-2xl font-extrabold leading-snug sm:text-3xl">{title}</h2>
+          <p className="mt-4 text-base leading-7 text-[var(--color-header-foreground-muted)] sm:text-lg sm:leading-8">{text}</p>
         </div>
       </div>
     </section>
@@ -35,10 +31,10 @@ export function DownloadSection({
           <p className="mt-3 text-base leading-7 text-[var(--color-muted)]">{text}</p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Link href="https://play.google.com/store/apps/details?id=com.entlq.jak&hl=en" target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-105 focus-ring rounded-lg">
-              <Image src="/images/home/google-play.png" alt="Google Play" width={160} height={48} className="h-12 w-auto" />
+              <Image src="/images/home/google-play.webp" alt="Google Play" width={147} height={44} sizes="160px" quality={90} className="h-12 w-auto" />
             </Link>
             <Link href="https://apps.apple.com/us/app/jak-f-b-%D8%AC%D8%A7%D9%83/id6455428264" target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-105 focus-ring rounded-lg">
-              <Image src="/images/home/app-store.png" alt="App Store" width={160} height={48} className="h-12 w-auto" />
+              <Image src="/images/home/app-store.webp" alt="App Store" width={133} height={46} sizes="160px" quality={90} className="h-12 w-auto" />
             </Link>
           </div>
         </div>
