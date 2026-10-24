@@ -8,6 +8,8 @@
     "start": "pnpm --filter jak-sa start",
     "lint": "pnpm --filter jak-sa lint",
     "typecheck": "pnpm --filter jak-sa typecheck",
-    "test": "pnpm --filter jak-sa test"
+    "test": "pnpm --filter jak-sa test",
+    "crawl": "pnpm --filter jak-sa crawl",
+    "validate:data": "pnpm --filter jak-sa validate:data"
   }
 }

@@ -9,7 +9,10 @@ import { fileURLToPath } from "node:url";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
 async function load(p) {
-  return JSON.parse(await readFile(path.join(ROOT, p), "utf8"));
+  const primary = path.join(ROOT, "jak-sa", p);
+  const fallback = path.join(ROOT, p);
+  const content = await readFile(primary, "utf8").catch(() => readFile(fallback, "utf8"));
+  return JSON.parse(content);
 }
 
 let failed = 0;

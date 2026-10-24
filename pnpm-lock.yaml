@@ -6,7 +6,9 @@ settings:
 
 importers:
 
-  .:
+  .: {}
+
+  jak-sa:
     dependencies:
       '@formatjs/intl-localematcher':
         specifier: ^0.9.0

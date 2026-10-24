@@ -392,13 +392,15 @@ async function main() {
   }
   report.steps.push({ step: "documents", count: documents.length });
 
+  const FRONTEND = path.join(ROOT, "jak-sa");
+
   // Logos
   for (const [src, dest] of [
     ["/images/logo.png", "public/images/brand/logo.png"],
     ["/images/footer_logo.png", "public/images/brand/footer-logo.png"],
   ]) {
     try {
-      await downloadFile(`${BASE}${src}`, path.join(ROOT, dest));
+      await downloadFile(`${BASE}${src}`, path.join(FRONTEND, dest));
     } catch (e) {
       report.errors.push({ type: "asset", url: src, error: e.message });
     }
@@ -411,12 +413,12 @@ async function main() {
   ];
 
   // Write data
-  const out = (p, data) => writeFile(path.join(ROOT, p), JSON.stringify(data, null, 2), "utf8");
-  await mkdir(path.join(ROOT, "src/data/products"), { recursive: true });
-  await mkdir(path.join(ROOT, "src/data/categories"), { recursive: true });
-  await mkdir(path.join(ROOT, "src/data/pages"), { recursive: true });
-  await mkdir(path.join(ROOT, "src/data/navigation"), { recursive: true });
-  await mkdir(path.join(ROOT, "src/data/company"), { recursive: true });
+  const out = (p, data) => writeFile(path.join(FRONTEND, p), JSON.stringify(data, null, 2), "utf8");
+  await mkdir(path.join(FRONTEND, "src/data/products"), { recursive: true });
+  await mkdir(path.join(FRONTEND, "src/data/categories"), { recursive: true });
+  await mkdir(path.join(FRONTEND, "src/data/pages"), { recursive: true });
+  await mkdir(path.join(FRONTEND, "src/data/navigation"), { recursive: true });
+  await mkdir(path.join(FRONTEND, "src/data/company"), { recursive: true });
   await mkdir(path.join(ROOT, "docs"), { recursive: true });
 
   await out("src/data/products/products.json", products);
@@ -430,7 +432,7 @@ async function main() {
   await out("src/data/company/company.json", { ...company, documents });
 
   report.finishedAt = new Date().toISOString();
-  await out("docs/migration-report.json", report);
+  await writeFile(path.join(ROOT, "docs/migration-report.json"), JSON.stringify(report, null, 2), "utf8");
   console.log("DONE. products:", products.length, "categories:", categories.length, "pages:", pages.length, "documents:", documents.length, "errors:", report.errors.length);
 }
 

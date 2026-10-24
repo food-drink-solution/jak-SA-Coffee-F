@@ -6,11 +6,13 @@ Full-stack repository structure for **JAK** (Saudi B2B Food & Coffee Supply).
 
 ```
 .
+├── docs/                 # System architecture, design system, and component guides
+├── scripts/              # Migration, crawling, and dataset validation utilities
+│
 ├── jak-sa/               # Next.js 16 + React 19 Frontend Storefront
 │   ├── src/              # Application source code (App Router, components, features)
 │   ├── public/           # Static assets, brand logos, product images
 │   ├── tests/            # Unit & E2E tests (Vitest, Playwright)
-│   ├── docs/             # Technical architecture, styles, and component guides
 │   ├── package.json      # Frontend dependencies & scripts
 │   └── tsconfig.json     # TypeScript configuration
 │
@@ -62,8 +64,8 @@ Open [http://localhost:3000](http://localhost:3000) to view the storefront (auto
 
 ## 📚 Documentation
 
-For in-depth guides on the frontend storefront, refer to the documentation inside `jak-sa/docs/`:
-- [Architecture Guide](./jak-sa/docs/ARCHITECTURE.md)
-- [Design System & Styles](./jak-sa/docs/STYLES.md)
-- [Component Guide](./jak-sa/docs/COMPONENTS.md)
-- [Development Workflow](./jak-sa/docs/DEVELOPMENT.md)
+For in-depth guides on the storefront and architecture, refer to the documentation inside `docs/`:
+- [Architecture Guide](./docs/ARCHITECTURE.md)
+- [Design System & Styles](./docs/STYLES.md)
+- [Component Guide](./docs/COMPONENTS.md)
+- [Development Workflow](./docs/DEVELOPMENT.md)
