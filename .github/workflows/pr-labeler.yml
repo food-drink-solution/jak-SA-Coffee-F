@@ -1,0 +1,44 @@
+name: PR Labeler
+
+# Labels PRs by head-branch prefix so release-drafter can categorize and the
+# version-resolver (major/minor/patch) works on release PRs.
+on:
+  pull_request_target:
+    types: [opened, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  label-by-branch:
+    name: Label PR
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Apply prefix label
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          HEAD_BRANCH: ${{ github.head_ref }}
+        run: |
+          set -euo pipefail
+          add_label() {
+            gh api "repos/$REPO/issues/$PR_NUMBER/labels" -f "labels[]=$1" >/dev/null \
+              && echo "labeled $1" || echo "WARN: label '$1' missing/failed" >&2
+          }
+          case "$HEAD_BRANCH" in
+            feat/*|feature/*)          add_label "feature" ;;
+            fix/*)                     add_label "fix" ;;
+            bug/*|bugfix/*)            add_label "bug" ;;
+            chore/*|refactor/*)        add_label "chore" ;;
+            perf/*)                    add_label "performance" ;;
+            docs/*)                    add_label "documentation" ;;
+            style/*)                   add_label "ui" ;;
+            ci/*|build/*|test/*|update/*) add_label "chore" ;;
+            release/*|develop)         echo "release-facing PR: no auto-label (set major/minor/patch manually)" ;;
+            hotfix/*)                  add_label "hotfix" ;;
+            dependabot/*)              add_label "dependencies" ;;
+            *)                         echo "unknown prefix, skipping" ;;
+          esac
