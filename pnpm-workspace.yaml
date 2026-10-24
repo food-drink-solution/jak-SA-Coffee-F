@@ -1,4 +1,2 @@
-allowBuilds:
-  unrs-resolver: true
-minimumReleaseAgeExclude:
-  - '@vitejs/plugin-react@6.1.2'
+packages:
+  - 'jak-sa'
