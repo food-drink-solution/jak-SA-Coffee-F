@@ -1,60 +1,74 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useSyncExternalStore } from "react";
 import { Moon, Sun } from "lucide-react";
 
-export function ThemeToggle() {
-  const [theme, setTheme] = useState<"light" | "dark" | null>(null);
-  const [mounted, setMounted] = useState(false);
+type Theme = "light" | "dark";
 
-  // Memoized theme application function
-  const applyTheme = useCallback((t: "light" | "dark") => {
+// ── External theme state (localStorage + system preference) ──────────────
+// Exposed via useSyncExternalStore so hydration is handled correctly without
+// setState-in-effect (react-hooks/set-state-in-effect compliant).
+
+const noListener = () => (): void => {};
+
+function subscribeTheme(onChange: () => void): () => void {
+  const handler = (): void => onChange();
+  window.addEventListener("themechange", handler);
+  window.addEventListener("storage", handler);
+  const mq = window.matchMedia("(prefers-color-scheme: dark)");
+  mq.addEventListener("change", handler);
+  return () => {
+    window.removeEventListener("themechange", handler);
+    window.removeEventListener("storage", handler);
+    mq.removeEventListener("change", handler);
+  };
+}
+
+function resolveTheme(): Theme | null {
+  try {
+    const stored = localStorage.getItem("theme") as Theme | null;
+    const prefers = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    return stored || prefers;
+  } catch (error) {
+    console.error("Failed to read theme:", error);
+    return null;
+  }
+}
+
+export function ThemeToggle() {
+  const mounted = useSyncExternalStore(
+    noListener,
+    () => true,
+    () => false,
+  );
+  const theme = useSyncExternalStore(subscribeTheme, resolveTheme, () => null);
+
+  // Persist + broadcast the chosen theme (only on explicit interaction).
+  const applyTheme = useCallback((next: Theme) => {
     try {
-      const html = document.documentElement;
-      
-      // Apply theme via data-theme attribute (primary method)
-      html.setAttribute("data-theme", t);
-      
-      // Also apply .dark class for Tailwind v4 compatibility
-      if (t === "dark") {
-        html.classList.add("dark");
-      } else {
-        html.classList.remove("dark");
-      }
-      
-      // Persist to localStorage
-      localStorage.setItem("theme", t);
-      
-      // Fire custom event for other components
-      window.dispatchEvent(new CustomEvent("themechange", { detail: { theme: t } }));
+      localStorage.setItem("theme", next);
+      window.dispatchEvent(new CustomEvent("themechange", { detail: { theme: next } }));
     } catch (error) {
       console.error("Failed to apply theme:", error);
     }
   }, []);
 
-  // Hydrate from localStorage and system preference on mount
-  useEffect(() => {
-    setMounted(true);
-    
-    // Get stored preference or system preference
-    const stored = localStorage.getItem("theme") as "light" | "dark" | null;
-    const prefers = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-    const initial = stored || prefers;
-    
-    setTheme(initial);
-    applyTheme(initial);
-  }, [applyTheme]);
-
   const toggleTheme = useCallback(() => {
-    setTheme((prevTheme) => {
-      const newTheme = prevTheme === "dark" ? "light" : "dark";
-      applyTheme(newTheme);
-      return newTheme;
-    });
-  }, [applyTheme]);
+    applyTheme(theme === "dark" ? "light" : "dark");
+  }, [applyTheme, theme]);
 
-  // Don't render until hydrated (prevents hydration mismatch)
-  if (!mounted || theme === null) {
+  const current = mounted && theme !== null ? theme : null;
+
+  // Sync the DOM with the external store (effects are the right place for
+  // external-system mutations — no setState needed here).
+  useEffect(() => {
+    if (current === null) return;
+    const html = document.documentElement;
+    html.setAttribute("data-theme", current);
+    html.classList.toggle("dark", current === "dark");
+  }, [current]);
+
+  if (current === null) {
     return (
       <button
         type="button"
@@ -71,11 +85,11 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={toggleTheme}
-      aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+      aria-label={current === "dark" ? "Switch to light mode" : "Switch to dark mode"}
       className="flex h-10 w-10 items-center justify-center rounded-md text-[var(--color-header-foreground)] transition-colors hover:bg-[var(--color-header-foreground)]/15 focus-ring cursor-pointer"
-      title={`Current: ${theme} mode • Click to toggle`}
+      title={`Current: ${current} mode • Click to toggle`}
     >
-      {theme === "dark" ? (
+      {current === "dark" ? (
         <Sun className="h-5 w-5" style={{ animation: "spin-slow 0.6s ease-in-out" }} aria-hidden />
       ) : (
         <Moon className="h-5 w-5" aria-hidden />
